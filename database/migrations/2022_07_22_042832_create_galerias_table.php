@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->date('fecha_creacion');            
             $table->enum('estado',[1,2])->default(1);
+            $table->string('portada')->nullable();
             $table->timestamps();
 
             
