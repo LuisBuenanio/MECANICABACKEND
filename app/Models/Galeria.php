@@ -12,6 +12,7 @@ class Galeria extends Model
 
     protected $guarded = ['id','created_at','update_at'];
     
+     public $timestamps = false;    
     
     /* Relacion de uno a muchos */
     public function multimedias(){

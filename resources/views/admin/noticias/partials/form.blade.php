@@ -18,13 +18,27 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     {!! Form::label('fecha_publicacion', 'Fecha de Publicación:') !!}
                     {!! Form::date('fecha_publicacion', null,['class' => 'form-control']) !!}
 
                     @error('fecha_publicacion')
                         <small class="text-danger">{{$message}}</small>
                     @enderror
+                </div> --}}
+
+                <div class="form-group">
+                    {!! Form::label('fecha_publicacion', 'Fecha de Publicación:') !!}
+                    {!! Form::date('fecha_publicacion', \Carbon\Carbon::now(), [
+                        'class' => 'form-control',
+                        'placeholder' => 'Ingrese la fecha de la Receta',
+                    ]) !!}
+    
+    
+                    @error('fecha_publicacion')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+    
                 </div>
                 <!-- 2630460803 -->
                 <div class="form-group">

@@ -28,10 +28,12 @@ class NoticiaController extends Controller
     {
         return view('admin.noticias.create');
     }
-    public function store(NoticiaRequest $request)
+   /*  public function store(NoticiaRequest $request)
     {
-        /* return Storage::put('public/noticias', $request->file('file')); */
+        
         $noticia = Noticia::create($request->all());
+
+        
 
         if ($request->file('file')){
             $url   = Storage::put('public/noticias', $request->file('file'));
@@ -45,7 +47,30 @@ class NoticiaController extends Controller
         Cache::flush();
         
         return redirect()->route('admin.noticias.index')-> with('info', 'Noticia creada correctamente');;;
+    } */
+    public function store(NoticiaRequest $request)
+    {
+        $data = $request->validated();
+        $data['entradilla'] = strip_tags($data['entradilla']); // Aplica strip_tags() al contenido de la noticia
+
+        $data['contenido'] = strip_tags($data['contenido']); // Aplica strip_tags() al contenido de la noticia
+
+        $noticia = Noticia::create($data);
+
+        
+        if ($request->file('file')){
+            $url   = Storage::put('public/noticias', $request->file('file'));
+
+            $noticia->image()->create([
+                'url' => Storage::url($url)
+            ]);
+        };
+
+        Cache::flush();
+
+        return redirect()->route('admin.noticias.index')->with('info', 'Noticia creada correctamente');
     }
+
 
      
 
@@ -56,7 +81,12 @@ class NoticiaController extends Controller
 
     public function update(NoticiaRequest $request, Noticia $noticia)
     {
-        $noticia->update($request->all());
+        $data = $request->validated();
+        $data['entradilla'] = strip_tags($data['entradilla']); // Aplica strip_tags() al contenido de la noticia
+
+        $data['contenido'] = strip_tags($data['contenido']); // Aplica strip_tags() al contenido de la noticia
+        
+        $noticia->update($data);
 
         if ($request->file('file')){
             $url   = Storage::put('public/noticias', $request->file('file'));
@@ -65,11 +95,11 @@ class NoticiaController extends Controller
                 Storage::delete($noticia->image->url);
                 
                 $noticia->image->update([
-                'url' => $url
+                    'url' => Storage::url($url)
                 ]);
             }else{
                 $noticia->image()->create([
-                'url' => $url
+                    'url' => Storage::url($url)
                 ]);
             }
         }

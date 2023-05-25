@@ -3,8 +3,8 @@
 @section('title', 'Mecánica Espoch')
 
 @section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.autoridades.create')}}">Nuevo Autoridad</a>
-    <h1>Listado de Autoridades</h1>
+    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.multimedias.create')}}">Nueva Imágen</a>
+    <h1>Listado de Imágenes</h1>
 @stop
 
 @section('content')

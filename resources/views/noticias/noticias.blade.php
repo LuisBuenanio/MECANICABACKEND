@@ -7,7 +7,7 @@
         </div>            
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">                            
             @foreach($noticias as $noticia)
-                <article class="w-full h-80 bg-cover bg-center" style="background-image:  url(@if($noticia->image) {{ Storage::url($noticia->image->url)}} @else https://cdn.pixabay.com/photo/2016/07/28/16/50/car-engine-1548434_960_720.jpg @endif )">
+                <article class="w-full h-80 bg-cover bg-center" style="background-image:  url(@if($noticia->image) {{ ($noticia->image->url)}} @else https://cdn.pixabay.com/photo/2016/07/28/16/50/car-engine-1548434_960_720.jpg @endif )">
                     <div class="mw-full h-80 px-8 flex flex-col justify-center">
                         <h1 class=" text-1xl text-white leading-8 font-bold">
                             <a href="{{route('noticia', $noticia)}}">

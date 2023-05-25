@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Noticia;
+use App\Models\Image;
 
 use Illuminate\Support\Facades\Cache;
 
@@ -42,17 +43,45 @@ class NoticiaController extends Controller
         return view('noticias.noticia', compact('noticia'));
     }
 
+    public function index1()
+    {
+        $noticias = Noticia::all();
+
+        return response()->json($noticias);
+    }
     public function index()
     {
-        return response()->json(['datos'=>Noticia::all()]);
+        /* $this->authorize('published', $noticias); */
+        $noticias = Noticia::where('estado', 2)->orderBy('fecha_publicacion', 'DESC')->with('image')->get();
+
+        return response()->json([
+            'datos' => $noticias->map(function ($noticia) {
+                return [
+                    'id' => $noticia->id,
+                    'titulo' => $noticia->titulo,
+                    'entradilla' => $noticia->entradilla,
+                    'contenido' => $noticia->contenido,
+                    'fecha_publicacion' => $noticia->fecha_publicacion,
+                    'imagen_url' => $noticia->image ? $noticia->image->url : null,
+                ];
+            })
+        ]);
     }
 
+
+    
     public function show($id)
     {
-        $noticia=Noticia::find($id);
-        if(!$noticia){
-            return response()->json(['mensaje'=>'No se encontro la Noticia'],404);
-        }
-        return response()->json(['datos'=>$noticia],202);
+        $noticia = Noticia::findOrFail($id);
+        $imagen = $noticia->image()->get();
+
+        return response()->json([
+            'id' => $noticia->id,
+            'titulo' => $noticia->titulo,
+            'entradilla' => $noticia->entradilla,
+            'contenido' => $noticia->contenido,
+            'fecha_publicacion' => $noticia->fecha_publicacion, 
+            'imagen_url' => $noticia->image ? $noticia->image->url : null
+        ]);
     }
 }

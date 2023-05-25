@@ -1,6 +1,11 @@
 <?php
 
+/*prueba pruaba prueba*/ 
 namespace App\Http\Controllers;
+
+/*Nueva prueba 2 */
+/* zsd asdasdasasddas */
+
 
 
 use Illuminate\Http\Request;

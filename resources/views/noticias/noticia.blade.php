@@ -16,8 +16,8 @@
             <div class="lg:col-span-2">
                 <figure class="flex justify-center">
                     @if($noticia->image) 
-                        <a href="{{Storage::url($noticia->image->url) }}" class="ed-item base-100 web-30">
-                            <img class ="w-full h-80 object-cover object-center" src="{{ Storage::url($noticia->image->url) }}" alt="">
+                        <a href="{{($noticia->image->url) }}" class="ed-item base-100 web-30">
+                            <img class ="w-full h-80 object-cover object-center" src="{{ ($noticia->image->url) }}" alt="">
                         </a>
                     @else
                         <a href="https://cdn.pixabay.com/photo/2016/07/28/16/50/car-engine-1548434_960_720.jpg" class="ed-item base-100 web-30">

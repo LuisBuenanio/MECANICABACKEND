@@ -18,7 +18,7 @@
             
             {!! Form::model($noticia,['route' => ['admin.noticias.update',$noticia], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-                @include('admin.noticias.partials.form')
+                @include('admin.noticias.partials.form1')
 
                 {!! Form:: submit('Actualizar Noticia',['class' => 'btn btn-primary']) !!}
 
