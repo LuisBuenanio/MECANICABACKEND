@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('multimedia', function (Blueprint $table) {
-            $table->id();
-	    $table->string('nombre')->nullable();           
+            $table->id();           
             $table->string('url');        
             
 
