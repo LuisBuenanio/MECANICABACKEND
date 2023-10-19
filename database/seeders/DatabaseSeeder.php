@@ -20,11 +20,18 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoleSeeder::class);
 
-        $this->call(UserSeeder::class);/* 
-        $this->call(NoticiaSeeder::class); */
+        $this->call(UserSeeder::class);
+        $this->call(NoticiaSeeder::class);
         
         $this->call(EscuelaSeeder::class);
         $this->call(AsociacionSeeder::class);
+
+        $this->call(TipoAutoridadSeeder::class);
+        $this->call(AutoridadSeeder::class);
+
+        
+        $this->call(TipoIntegranteSeeder::class);
+        $this->call(IntegranteSeeder::class);
 
         
     }

@@ -1,5 +1,4 @@
 <x-app-layout>
-   {{-- Autoridades de la Escuela y Facultad --}}
    <div class="container  py-8">
     <div>
         <br>

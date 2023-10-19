@@ -7,9 +7,24 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ConvenioController;
 use App\Http\Controllers\ProyectoController;
+
+use App\Http\Controllers\PostgradoController;
+
+use App\Http\Controllers\MaestriaController;
 use App\Http\Controllers\InvestigacionController;
 use App\Http\Controllers\FullCalenderController;
 
+
+use App\Http\Controllers\LineaEscuelaController;
+
+use App\Http\Controllers\LineaFacultadController;
+
+use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\TitulacionController;
+
+
+use App\Http\Controllers\SecretariaContController;
+use App\Http\Controllers\SecretariaOficController;
 
 Route::get('/', [HomeController::class, 'index'])-> name('inicio');
 
@@ -28,6 +43,22 @@ Route::get('asociacion', [AsociacionController::class, 'aso'])-> name('asociacio
 Route::get('convenios', [ConvenioController::class, 'conveniost'])-> name('convenios');
 
 Route::get('proyectos', [ProyectoController::class, 'proyectost'])-> name('proyectos');
+
+Route::get('postgrados', [PostgradoController::class, 'postgradost'])-> name('postgrados');
+
+
+Route::get('maestrias', [MaestriaController::class, 'maestriast'])-> name('maestrias');
+
+
+Route::get('lineasesc', [LineaEscuelaController::class, 'lineasesct'])-> name('lineasesc');
+Route::get('lineasfac', [LineaFacultadController::class, 'lineasfact'])-> name('lineasfac');
+
+
+Route::get('docentes', [DocenteController::class, 'docentest'])-> name('docentes');
+Route::get('titulacion', [TitulacionController::class, 'titulaciont'])-> name('titulacion');
+
+Route::get('secretariaconts', [SecretariaContController::class, 'secretariacontf'])-> name('secretariaconts');
+Route::get('secretariaofics', [SecretariaOficController::class, 'secretariaoficf'])-> name('secretariaofics');
 
 
 

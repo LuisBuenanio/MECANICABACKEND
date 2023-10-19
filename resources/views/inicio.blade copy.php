@@ -10,16 +10,6 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-
-        /* Nuevos estilos para el carrusel */
-        .owl-carousel {
-            width: 100%;
-        }
-
-        .owl-item img {
-            max-width: 100%;
-        }
-       
         .imagenmv{
             background-image: url("{{asset('img/escuela/'.$escuela->logo_escuela ?? 'sin logo')}}");
             height: 200px;
@@ -32,55 +22,92 @@
             width: 120px;
             margin: auto
         }
-        .imagen-fija {
-        width: 400px; /* Ancho fijo del contenedor */
-        height: 630px; /* Alto fijo del contenedor */
-        overflow: hidden; /* Ocultar el contenido fuera del contenedor */
-    }
-
-    .imagen-fija img {
-        width: 100%; /* Asegura que la imagen ocupe el 100% del contenedor */
-        object-fit: cover; /* Recorta la imagen para ajustarla al contenedor */
-    }
-
-    .titulo-carrusel {
-            position: absolute;
-            top: 40%; /* Ajusta la posición vertical según tus preferencias */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; /* Asegura que el título esté sobre las imágenes */
-            font-size: 44px; /* Estilo del título, ajusta según tus preferencias */
-            font-weight: bold;
-            color: rgb(0, 0, 0); /* Color del título */
-        }
-
     </style>
     
-    <head>
-        <!-- Agrega estas referencias en la sección de encabezado -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    </head>
     
-    {{--Header con imagen stática--}}
-   {{--  <div class="contenedor">
+    {{-- {{--Header con imagen stática-
+    <div class="contenedor">
         <img class="w-full h-screen "src="{{ asset('img/portada/lab_mecanica.jpg') }}" alt="portada"/>
         <div class="centrado py-8 text-4xl font-bold  text-center  text-black">MECÁNICA</div>
     </div> --}}
 
-    <div class="titulo-carrusel">Mecánica</div>
-    <div class="owl-carousel owl-theme imagen-fija">
-        <div class="item "><img src="{{ asset('img/slider/06.jpg') }}" alt="imagen1"></div>
-        <div class="item "><img src="{{ asset('img/slider/lab_mecanica.jpg') }}" alt="imagen2"></div>
-        <div class="item "><img src="{{ asset('img/slider/prueba.jpg') }}" alt="imagen3"></div>
-        <div class="item "><img src="{{ asset('img/slider/team_mecanica.jpg') }}" alt="imagen3"></div>
-      <!-- Agrega más imágenes según sea necesario -->
-    </div>
+    
+
     
     
+    {{-- {{-- Header y contenido slider --}}
+    {{-- <div>
+        <head>
+            <meta name="viewport"content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"rel="stylesheet"/>
+            <!-- Swiper's CSS -->
+            <link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+        </head>
+        
+        <div>
+            <div class="swiper mySwiper">
+            
+            <p class=" py-8 text-4xl font-bold  object-none  text-center  text-gray-900">FACULTAD DE MECÁNICA</p>
+             
+            <div class="swiper-wrapper">
+                
+                @foreach ($sliders as $slider) 
+                
+                <div class="swiper-slide">
+                    <img class="object-none w-full h-screen "src="{{ asset('img/slider/'.$slider->s_imagen) }}" alt="{{$slider->s_imagen}}"/>
+                    
+                              
+                </div>         
+                @endforeach
+            </div>
+            <div >
+                <p class=" text-4xl font-bold z-0 text-center place-self-center text-gray-900">ESCUELA DE INGENIERÍA MECÁNICA</p>
+            </div>
+            </div>
+        
+            <!-- Swiper JS -->
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+            <script>
+            var swiper = new Swiper('.mySwiper', {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+                },
+            });
+            </script>
+        </div>
+    </div> --}}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
     {{-- <!-- Seccion de ultimas noticias --> --}}    
+    <div class="container section">
+        <div class="row">
+            <div class="col s12">
+
+                <div class="carousel carousel-slider">
+
+                    <a href="" class="carousel-item">
+                        <img src="img/slider/06.jpg" alt="">
+                    </a>
+
+                    <a href="" class="carousel-item">
+                        <img src="img/slider/prueba.jpg" alt="">
+                    </a>
+
+                    <a href="" class="carousel-item">
+                        <img src="img/slider/lab_mecanica.jpg" alt="">
+                    </a>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <div class="container  py-8">
@@ -209,19 +236,20 @@
                 
             </div>
         </div>        
-    </div>   
+    </div>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
     <script>
-        $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                items: 1, // Cantidad de elementos a mostrar
-                loop: true, // Repetir el carrusel
-                autoplay: true, // Reproducción automática
-                autoplayTimeout: 1000, // Tiempo de espera entre diapositivas en milisegundos
-                autoplayHoverPause: true, // Pausar en el paso del ratón
-                nav: true, // Flechas de navegación
-                dots: false, // Indicadores de diapositiva
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems,{
+                duration: 500,
+                indicators: true,
             });
         });
+
     </script>
+    
 </x-app-layout>
