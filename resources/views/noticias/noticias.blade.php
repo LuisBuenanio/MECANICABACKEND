@@ -2,6 +2,9 @@
     <div class=" container  py-8">
         <div>
             <br>
+            <br>
+            <br>
+            <br>
             <h1 class="text-2xl font-extrabold text-gray-900 text-center ">Noticias</h1>
             <br>
         </div>            
@@ -22,7 +25,7 @@
             @endforeach
         </div> 
         <div class=" mt-4" >
-            {{ $noticias->links() }} <!-- 0982788791 -->
+            {{ $noticias->links() }}
         </div>        
     </div> 
 </x-app-layout>

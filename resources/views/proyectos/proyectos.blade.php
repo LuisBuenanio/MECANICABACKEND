@@ -3,6 +3,10 @@
     <div class="container  py-8">
      <div>
          <br>
+         
+        <br>
+        <br>
+        <br>
          <h1 class="text-4xl font-extrabold text-gray-900 text-center ">Proyectos</h1>
          <br>
      </div>

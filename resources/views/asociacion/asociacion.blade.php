@@ -22,6 +22,9 @@
     <div class="container">
         <div>
             <br>
+            <br>
+            <br>
+            <br>
             <h1 class="text-2xl font-extrabold text-gray-600 text-center ">{{$asociaciones->nombre}}</h1>
             <br>
         </div>

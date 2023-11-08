@@ -16,7 +16,7 @@
             <div class="lg:col-span-2">
                 <figure class="flex justify-center">
                     @if($noticia->image) 
-                        <a href="{{($noticia->image->url) }}" class="ed-item base-100 web-30">
+                        <a href="{{($noticia->image->url) }}" id="openImage" class="ed-item base-100 web-30 relative">
                             <img class ="w-full h-80 object-cover object-center" src="{{ ($noticia->image->url) }}" alt="">
                         </a>
                     @else
@@ -34,3 +34,50 @@
         </div>
     </div>
 </x-app-layout>
+
+<style>
+    #fullscreenImage {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 999;
+        text-align: center;
+    }
+
+    #fullscreenImage img {
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const openImage = document.getElementById("openImage");
+        const fullscreenImage = document.createElement("div");
+        fullscreenImage.id = "fullscreenImage";
+        const image = document.createElement("img");
+        image.src = openImage.getAttribute("href");
+
+        openImage.addEventListener("click", function(e) {
+            e.preventDefault();
+            fullscreenImage.style.display = "block";
+            fullscreenImage.appendChild(image);
+            document.body.appendChild(fullscreenImage);
+        });
+
+        fullscreenImage.addEventListener("click", function() {
+            fullscreenImage.style.display = "none";
+            fullscreenImage.innerHTML = "";
+        });
+    });
+</script>

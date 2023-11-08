@@ -157,7 +157,7 @@
                 <h2 class="text-xl font-bold text-gray-800 text-justify">Título</h2>
                 <p class="text-base text-gray-700 text-justify"> {!! $escuela->titulo !!} </p>
                 <h2 class="text-xl font-bold text-gray-800 text-justify">Malla Curricular</h2>
-                <p class="text-base text-gray-700 text-rigth"><a href="{{ asset('docs/escuela/'.$escuela->malla) }}"> {{ $escuela->malla}}<i class=" fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
+                <p class="text-base text-gray-700 text-rigth"><a href="{{ asset('docs/escuela/'.$escuela->malla) }}" target="_blank"> {{ $escuela->malla}}<i class=" fa fa-file-pdf-o" aria-hidden="true"></i></a></p>
             </div>
         </div>        
     </div>

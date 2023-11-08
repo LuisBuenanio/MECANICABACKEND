@@ -31,6 +31,9 @@ Route::get('/', [HomeController::class, 'index'])-> name('inicio');
 Route::get('noticias', [NoticiaController::class, 'noticias'])-> name('noticias');
 Route::get('noticia/{noticia}', [NoticiaController::class, 'noticia'])->name('noticia');
 
+Route::get('docentes', [DocenteController::class, 'docentes'])-> name('docentes');
+Route::get('docente/{docente}', [DocenteController::class, 'docente'])->name('docente');
+
 Route::get('galerias', [GaleriaController::class, 'galerias'])-> name('galerias');
 Route::get('galeria/{galeria}', [GaleriaController::class, 'showGaleria'])->name('galeria');
 
@@ -54,7 +57,7 @@ Route::get('lineasesc', [LineaEscuelaController::class, 'lineasesct'])-> name('l
 Route::get('lineasfac', [LineaFacultadController::class, 'lineasfact'])-> name('lineasfac');
 
 
-Route::get('docentes', [DocenteController::class, 'docentest'])-> name('docentes');
+
 Route::get('titulacion', [TitulacionController::class, 'titulaciont'])-> name('titulacion');
 
 Route::get('secretariaconts', [SecretariaContController::class, 'secretariacontf'])-> name('secretariaconts');
