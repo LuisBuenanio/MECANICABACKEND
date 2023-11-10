@@ -12,8 +12,8 @@ class DocenteController extends Controller
 {
     public function docentes()
     {
-        $docentes = Docente::where('estado', 2)->orderBy('id', 'DESC')
-        ->paginate(8);
+        $docentes = Docente::where('estado', 2)->orderBy('nombre', 'ASC')
+        ->paginate(9);
         return view('docentes.docentes', compact('docentes'));
 
     }

@@ -303,7 +303,7 @@ class DocenteSeeder extends Seeder
         ]); 
 
         Docente::create([
-            'nombre' => 'EDWDIN FERNANDO VITERI NÚÑEZ',
+            'nombre' => 'EDWIN FERNANDO VITERI NÚÑEZ',
             'telefono' => '',  
             'foto' => 'msc-edwin-viteri-nunez.jpg',              
             'email' => 'eviteri@espoch.edu.ec',              

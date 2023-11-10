@@ -44,17 +44,17 @@
                     <a href="{{route('noticias')}}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Noticias</a>
                     <a href="{{route('asociacion')}}"class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Asociación</a>
                     
-                    <div class="ml-3 relative" x-data="{ open: false }">
+                    {{-- <div class="ml-3 relative" x-data="{ open: false }">
                         <div>
                             <button x-on:click="open = true" type="button" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="research-menu-button" aria-expanded="false" aria-haspopup="true">
                                 Investigación
                             </button>
                         </div>
                     
-                        {{-- Submenú "Investigación" --}}
+                        {{-- Submenú "Investigación" 
                         <div x-show="open" x-cloak x-on:click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="research-menu-button" tabindex="-1">
                             
-                            {{-- Submenú "Grupos de Investigación" --}}
+                            {{-- Submenú "Grupos de Investigación" 
                             <div class="relative" x-data="{ openFaculty: false, openSchool: false }">
                                 <button x-on:click="openFaculty = !openFaculty" type="button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left focus:outline-none">
                                     Líneas de Investigación
@@ -65,6 +65,19 @@
                                     <!-- Agrega más enlaces según sea necesario -->
                                 </div>
                             </div>
+                        </div>
+                    </div> --}}
+                    <div class="ml-3 relative" x-data="{open: false}">
+                        <div>
+                            <button x-on:click="open = true" type="button" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                Investigación
+                            </button>
+                        </div>
+                    
+                        {{--Opciones de Usuario--}}
+                        <div x-show="open" x-cloak x-on:click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <!-- Active: "bg-gray-100", Not Active: "" -->
+                            <a href="{{ route('gruposinvestigacion') }}" class="block px-4 py-2 text-sm text-gray-700">Grupos de Investigación</a>  
                         </div>
                     </div>
                     

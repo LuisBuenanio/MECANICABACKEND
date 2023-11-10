@@ -26,6 +26,10 @@ use App\Http\Controllers\TitulacionController;
 use App\Http\Controllers\SecretariaContController;
 use App\Http\Controllers\SecretariaOficController;
 
+
+
+use App\Http\Controllers\GrupoInvestigacionController;
+
 Route::get('/', [HomeController::class, 'index'])-> name('inicio');
 
 Route::get('noticias', [NoticiaController::class, 'noticias'])-> name('noticias');
@@ -55,6 +59,11 @@ Route::get('maestrias', [MaestriaController::class, 'maestriast'])-> name('maest
 
 Route::get('lineasesc', [LineaEscuelaController::class, 'lineasesct'])-> name('lineasesc');
 Route::get('lineasfac', [LineaFacultadController::class, 'lineasfact'])-> name('lineasfac');
+
+
+
+
+Route::get('gruposinvestigacion', [GrupoInvestigacionController::class, 'gruposinvestigaciones'])-> name('gruposinvestigacion');
 
 
 
