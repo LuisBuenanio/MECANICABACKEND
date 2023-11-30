@@ -15,10 +15,11 @@ class DocenteSeeder extends Seeder
      */
     public function run()
     {
+
         Docente::create([
             'nombre' => 'JOHN GERMAN VERA LUZURIAGA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO JOHN GERMAN VERA.jpeg',              
             'email' => 'john.vera@espoch.edu.ec',              
             'titulo' => 'INGENIERIA ELECTRÓNICA EN CONTROL Y REDES INDUSTRIALES ESPOCH
             MASTÉR UNIVERSITARIO EN INGENIERÍA MECATRÓNICA UPV',              
@@ -30,7 +31,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'MARCO VINICIO GUEVARA GRANIZO',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO MARCO VINICIO GUEVAR.jpg',              
             'email' => 'marco.guevara@espoch.edu.ec',              
             'titulo' => 'Ingeniero Electrónico, PhD en Celdas Solares de silicio cristalino',              
             'descripcion' => 'Ingenierío Electrónico en control y automatización. Doctor en diseño y fabricación de celdas solares de silicio (Italia). Su investigación se centra en la simulación, optimización y fabricación de celdas solares de silicio cristalino con aplicacione en fotónica. Lidera un grupo dedicado al estudio y producción de materiales 2D como el grafeno, con aplicaciones en ingeniería mecánica.',                         
@@ -41,7 +42,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'MIGUEL ANGEL ESCOBAR GUACHAMBALA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO MIGUEL ESCOBAR.png',              
             'email' => 'jmaescobar@espoch.edu.ec',              
             'titulo' => 'Ingeniero Mecánico.
             Magister en Diseño, Producción y Automatización Industrial.',              
@@ -53,7 +54,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'GABRIEL VINICIO MOREANO SANCHEZ',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO GABRIEL MOREANO.jpg',              
             'email' => 'gabriel.moreano@espoch.edu.ec',              
             'titulo' => 'INGENIERO EN ELECTRÓNICA Y CONTROL
             MÁSTER UNIVERSITARIO EN AUTOMÁTICA Y ROBÓTICA
@@ -67,7 +68,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'BLANCA FAUSTINA HIDALGO PONCE',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO BLANCA HIDALGO.jpg',              
             'email' => 'bhidalgo@espoch.edu.ec',              
             'titulo' => 'INGENIERO EN SISTEMAS
             MAGISTER EN INFORMATICA APLICADA
@@ -80,7 +81,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'JUAN MANUEL MARTÍNEZ NOGALES',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO JUAN MARTINEZ.jpg',              
             'email' => 'jumartinez@espoch.edu.ec',              
             'titulo' => 'IGENIERO MECÁNICO, MAGISTER EN CIENCIAS DE LA EDUCACIÓN APRENDIZAJE DE LA FÍSICA',              
             'descripcion' => 'Experiencia como Docente Politécnico durante 35 periodos académicos consecutivos,
@@ -100,7 +101,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'ISIDORO ENRIQUE TAPIA SEGARRA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO ENRIQUE TAPIA.jpg',              
             'email' => 'itapia@espoch.edu.ec',              
             'titulo' => 'Ingeniero Mecánico-Magister en Seguridad Industrial-Mención riesgos laborales y salud ocupacional-Tengo terminado la instrucción de maestría en Matemática y actualmente estoy terminando mi tesis.',              
             'descripcion' => 'Soy ingeniero mecánico de la ESPOCH, mi carrera profesional inicie en la Compañia Azul con Superintendente de Campo en el Oriente, luego fui designado Director Ejecutivo del Servicio de Vivienda Popular Alternativa SEVIPAL de la Diócesis de Riobamba en la que ejecute varios programas de vivienda popular en la provincia de Chimborazo, posteriormente estuve en libre ejercicio profesional en la contratación pública construyendo estructuras metálicas, actualmente llevo 15 años de docente en la Espoch como docente contratado.',                         
@@ -108,14 +109,11 @@ class DocenteSeeder extends Seeder
             'asignatura' => 'NINGUNA PRUEBA',
             'estado' => '2',       
         ]); 
-
-
-        /*----------------------------------------------------- */
-
+        
         Docente::create([
             'nombre' => 'JOSE LUIS PEREZ ROJAS',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO JOSE LUIS PEREZ.png',              
             'email' => 'jose.perezl@espoch.edu.ec',              
             'titulo' => 'Ingeniero en Electrónica y Telecomunicaciones. Máster Universitario en Ingeniería Matemática y Computación. ',              
             'descripcion' => 'Ingeniero en Electrónica y Telecomunicaciones con una Maestría en Ingeniería en Matemática y Computación. Soy docente universitario desde el año 2017, gracias al campo amplio y específico imparto  regularmente las asignaturas de Análisis Matemático 1, Métodos Numéricos, Análisis y Resolución de Problemas, Algebra lineal y Programación en la Facultad de Mecánica. Formo parte del grupo de Investigación  GDP (GRUPO DE DESARROLLO Y PRODUCCIÓN), actualmente trabajo en dos proyectos  de Vinculación .He sido ponente en congresos nacionales e internacionales, presentando los resultados de mis investigaciones y plasmándolas en artículos científicos. Escribí un libro sobre Métodos Numéricos para Ciencias en Ingeniería en el año 2022. En la actualidad estoy elaborando un proyecto de investigación para su posterior aprobación y además espero la revisión por pares de dos libros sobre Análisis Matemático 1.
@@ -128,7 +126,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'SANTIAGO ALEJANDRO LÓPEZ ORTIZ',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO SANTIAGO LOPEZ.jpg',              
             'email' => 'sa_lopez@espoch.edu.ec',              
             'titulo' => 'INGENIERO MECÁNICO
             MAGISTER EN DISEÑO MECÁNICO',              
@@ -142,7 +140,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'LIDIA DEL ROCÍO CASTRO CEPEDA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO LIDIA CASTRO.jpeg',              
             'email' => 'lidia.castro@espoch.edu.ec',              
             'titulo' => 'Máster Universitario en Ingeniería de la Energía
             Máster Universitario en Ingeniería Matemática y Computación',              
@@ -155,7 +153,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'NESTOR ALCIVAR ULLOA AUQUI',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO NESTOR ULLOA.jpg',              
             'email' => 'nestor.ulloa@espoch.edu.ec ',              
             'titulo' => 'Ingeniero Mecánico
             Magíster en Ciencia e Ingeniería de Materiales',              
@@ -168,7 +166,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'MONICA ALEXANDRA MORENO BARRIGA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO MONICA MORENO.jpg',              
             'email' => 'monica.moreno@espoch.edu.ec',              
             'titulo' => 'MAGISTER EN SISTEMAS INTEGRADOS DE GESTION DE LA CALIDAD, MEDIO AMBIENTE Y SEGURIDAD; INGENIERA INDUSTRIAL; TECNOLOGA QUIMICA INDUSTRIAL',              
             'descripcion' => 'Magister en Sistemas Integrados de Gestión de la Calidad, Medio Ambiente y Seguridad, Ingeniera Industrial, con una sólida formación académica y profesional desarrollada en el Área de Dirección de la empresa privada, con cargos de Gerencia y Jefaturas de Plantas Industriales del Sector Alimenticio, con capacidad en la toma efectiva de decisiones y manejo de los recursos, liderazgo para el manejo de capital humano. Alto espíritu de superación y perseverancia en las actividades desarrolladas a nivel laboral y académico.',                         
@@ -180,7 +178,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'GINNO SIDNEY JARRIN ZAMBRANO',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO GINNO SIDNEY JARRIN.jpg',              
             'email' => 'sidney.jarrin@espoch.edu.ec',              
             'titulo' => 'INGENIERO EN ADNMINISTRACIÓN 
             MAGISTER EN GERENCIA EDUCATIVA
@@ -194,7 +192,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'JAVIER EDMUNDO ALBUJA JACOME',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO JAVIER ALBUJA.jpg',              
             'email' => 'javier.albuja@espoch.edu.ec',              
             'titulo' => 'Ingeniero Automotriz',              
             'descripcion' => 'Ingeniero Automotriz con maestría en Diseño Mecánico, actualmente estoy laborando en la ESPOCH, también desempeñe labores como conductor profesional.',                         
@@ -206,7 +204,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'ANDRES JOAO NOGUERA CUNDAR',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO ANDRES NOGUERA.png',              
             'email' => 'andres.noguera@espoch.edu.ec',              
             'titulo' => 'Ingeniero Automotriz
             Master en Ingeniería Mecánica',              
@@ -219,7 +217,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'LUIS FRANCISCO MANTILLA CABRERA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO FRANCISCO MANTILLA.png',              
             'email' => 'luis.mantilla@espoch.edu.ec',              
             'titulo' => 'Licenciado en Ciencias  de la Educacion : Profesor de Inglés UNACH
             Magister en lingüística aplicada a la enseñanza bilingüe PUCE',              
@@ -237,7 +235,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'DIEGO FERNANDO MAYORGA PÉREZ',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO DIEGO MAYORGA.JPG',              
             'email' => 'dmayorga@espoch.edu.ec',              
             'titulo' => 'MAGISTER EN SEGURIDAD Y PREVENCION DE RIESGOS DEL TRABAJO
             MASTER UNIVERSITARIO EN INGENIERIA MATEMATICA Y COMPUTACION',              
@@ -250,22 +248,20 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'SOCRATES MIGUEL AQUINO ARROBA',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO MIGUEL AQUINO.png',              
             'email' => 'saquino@espoch.edu.ec',              
             'titulo' => 'Ingeniero Mecánico
-            Master Diseño, producción y automatización industrial
-            ',              
+            Master Diseño, producción y automatización industrial',              
             'descripcion' => 'Ingeniero mecánico con especialización en mecanismos y análisis de elementos finitos, enfocado en el desarrollo y ejecución de proyectos en el campo de la ingeniería mecánica. Posee una sólida experiencia en la investigación y diseño de mecanismos avanzados, así como en la aplicación de técnicas de simulación por elementos finitos para optimizar y validar diseños. Su formación se complementa con una especialización en el área de biomecánica. Su  trayectoria demuestra una habilidad probada para abordar desafíos técnicos complejos y transformarlos en soluciones innovadoras y funcionales. Apasionado por la creación y aplicación de conocimientos que contribuyan al avance de la ingeniería y la salud humana.',                         
             'hoja_vida' => 'hoja_vida_docente_1.pdf',             
             'asignatura' => ' PRUEBA',
             'estado' => '2',       
         ]); 
 
-
         Docente::create([
             'nombre' => 'CARLOS OSWALDO SERRANO AGUIAR',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO CARLOS SERRANO.jpg',              
             'email' => 'carlos.serrano@espoch.edu.ec',              
             'titulo' => 'MAGISTER EN INGENIERIA MECANICA CON MENCION EN MATERIALES Y PROCESOS DE MANUFACTURA
 
@@ -279,7 +275,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'Sandra Leticia Guijarro Paguay',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO SANDRA GUIJARRO.jpeg',              
             'email' => 'sandra.guijarro@espoch.edu.ec',              
             'titulo' => 'Diploma Superior en Metodología para la Enseñanza del Idioma Inglés
             Magister en Lingüística Aplicada al Aprendizaje del inglés ',              
@@ -293,7 +289,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'NELSON SANTIAGO CHUQUIN VASCO',
             'telefono' => '',  
-            'foto' => 'docente.png',              
+            'foto' => 'FOTO NELSON CHUQUIN.jpeg',              
             'email' => 'nelson.chuquin@espoch.edu.ec',              
             'titulo' => 'MASTER EN INGENIERÍA HIDRÁULICA Y MEDIO AMBIENTE',              
             'descripcion' => 'Ingeniero Mecánico de la Escuela Superior Politécnica de Chimborazo, Máster Universitario en Ingeniería Hidráulica y Medio Ambiente de la Universidad Politécnica de Valencia - España, con 2 años de experiencia en el sector petrolero en el área de Bombeo Hidráulico, Redes de Distribución y Estaciones de Bombeo, 6 años de experiencia en Docencia Universitaria en la Facultad de Mecánica – Carrera de Mecánica (ESPOCH – RIOBAMBA), además 5 años como Coordinador para el Aseguramiento de la Calidad de la Carrera de Ingeniería Mecánica. ',                         
@@ -305,7 +301,7 @@ class DocenteSeeder extends Seeder
         Docente::create([
             'nombre' => 'EDWIN FERNANDO VITERI NÚÑEZ',
             'telefono' => '',  
-            'foto' => 'msc-edwin-viteri-nunez.jpg',              
+            'foto' => 'FOTO EDWIN VITERI.jpg',              
             'email' => 'eviteri@espoch.edu.ec',              
             'titulo' => 'INGENIERO MECÁNICO
             MAGISTER EN GERENCIA DE PROYECTOS 
@@ -315,12 +311,6 @@ class DocenteSeeder extends Seeder
             'asignatura' => ' PRUEBA',
             'estado' => '2',       
         ]); 
-        
-        
-        
-
-
-
 
     }
 }

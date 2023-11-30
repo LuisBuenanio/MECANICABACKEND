@@ -1,6 +1,12 @@
 <x-app-layout>
     
     <div class="container py-8">
+        <BR>
+        <BR>
+            <br>
+            <div class=" bg-cover px-4 py-2 bg-red-600  flex float-right">
+                <p><a href="{{ route('noticias') }}" class="btn btn-light text-sm italic font-bold text center">Volver a Noticias</a> </p>
+            </div>  
         <h1 class="text-4xl font-bold text-gray-800 text-center" >{!!$noticia->titulo!!}</h1> <br>
         
         <div class="text-lg text-gray-600 mb-2">

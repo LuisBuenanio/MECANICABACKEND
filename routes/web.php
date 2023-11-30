@@ -28,6 +28,11 @@ use App\Http\Controllers\SecretariaOficController;
 
 
 
+use App\Http\Controllers\SecretariaController;
+
+
+
+
 use App\Http\Controllers\GrupoInvestigacionController;
 
 Route::get('/', [HomeController::class, 'index'])-> name('inicio');
@@ -54,7 +59,8 @@ Route::get('proyectos', [ProyectoController::class, 'proyectost'])-> name('proye
 Route::get('postgrados', [PostgradoController::class, 'postgradost'])-> name('postgrados');
 
 
-Route::get('maestrias', [MaestriaController::class, 'maestriast'])-> name('maestrias');
+Route::get('maestrias', [MaestriaController::class, 'maestrias'])-> name('maestrias');
+Route::get('maestria/{maestria}', [MaestriaController::class, 'maestria'])->name('maestria');
 
 
 Route::get('lineasesc', [LineaEscuelaController::class, 'lineasesct'])-> name('lineasesc');
@@ -68,6 +74,7 @@ Route::get('gruposinvestigacion', [GrupoInvestigacionController::class, 'gruposi
 
 
 Route::get('titulacion', [TitulacionController::class, 'titulaciont'])-> name('titulacion');
+Route::get('secretaria', [SecretariaController::class, 'secretaria'])-> name('secretaria');
 
 Route::get('secretariaconts', [SecretariaContController::class, 'secretariacontf'])-> name('secretariaconts');
 Route::get('secretariaofics', [SecretariaOficController::class, 'secretariaoficf'])-> name('secretariaofics');

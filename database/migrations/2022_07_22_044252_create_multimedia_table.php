@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('multimedia', function (Blueprint $table) {
             $table->id();           
             $table->string('url');        
-            
+            $table->string('nombre')->nullable();             
 
             $table->unsignedBigInteger('galeria_id');
 

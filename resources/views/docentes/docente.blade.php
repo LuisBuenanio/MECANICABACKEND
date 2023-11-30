@@ -1,6 +1,9 @@
 <x-app-layout>
     <div class="container py-8">
         <br><br><br><br>
+        <div class=" bg-cover px-4 py-2 bg-red-600  flex float-right">
+            <p><a href="{{ route('docentes') }}" class="btn btn-light text-sm italic font-bold text center">Volver a Docentes</a> </p>
+        </div>  
         <h1 class="text-4xl font-bold text-gray-800 text-center">{!! $docente->nombre !!}</h1> <br>
 
         <div class="ed-item no-padding">

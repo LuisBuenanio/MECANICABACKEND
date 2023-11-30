@@ -72,7 +72,7 @@
 
     <div class="titulo-carrusel">Mecánica</div>
     <div class="owl-carousel owl-theme imagen-fija">
-        <div class="item "><img src="{{ asset('img/slider/06.jpg') }}" alt="imagen1"></div>
+        <div class="item "><img src="{{ asset('img/slider/06.jpeg') }}" alt="imagen1"></div>
         <div class="item "><img src="{{ asset('img/slider/lab_mecanica.jpg') }}" alt="imagen2"></div>
         <div class="item "><img src="{{ asset('img/slider/prueba.jpg') }}" alt="imagen3"></div>
         <div class="item "><img src="{{ asset('img/slider/team_mecanica.jpg') }}" alt="imagen3"></div>
@@ -108,9 +108,7 @@
 
         <div class=" mt-8 flex justify-center " >
             <div class=" bg-cover px-4 py-2 bg-red-600 ">
-            <p><a class="text-sm italic font-bold text center py-2" href="{{url('noticias')}}">Ver más noticias</a></p>         
-        
-            </div>    
+            <p><a class="text-sm italic font-bold text center py-2" href="{{url('noticias')}}">Ver más noticias</a></p>                     </div>    
         </div>     
     </div>
 
@@ -165,7 +163,7 @@
     <div class="container  py-8">
         <div>
             <br>
-            <h1 class="text-2xl font-extrabold text-gray-900 text-center ">Autoridades</h1>
+            <h1 class="text-2xl font-extrabold text-gray-900 text-center ">Autoridades de la Facultad</h1>
             <br>
         </div>
         <div class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-3 gap-4">

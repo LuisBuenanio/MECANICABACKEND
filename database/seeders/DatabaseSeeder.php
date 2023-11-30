@@ -38,5 +38,10 @@ class DatabaseSeeder extends Seeder
         $this->call(GrupoInvestigacionSeeder::class);
 
         
+        $this->call(MaestriaSeeder::class);
+        $this->call(SecretariaSeeder::class);
+
+
+        
     }
 }
