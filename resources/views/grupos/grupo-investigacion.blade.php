@@ -87,15 +87,38 @@
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     <p class="mb-2"><strong class="text-xl font-bold text-gray-800">GALERIA DE IMÁGENES:</strong>
                     </p>
+                    
                     <figure class="flex justify-center">
                         @foreach ($grupo->galeriaImagenes as $imagen)
-                        <a href="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" id="openImage" class="ed-item base-100 web-30 relative">
-                            <img class="w-full h-80 object-cover object-center"   src="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" alt="">
-                        </a>
+                        <div class="ed-item base-100 web-30 relative">
+                            <img class="w-full h-80 object-cover object-center" 
+                                 src="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" 
+                                 alt=""
+                                 onclick="openModal('{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}')">
+                        </div>
                         @endforeach
                     </figure>
                     
-                </div>                
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="img01">
+                    </div>
+                    
+                    <script>
+                        function openModal(imagePath) {
+                            document.getElementById('img01').src = imagePath;
+                            document.getElementById('myModal').style.display = 'block';
+                        }
+                    
+                        function closeModal() {
+                            document.getElementById('myModal').style.display = 'none';
+                        }
+                    </script>
+                    
+                    
+                </div>     
+                
+                
 
             </div>
         </div>
@@ -124,6 +147,36 @@
         left: 0;
         right: 0;
     }
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
 </style>
 
 <script>
@@ -148,4 +201,12 @@
             });
         });     
     
+        function openModal(imagePath) {
+        document.getElementById('img01').src = imagePath;
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
 </script>
