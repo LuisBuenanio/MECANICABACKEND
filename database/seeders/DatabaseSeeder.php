@@ -35,13 +35,29 @@ class DatabaseSeeder extends Seeder
 
         
         $this->call(DocenteSeeder::class);
-        $this->call(GrupoInvestigacionSeeder::class);
 
         
         $this->call(MaestriaSeeder::class);
         $this->call(SecretariaSeeder::class);
 
+        $this->call(TipoConvenioSeeder::class);
+        $this->call(ConvenioSeeder::class);
 
+        $this->call(TipoProyectoSeeder::class);
+        $this->call(ProyectoSeeder::class);
+
+        $this->call(TipoTitulacionSeeder::class);
+        $this->call(TitulacionSeeder::class);
+
+        
+        $this->call(TipoInvestigadorSeeder::class);
+        $this->call(InvestigadorSeeder::class);
+
+        
+        $this->call(GrupoInvestigacionSeeder::class);
+
+        $this->call(LineaInvestigacionSeeder::class);
+        $this->call(ProgramaInvestigacionSeeder::class);
         
     }
 }

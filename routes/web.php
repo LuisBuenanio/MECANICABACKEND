@@ -69,7 +69,8 @@ Route::get('lineasfac', [LineaFacultadController::class, 'lineasfact'])-> name('
 
 
 
-Route::get('gruposinvestigacion', [GrupoInvestigacionController::class, 'gruposinvestigaciones'])-> name('gruposinvestigacion');
+Route::get('gruposinvestigacion', [GrupoInvestigacionController::class, 'gruposinvestigacion'])-> name('gruposinvestigacion');
+Route::get('grupoinvestigacion/{grupo}', [GrupoInvestigacionController::class, 'grupoinvestigacion'])-> name('grupoinvestigacion');
 
 
 
@@ -80,11 +81,10 @@ Route::get('secretariaconts', [SecretariaContController::class, 'secretariacontf
 Route::get('secretariaofics', [SecretariaOficController::class, 'secretariaoficf'])-> name('secretariaofics');
 
 
-
-Route::get('grupos_investigacion', [InvestigacionController::class, 'investigaciont'])-> name('grupos_investigacion');
+/* Route::get('grupos_investigacion', [InvestigacionController::class, 'investigaciont'])-> name('grupos_investigacion');
 Route::get('grupo_investigacion/{grupo_investigacion}', [InvestigacionController::class, 'showinvestigacion'])->name('grupo_investigacion');
 Route::get('investigacion', [InvestigacionController::class, 'investigacionts'])-> name('investigacion');
-
+ */
 /* Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])->group(function () { Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

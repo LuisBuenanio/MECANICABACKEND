@@ -14,6 +14,7 @@
                         <th class="px-6 py-3 bg-gray-100 border-b">Tipo de Proyecto</th>
                         <th class="px-6 py-3 bg-gray-100 border-b">Objetivo</th>
                         <th class="px-6 py-3 bg-gray-100 border-b">Coordinador</th>
+                        <th class="px-6 py-3 bg-gray-100 border-b">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,13 @@
                             <td class="px-6 py-4 border-b">{{ $proyecto->descripcion }}</td>
                             <td class="px-6 py-4 border-b">{{ $proyecto->objetivo }}</td>
                             <td class="px-6 py-4 border-b">{{ $proyecto->coordinador }}</td>
+                            <td class="px-6 py-4 border-b">
+                                @if ($proyecto->ejecutandose)
+                                    <span class="text-green-500">En Ejecución</span>
+                                @else
+                                    <span class="text-gray-500">Ejecutado</span>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

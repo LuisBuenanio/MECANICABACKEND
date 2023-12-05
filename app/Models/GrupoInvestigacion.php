@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GrupoInvestigacion extends Model
 {
     use HasFactory;
-    protected $table = 'grupo_investigacion';
+    protected $table = 'grupos_investigacion';
 	protected $primaryKey = 'id';
     
     protected $fillable = [
@@ -24,16 +24,25 @@ class GrupoInvestigacion extends Model
         'id'
      ];
 
-    /* Relacion de uno a muchos */
-    public function linea_investigacion(){
-      return $this->hasMany(LineaInvestigacion::class);
+    
+    public function investigadores()
+    {
+        return $this->belongsToMany(Investigador::class);
     }
-    /* Relacion de uno a muchos */
-    public function programa_investigacion(){
-        return $this->hasMany(ProgramaInvestigacion::class);
+
+    public function lineas()
+    {
+        return $this->belongsToMany(LineaInvestigacion::class);
     }
-    /* Relacion de uno a muchos */
-    public function investigador(){
-        return $this->hasMany(Investigador::class);
+
+    public function galeriaImagenes()
+    {
+        return $this->hasMany(GaleriaImagen::class);
+    }
+
+
+    public function getRouteKeyName()
+    {
+        return 'nombre';
     }
 }

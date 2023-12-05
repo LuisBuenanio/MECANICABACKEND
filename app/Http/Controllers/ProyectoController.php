@@ -18,6 +18,7 @@ class ProyectoController extends Controller
                 'objetivo',
                 'coordinador',
                 'estado',
+                'ejecutandose',
                 'tipo_proyecto.descripcion'
             )
             ->get();

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('convenio', function (Blueprint $table) {
             $table->id();
             $table->string('resolucion');  
-            $table->string('nombre');
-            $table->text('objetivo')->nullable();                                   
+            $table->longText('nombre');
+            $table->longText('objetivo')->nullable();                                   
             $table->string('coordinador')->nullable();
             $table->date('fecha_legalizacion'); 
             $table->string('vigencia')->nullable;             

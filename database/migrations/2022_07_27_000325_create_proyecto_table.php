@@ -16,12 +16,15 @@ return new class extends Migration
         Schema::create('proyecto', function (Blueprint $table) {
             $table->id();
             $table->string('codigo')->nullable();  
-            $table->string('nombre');
-            $table->text('objetivo')->nullable();                                   
-            $table->string('coordinador')->nullable();           
+            $table->longText('nombre');
+            $table->longText('objetivo')->nullable();                                   
+            $table->string('coordinador')->nullable();  
+                     
 
             $table->enum('estado',[1,2])->default(2);
 
+            $table->boolean('ejecutandose')->default(false);
+           
             $table->unsignedBigInteger('tipo_proyecto_id')->nullable();
 
 

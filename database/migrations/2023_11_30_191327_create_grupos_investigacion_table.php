@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('grupo_invs', function (Blueprint $table) {
+        Schema::create('grupos_investigacion', function (Blueprint $table) {
             $table->id();
-
             $table->string('codigo');             
             $table->string('siglas')->nullable();             
             $table->string('nombre')->nullable();
             $table->longText('mision')->nullable();
             $table->longText('vision')->nullable();
-            $table->longText('objetivo')->nullable();
-            $table->string('linea_investigacion')->nullable();
-            $table->string('integrante')->nullable();   
+            $table->longText('objetivo')->nullable(); 
             $table->string('portada')->nullable();  
             $table->enum('estado',[1,2])->default(1);
             $table->timestamps();
@@ -37,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupo_invs');
+        Schema::dropIfExists('grupos_investigacion');
     }
 };

@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('programa_investigacion', function (Blueprint $table) {
+        Schema::create('tipo_titulacion', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
-
+            $table->string('documento');
             $table->enum('estado',[1,2])->default(2);
-
-            $table->unsignedBigInteger('grupo_investigacion_id')->nullable();
-
-
-            $table->foreign('grupo_investigacion_id')
-                    ->references('id')->on('grupo_investigacion')
-                    ->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -36,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programa_investigacion');
+        Schema::dropIfExists('tipo_titulacion');
     }
 };

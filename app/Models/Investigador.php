@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Investigador extends Model
 {
     use HasFactory;
-    protected $table = 'investigador';
+    protected $table = 'investigadores';
 	  protected $primaryKey = 'id';
 
 	/**
@@ -20,8 +20,7 @@ class Investigador extends Model
 		'nombre',
         'email',
         'estado',
-        'grupo_investigacion_id',
-        'tipo_integrante_id'
+        'tipo_investigador_id'
 	];
 
     /**
@@ -31,24 +30,20 @@ class Investigador extends Model
      */
     protected $hidden = [
        'id',
-       'grupo_investigacion_id',
-        'tipo_integrante_id'
+      'tipo_investigador_id'
     ];
     
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
+    
     public $timestamps = false;
+    
     /*   Relacion de uno a muchos inversa */
-  public function tipo_investigador(){
-    return $this->belongsTo(TipoInvestigador::class);
-  }
+    public function tipo_investigador(){
+      return $this->belongsTo(TipoInvestigador::class);
+    }
 
-  /*   Relacion de uno a muchos inversa */
-  public function grupo_investigacion(){
-    return $this->belongsTo(GrupoInvestigacion::class);
-  }
+    /*   Relacion de muchos a muchos inversa */
+    public function gruposInvestigacion(){
+      return $this->belongsToMany(GrupoInvestigacion::class);
+    }
 
 }

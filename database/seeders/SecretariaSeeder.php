@@ -22,7 +22,7 @@ class SecretariaSeeder extends Seeder
             'foto_secretaria' => 'secretaria.png',
             'nombre_documento' => 'Oficio',            
             'detalle_documento' => 'Oficio',            
-            'documento' => 'oficio.docs',
+            'documento' => 'oficio.pdf',
                
         ]); 
     }

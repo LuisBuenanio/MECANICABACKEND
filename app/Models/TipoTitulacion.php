@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LineaInvestigacion extends Model
+class TipoTitulacion extends Model
 {
     use HasFactory;
-    protected $table = 'lineas_investigacion';
+    protected $table = 'tipo_titulacion';
 	protected $primaryKey = 'id';
 
 	/**
@@ -18,6 +18,7 @@ class LineaInvestigacion extends Model
      */
     protected $fillable = [
 		'descripcion',
+        'documento',
 	];
 
     /**
@@ -36,13 +37,8 @@ class LineaInvestigacion extends Model
      */
     public $timestamps = false;
 
-      /*   Relacion de uno a muchos inversa */
-    public function gruposInvestigacion(){
-        return $this->belongsToMany(GrupoInvestigacion::class);
-    }
-
-      /*   Relacion de uno a muchos inversa */
-      public function programasInvestigacion(){
-        return $this->belongsToMany(ProgramaInvestigacion::class);
+    /* Relacion de uno a muchos */
+    public function titulacion(){
+        return $this->hasMany(Titulacion::class);
     }
 }

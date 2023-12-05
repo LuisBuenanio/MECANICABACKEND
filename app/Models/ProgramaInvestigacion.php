@@ -9,25 +9,24 @@ class ProgramaInvestigacion extends Model
 {
     use HasFactory;
 
-    protected $table = 'programa_investigacion';
+    protected $table = 'programas_investigacion';
 	protected $primaryKey = 'id';
 
 
     protected $fillable = [
         'descripcion',
         'estado',
-        'grupo_investigacion_id'
     ];
 
     protected $hidden = [
         'id',
-        'grupo_investigacion_id',
      ];
 
     public $timestamps = false;
 
-      /*   Relacion de uno a muchos inversa */
-    public function grupo_investigacion(){
-        return $this->belongsTo(GrupoInvestigacion::class);
+    public function lineasn()
+    {
+        return $this->belongsToMany(LineaInvestigacion::class);
     }
+    
 }
