@@ -102,18 +102,14 @@
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
                         <img class="modal-content" id="img01">
+                        <div class="modal-content-container">
+                            <button class="nav-btn" onclick="prevImage()">Anterior</button>
+                            <button class="nav-btn" onclick="nextImage()">Siguiente</button>
+                        </div>
+                        
                     </div>
                     
-                    <script>
-                        function openModal(imagePath) {
-                            document.getElementById('img01').src = imagePath;
-                            document.getElementById('myModal').style.display = 'block';
-                        }
                     
-                        function closeModal() {
-                            document.getElementById('myModal').style.display = 'none';
-                        }
-                    </script>
                     
                     
                 </div>     
@@ -158,15 +154,24 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+.modal-content-container {
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: transparent;
+        border-radius: 5px;
 }
+.modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
 
 .close {
     position: absolute;
@@ -177,6 +182,20 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.nav-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 </style>
 
 <script>
@@ -200,13 +219,39 @@
                 fullscreenImage.innerHTML = "";
             });
         });     
+
+        var currentImageIndex = 0;
+        var images = document.querySelectorAll('.ed-item img');
     
         function openModal(imagePath) {
-        document.getElementById('img01').src = imagePath;
+        currentImageIndex = Array.from(images).findIndex(img => img.src === imagePath);
+        showImage(currentImageIndex);
         document.getElementById('myModal').style.display = 'block';
     }
 
     function closeModal() {
         document.getElementById('myModal').style.display = 'none';
+    }
+
+    function showImage(index) {
+        document.getElementById('img01').src = images[index].src;
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    // Cerrar modal haciendo clic fuera de la imagen o botones de navegación
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            closeModal();
+        }
     }
 </script>
