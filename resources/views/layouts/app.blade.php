@@ -62,7 +62,7 @@
             <footer class="mt-4 px-3 py-2 text-sm font-medium flex justify-center bg-red-600 shadow ">
                 <div class=" text-white">
                     <p> © {{ date('Y') }}  Escuela de Ingeniería Mecánica - ESPOCH</p>               
-                    <p class="text-center">Copyright - Software-Espoch-Jose Luis Buenaño </p>  
+                    <p class="text-center">Copyright - Software-Jose Luis Buenaño </p>  
                 </div>          
             </footer> 
             
