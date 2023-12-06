@@ -14,10 +14,9 @@ class Noticia extends Model
 
     //Relacion 1 a 1 Polimorfica para imagenes
 
-    public function image(){
-        return $this->morphOne(Image::class, 'imageable');
+    public function images(){
+        return $this->hasMany(Image::class);
     }
-
 
     public function getRouteKeyName()
     {

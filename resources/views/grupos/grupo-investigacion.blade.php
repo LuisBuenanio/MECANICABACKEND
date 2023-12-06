@@ -1,69 +1,6 @@
-<x-app-layout>
-    <style>
-        .contenedor{
-            display: inline-block;
-            text-align: center;
-            }
-        .centrado{
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Nuevos estilos para el carrusel */
-        .owl-carousel {
-            width: 100%;
-        }
-
-        .owl-item img {
-            max-width: 100%;
-        }
-       
-        
-        .imagenautoridad{
-            height: 130px;
-            width: 120px;
-            margin: auto
-        }
-        .imagen-fija {
-        width: 400px; /* Ancho fijo del contenedor */
-        height: 630px; /* Alto fijo del contenedor */
-        overflow: hidden; /* Ocultar el contenido fuera del contenedor */
-    }
-
-    .imagen-fija img {
-        width: 100%; /* Asegura que la imagen ocupe el 100% del contenedor */
-        object-fit: cover; /* Recorta la imagen para ajustarla al contenedor */
-    }
-
-    .titulo-carrusel {
-            position: absolute;
-            top: 40%; /* Ajusta la posición vertical según tus preferencias */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2; /* Asegura que el título esté sobre las imágenes */
-            font-size: 44px; /* Estilo del título, ajusta según tus preferencias */
-            font-weight: bold;
-            color: rgb(0, 0, 0); /* Color del título */
-        }
-
-    </style>
-
-    <head>
-        <!-- Agrega estas referencias en la sección de encabezado -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    </head>
+<x-app-layout>   
     <div class="container py-8">
         <br><br><br><br>
-        {{-- <div>
-            <div class="p-3 mb-2 font-bold bg-primary text-red-800 rounded float-right">
-                <a href="{{ route('grupos') }}" class="btn btn-light">Volver a grupos</a>
-            </div>
-        </div> --}}
 
         <div class=" bg-cover px-4 py-2 bg-red-600  flex float-right">
             <p><a href="{{ route('gruposinvestigacion') }}"
@@ -150,19 +87,38 @@
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     <p class="mb-2"><strong class="text-xl font-bold text-gray-800">GALERIA DE IMÁGENES:</strong>
                     </p>
-                    <div class="">
+                    
+                    <figure class="flex justify-center">
                         @foreach ($grupo->galeriaImagenes as $imagen)
-                            <div class="item">
-                                <img src="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" alt="Imagen de la galería">
-                        
-                            </div>
-                            
+                        <div class="ed-item base-100 web-30 relative">
+                            <img class="w-full h-80 object-cover object-center" 
+                                 src="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" 
+                                 alt=""
+                                 onclick="openModal('{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}')">
+                        </div>
                         @endforeach
-                    </div>      
-                </div>                
+                    </figure>
+                    
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div class="modal-content-container">
+                            <button class="nav-btn" onclick="prevImage()">Anterior</button>
+                            <button class="nav-btn" onclick="nextImage()">Siguiente</button>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                    
+                </div>     
+                
+                
 
             </div>
         </div>
+    </div>
 
 </x-app-layout>
 <style>
@@ -188,44 +144,115 @@
         left: 0;
         right: 0;
     }
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+
+}
+
+.modal-content-container {
+    display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: transparent;
+        border-radius: 5px;
+}
+.modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 </style>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 
 <script>
   
- document.addEventListener("DOMContentLoaded", function() {
-        const openImage = document.getElementById("openImage");
-        const fullscreenImage = document.createElement("div");
-        fullscreenImage.id = "fullscreenImage";
-        const image = document.createElement("img");
-        image.src = openImage.getAttribute("href");
+        document.addEventListener("DOMContentLoaded", function() {
+            const openImage = document.getElementById("openImage");
+            const fullscreenImage = document.createElement("div");
+            fullscreenImage.id = "fullscreenImage";
+            const image = document.createElement("img");
+            image.src = openImage.getAttribute("href");
 
-        openImage.addEventListener("click", function(e) {
-            e.preventDefault();
-            fullscreenImage.style.display = "block";
-            fullscreenImage.appendChild(image);
-            document.body.appendChild(fullscreenImage);
-        });
-
-        fullscreenImage.addEventListener("click", function() {
-            fullscreenImage.style.display = "none";
-            fullscreenImage.innerHTML = "";
-        });
-    });
-
-     
-    $(document).ready(function(){
-            $('.owl-carousel').owlCarousel({
-                items: 1, // Cantidad de elementos a mostrar
-                loop: true, // Repetir el carrusel
-                autoplay: true, // Reproducción automática
-                autoplayTimeout: 1000, // Tiempo de espera entre diapositivas en milisegundos
-                autoplayHoverPause: true, // Pausar en el paso del ratón
-                nav: true, // Flechas de navegación
-                dots: false, // Indicadores de diapositiva
+            openImage.addEventListener("click", function(e) {
+                e.preventDefault();
+                fullscreenImage.style.display = "block";
+                fullscreenImage.appendChild(image);
+                document.body.appendChild(fullscreenImage);
             });
-        });
+
+            fullscreenImage.addEventListener("click", function() {
+                fullscreenImage.style.display = "none";
+                fullscreenImage.innerHTML = "";
+            });
+        });     
+
+        var currentImageIndex = 0;
+        var images = document.querySelectorAll('.ed-item img');
+    
+        function openModal(imagePath) {
+        currentImageIndex = Array.from(images).findIndex(img => img.src === imagePath);
+        showImage(currentImageIndex);
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    function showImage(index) {
+        document.getElementById('img01').src = images[index].src;
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    // Cerrar modal haciendo clic fuera de la imagen o botones de navegación
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
 </script>

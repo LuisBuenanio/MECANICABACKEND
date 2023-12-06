@@ -9,12 +9,14 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url'];
+    protected $table = 'images';
+
+    protected $fillable = ['image_path'];
 
 
-    //Relacion Polimorfica
+    //Relacion 
 
-    public function imageable(){
-        return $this->morphTo();
+    public function noticia(){
+        return $this->belongsTo(Noticia::class);
     }
 }

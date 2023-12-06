@@ -17,13 +17,26 @@ class NoticiaSeeder extends Seeder
 
     public function run()
     {
-        $noticias = Noticia::factory(10)->create();
+        $noticia = Noticia::create([
+            'titulo' => 'Hic sed dolores nostrum mollitia dolore.',   
+            'slug' => 'hic-sed-dolores-nostrum-mollitia-dolore',         
+            'entradilla' => 'Id sunt a molestias qui. Delectus ipsum aut quia et dignissimos asperiores et. Odit distinctio libero repudiandae aut aliquam. Qui repudiandae quidem sed quisquam.',  
+            'contenido' => 'Ser un Grupo de investigación revolucionario capaz de romper paradigmas tradicionales de la enseñanza y aprendizaje de lenguas maternas y extrajeras en el Ecuador, el cual desde una postura crítica contribuye al mejoramiento del nivel de los idiomas Kichwa, Inglés y Francés', 
+            'portada' => 'portada.jpg',  
+            'estado' => '2',  
+            'fecha_publicacion' => '2023-12-05',     
+        ]); 
 
-        foreach ($noticias as $noticia) {
-            Image::factory(1)->create([
-                'imageable_id' => $noticia->id,
-                'imageable_type' => Noticia::class
-            ]);
+        $imagenes = [
+            '1.jpg',
+            '2.jpg',
+            '3.jpg',
+        ];
+        
+        foreach ($imagenes as $imagen) {
+            $noticia->images()->create(['image_path' => $imagen]);
         }
+        
+        
     }
 }

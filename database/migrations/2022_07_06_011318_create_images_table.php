@@ -17,13 +17,13 @@ return new class extends Migration
            // iDE DE IMAGE AUTOINCREMENTABLE 
            $table->id();
 
-           //COLUMNAS DE IMAGE
-           $table->string('url');
            
-           $table->unsignedBigInteger('imageable_id');
-           $table->string('imageable_type');
+           $table->unsignedBigInteger('noticia_id');
+           $table->string('image_path');
 
             $table->timestamps();
+
+            $table->foreign('noticia_id')->references('id')->on('noticias')->onDelete('cascade');
         });
     }
 
