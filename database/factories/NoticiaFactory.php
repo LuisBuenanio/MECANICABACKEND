@@ -33,6 +33,7 @@ class NoticiaFactory extends Factory
             'entradilla' => $this->faker->text(250),
             'contenido' => $this->faker->text(2000),
             'estado' => $this->faker->randomElement([1, 2]),
+            'portada_path' => 'noticias/portada.jpg',
             'fecha_publicacion' => $this->faker->date()               
         ];
     }

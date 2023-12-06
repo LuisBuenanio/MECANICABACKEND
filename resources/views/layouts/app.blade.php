@@ -14,7 +14,25 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+        
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Nunito', sans-serif;
+            }
+    
+            .min-h-screen {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+    
+            main {
+                flex: 1;
+            }
+        </style>
         @livewireStyles
 
         <!-- Scripts -->
@@ -43,8 +61,8 @@
             <!-- Footer Content -->
             <footer class="mt-4 px-3 py-2 text-sm font-medium flex justify-center bg-red-600 shadow ">
                 <div class=" text-white">
-                    <p>  © 2022 Escuela de Ingeniería Mecánica - ESPOCH</p>               
-                    <p class="text-center">JOSE LUIS BUENAÑO - EIS </p>  
+                    <p> © {{ date('Y') }}  Escuela de Ingeniería Mecánica - ESPOCH</p>               
+                    <p class="text-center">Copyright - Software-Espoch-Jose Luis Buenaño </p>  
                 </div>          
             </footer> 
             

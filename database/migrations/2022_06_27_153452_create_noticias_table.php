@@ -26,13 +26,16 @@ return new class extends Migration
             $table->text('entradilla')->nullable();
             $table->longText('contenido')->nullable();     
 
+            $table->string('portada')->nullable();
             $table->enum('estado',[1,2])->default(1);
+
 
             $table->timestamp('fecha_publicacion', $precision = 0);
             
             $table->timestamps(); 
         });
     }
+
 
     /**
      * Reverse the migrations.

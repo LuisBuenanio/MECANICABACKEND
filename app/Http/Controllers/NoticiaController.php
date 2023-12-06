@@ -22,7 +22,7 @@ class NoticiaController extends Controller
     public function noticias()
     {
         /* Metodo para almacenar en caché la consulta de noticias */
-        if (request()->page) {
+       /*  if (request()->page) {
             $key = 'noticias'.request()->page;
         } else {
             $key = 'noticias';
@@ -32,14 +32,27 @@ class NoticiaController extends Controller
         } else {
             $noticias = Noticia::where('estado', 2)->orderBy('fecha_publicacion', 'DESC')->paginate(9);
             Cache::put($key, $noticias);
-        }              
+        }      */  
+        
+        $noticias = Noticia::where('estado', 2)->orderBy('fecha_publicacion', 'DESC')
+        ->paginate(9);
+        
 
         return view('noticias.noticias', compact('noticias'));
     }
+    public function actualizarNoticias()
+    {
+        Cache::forget('noticias');
+        
+        // Realizar otras operaciones para actualizar las noticias
+
+        return redirect()->route('noticias.noticias');
+    }
+
 
     public function noticia(Noticia $noticia)
     {
-        $this->authorize('published', $noticia);
+        /* $this->authorize('published', $noticia); */
         return view('noticias.noticia', compact('noticia'));
     }
 
