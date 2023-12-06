@@ -70,13 +70,12 @@
         <div class="centrado py-8 text-4xl font-bold  text-center  text-black">MECÁNICA</div>
     </div> --}}
 
-    <div class="titulo-carrusel">Mecánica</div>
+    <div class="titulo-carrusel">Mecánica</div>   
     <div class="owl-carousel owl-theme imagen-fija">
-        <div class="item "><img src="{{ asset('img/slider/06.jpeg') }}" alt="imagen1"></div>
-        <div class="item "><img src="{{ asset('img/slider/lab_mecanica.jpg') }}" alt="imagen2"></div>
-        <div class="item "><img src="{{ asset('img/slider/prueba.jpg') }}" alt="imagen3"></div>
-        <div class="item "><img src="{{ asset('img/slider/team_mecanica.jpg') }}" alt="imagen3"></div>
-      <!-- Agrega más imágenes según sea necesario -->
+        @foreach ( $sliders as $slider )
+            <div class="item "><img src="{{ asset('img/slider/' . $slider->s_imagen) }}" alt="$slider->name"></div>
+        @endforeach
+        
     </div>
     
     

@@ -12,7 +12,6 @@ use App\Http\Controllers\PostgradoController;
 
 use App\Http\Controllers\MaestriaController;
 use App\Http\Controllers\InvestigacionController;
-use App\Http\Controllers\FullCalenderController;
 
 
 use App\Http\Controllers\LineaEscuelaController;
@@ -34,6 +33,10 @@ use App\Http\Controllers\SecretariaController;
 
 
 use App\Http\Controllers\GrupoInvestigacionController;
+
+
+
+use App\Http\Controllers\CalendarioController;
 
 Route::get('/', [HomeController::class, 'index'])-> name('inicio');
 
@@ -95,7 +98,9 @@ Route::get('investigacion', [InvestigacionController::class, 'investigacionts'])
 /* Calenario final  */
 
 
-Route::controller(FullCalenderController::class)->group(function(){
+/* Route::controller(FullCalenderController::class)->group(function(){
     Route::get('calendario', 'index')->name('calendario');
     Route::post('calendarioAjax', 'ajax');
-});
+}); */
+
+Route::get('calendario', [CalendarioController::class, 'calendario'])-> name('calendario');

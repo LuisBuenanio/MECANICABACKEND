@@ -19,20 +19,17 @@
     </style>
     <div class=" container  py-8">
         <div>
-            <br>
             
         <br>
         <br>
-        <br>
             <h1 class="text-4xl font-extrabold text-gray-900 text-center ">Galerías</h1>
-            <br>
+          
         </div> 
         <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2">
             @forelse ($galerias as $galeria)
                 <div class="p-4 cols-start-2 block">
                     
                         <a href="{{route('galeria', $galeria)}}">
-                        {{-- <a href="{{ url('/galeria/'.$galeria->id) }}"> --}}
                             <div class="object-center">
                                 
                                 <h2 class="text-2xl font-bold text-gray-800 text-center py-4 mt-4">{{ $galeria->nombre }}</h2>

@@ -125,13 +125,12 @@
 
                     <a href="{{route('secretaria')}}"class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Secretaria</a>
                    
+                            
+                    <a href="{{route('calendario')}}"class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
+                    
 
                     
                     
-
-                    
-                    <a href="/calendario" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
-               
 
 
                 </div>
@@ -197,7 +196,7 @@
         <a href="{{route('galerias')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Galeria</a>
         <a href="{{route('convenios')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Convenios</a>
         <a href="{{route('proyectos')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Proyectos</a>
-        <a href="/calendario" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendario</a>
+        
         
        
     </div>
