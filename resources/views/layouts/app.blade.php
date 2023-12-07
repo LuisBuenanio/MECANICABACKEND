@@ -10,12 +10,10 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@3.x/dist/alpine.min.js" defer></script>
-
-
+        
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        {{-- <script src="{{ asset('js/fullcalendar/lang/es.js') }}"></script> --}}
-
+       
         
         <style>
             html, body {

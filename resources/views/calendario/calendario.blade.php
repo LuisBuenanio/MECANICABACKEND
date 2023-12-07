@@ -1,178 +1,150 @@
 <x-app-layout>
+    <x-slot name="header">
+        <br>
+        <br>
 
+    </x-slot>
 
-    <head>
-        <title>Calendario de Eventos</title>
-        <meta name="csrf-token" content="{{ csrf_token() }}">   
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-    
-          <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/locales-all.min.js"></script>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
+                <h1 class="text-2xl font-bold mb-4">Próximos Eventos</h1>
 
-          <link rel="stylesheet" href="{{ asset('css/fullcalendar/core/main.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/fullcalendar/daygrid/main.css') }}" />
-        <script src="{{ asset('js/fullcalendar/core/main.js') }}"></script>
-        <script src="{{ asset('js/fullcalendar/daygrid/main.js') }}"></script>
-        <script src="{{ asset('js/fullcalendar/lang/es.js') }}"></script>
-    
-       </head>
-    <body>
-
-
-        
-    <div class="container py-8">
-        
-        <div class="py-12">
-            <h1 class="text-4xl font-extrabold text-gray-900 text-center ">Calendario de Eventos</h1>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-                    <h1 class="text-2xl font-bold mb-4">Próximos Eventos</h1>
-    
-                    @forelse ($eventos as $evento)
-                        <div class="mb-4">
-                            <h2 class="text-xl font-semibold">{{ $evento->titulo }}</h2>
-                            <p class="text-gray-600">{{ $evento->descripcion }}</p>
-                            <p class="text-gray-600">Fecha: {{ $evento->fecha_inicio }} - {{ $evento->fecha_fin}}</p>
-                        </div>
-                    @empty
-                        <p>No hay eventos próximos.</p>
-                    @endforelse
-                </div>
+                @forelse ($todos_eventos as $evento)
+                    <div class="mb-4">
+                        <h2 class="text-xl font-semibold">{{ $evento->titulo }}</h2>
+                        <p class="text-gray-600">Fecha:
+                            {{ \Carbon\Carbon::parse($evento->fecha_inicio)->format('Y-m-d') }}</p>
+                    </div>
+                @empty
+                    <p>No hay eventos próximos.</p>
+                @endforelse
             </div>
         </div>
-        <div id='calendar'></div>
     </div>
-      
-    <script type="text/javascript">
-      
-    $(document).ready(function () {
-    
-        
-          
-        /*------------------------------------------
-        --------------------------------------------
-        Get Site URL
-        --------------------------------------------
-        --------------------------------------------*/
-        var SITEURL = "{{ url('/') }}";
-        
-        /*------------------------------------------
-        --------------------------------------------
-        CSRF Token Setup
-        --------------------------------------------
-        --------------------------------------------*/
-        $.ajaxSetup({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-          
-        /*------------------------------------------
-        --------------------------------------------
-        FullCalender JS Code
-        --------------------------------------------
-        --------------------------------------------*/
-        var calendar = $('#calendar').fullCalendar({
-            editable: true,
-            events: SITEURL + "/calendario",
-            displayEventTime: false,
-            editable: true,
-            location: 'es',
-            eventRender: function (event, element, view) {
-                if (event.allDay === 'true') {
-                    event.allDay = true;
-                } else {
-                    event.allDay = false;
-                }
-            },
-                        selectable: true,
-                        selectHelper: true,
-                        select: function (start, end, allDay) {
-                            var title = prompt('Nombre del Evento:');
-                            if (title) {
-                                var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
-                                var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
-                                $.ajax({
-                                    url: SITEURL + "/calendarioAjax",
-                                    data: {
-                                        title: title,
-                                        start: start,
-                                        end: end,
-                                        type: 'add'
-                                    },
-                                    type: "POST",
-                                    success: function (data) {
-                                        displayMessage("Evento Creado Correctamente");
-      
-                                        calendar.fullCalendar('renderEvent',
-                                            {
-                                                id: data.id,
-                                                title: title,
-                                                start: start,
-                                                end: end,
-                                                allDay: allDay
-                                            },true);
-      
-                                        calendar.fullCalendar('unselect');
-                                    }
-                                });
-                            }
-                        },
-                        eventDrop: function (event, delta) {
-                            var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
-                            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
-      
-                            $.ajax({
-                                url: SITEURL + '/calendarioAjax',
-                                data: {
-                                    title: event.title,
-                                    start: start,
-                                    end: end,
-                                    id: event.id,
-                                    type: 'update'
-                                },
-                                type: "POST",
-                                success: function (response) {
-                                    displayMessage("Evento Actualizado Correctamente");
-                                }
-                            });
-                        },
-                        eventClick: function (event) {
-                            var deleteMsg = confirm("Esta seguro de eliminar el evento?");
-                            if (deleteMsg) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: SITEURL + '/calendarioAjax',
-                                    data: {
-                                            id: event.id,
-                                            type: 'delete'
-                                    },
-                                    success: function (response) {
-                                        calendar.fullCalendar('removeEvents', event.id);
-                                        displayMessage("Evento Eliminado Correctamente");
-                                    }
-                                });
-                            }
-                        }
-     
+
+    <div class="container py-8 sm:rounded-lg ">
+        <h1 class="text-2xl font-extrabold text-gray-900 text-center mb-4">CALENDARIO DE EVENTOS</h1>
+        <div id="calendar"></div>
+    </div>
+
+    <style>
+        .container {
+    border: 2px solid rgb(53, 53, 71); /* Color azul (#3490dc) y grosor (2px) del borde */
+    border-radius: 8px; /* Añade esquinas redondeadas para un mejor aspecto */
+    padding: 10px; /* Añade espacio interno para mejorar el aspecto visual */
+}
+        .evento-dia {
+            background-color: #ffc0cb;
+            /* Cambia el color de fondo de los días con eventos */
+        }
+
+        #eventoModal .bg-white {
+            background-color: rgb(250, 157, 157);
+            /* Cambia el color de fondo del contenido del modal */
+        }
+
+        #eventoModal .text-xl {
+            color: #000;
+            /* Cambia el color del texto del título */
+        }
+
+        #eventoModal .text-gray-500:hover {
+            color: #fd0505;
+            /* Cambia el color del texto del botón al pasar el ratón por encima */
+        }
+
+        .evento-con-borde {
+            border: 3px solid #f70606;
+            /* Define el estilo del borde */
+            padding: 10px;
+            /* Añade espacio interno para mejorar el aspecto visual */
+        }
+    </style>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+
+
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                height: '90vh',
+                eventClassNames: 'evento-con-borde',
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                events: @json($events),
+                eventContent: function(arg) {
+                    const horaInicio = arg.event.start.toLocaleTimeString([], {
+                        hour: '2-digit',
+                        minute: '2-digit'
                     });
-     
+                    const horaFinal = arg.event.end.toLocaleTimeString([], {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    return {
+                        html: `<div class="event-content">
+                              <p class="event-time">${horaInicio} - ${horaFinal}</p>
+                              <p class="event-title">${arg.event.title}</p>  
+                           </div>`
+                    };
+                },
+                eventClick: function(info) {
+
+
+                    const descripcionEvento = info.event.extendedProps.description;
+                    const horaInicio = info.event.start.toLocaleTimeString([], {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    const horaFinal = info.event.end.toLocaleTimeString([], {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+
+                    // Muestra el modal con la descripción del evento
+                    document.getElementById('horaInicio').innerText = `Hora de inicio: ${horaInicio}`;
+                    document.getElementById('descripcionEvento').innerText =
+                        `Descripcion: ${descripcionEvento}`;
+                    document.getElementById('horaFinal').innerText = `Hora final: ${horaFinal}`;
+
+                    document.getElementById('eventoModal').classList.remove('hidden');
+
+                },
+                eventClassNames: function(arg) {
+                    return ['evento-dia']; // Agrega la clase 'evento-dia' a los días con eventos
+                }
+            });
+
+            calendar.render();
         });
-          
-        /*------------------------------------------
-        --------------------------------------------
-        Toastr Success Code
-        --------------------------------------------
-        --------------------------------------------*/
-        function displayMessage(message) {
-            toastr.success(message, 'Evento');
-        } 
-        
     </script>
-      
-    </body>
-    </x-app-layout>
+
+
+    <div id="eventoModal" class="fixed inset-0 z-50 hidden overflow-auto bg-black bg-opacity-30">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-lg p-6">
+                <div class="flex justify-between items-center">
+                    <h5 class="text-xl font-bold mb-4">Detalles del Evento</h5>
+                    <button onclick="document.getElementById('eventoModal').classList.add('hidden')"
+                        class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p id="horaInicio"></p>
+                <p id="descripcionEvento"></p>
+                <p id="horaFinal"></p>
+            </div>
+        </div>
+    </div>
+
+</x-app-layout>

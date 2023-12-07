@@ -7,36 +7,20 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ConvenioController;
 use App\Http\Controllers\ProyectoController;
-
 use App\Http\Controllers\PostgradoController;
-
 use App\Http\Controllers\MaestriaController;
 use App\Http\Controllers\InvestigacionController;
-
-
 use App\Http\Controllers\LineaEscuelaController;
-
 use App\Http\Controllers\LineaFacultadController;
-
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\TitulacionController;
-
-
 use App\Http\Controllers\SecretariaContController;
 use App\Http\Controllers\SecretariaOficController;
-
-
-
 use App\Http\Controllers\SecretariaController;
-
-
-
-
 use App\Http\Controllers\GrupoInvestigacionController;
-
-
-
 use App\Http\Controllers\CalendarioController;
+use App\Http\Livewire\Calendario;
+
 
 Route::get('/', [HomeController::class, 'index'])-> name('inicio');
 
@@ -49,11 +33,7 @@ Route::get('docente/{docente}', [DocenteController::class, 'docente'])->name('do
 Route::get('galerias', [GaleriaController::class, 'galerias'])-> name('galerias');
 Route::get('galeria/{galeria}', [GaleriaController::class, 'showGaleria'])->name('galeria');
 
-
-/* Route::get('galerias', [HomeController::class, 'galerias'])-> name('galerias');  */
-
 Route::get('asociacion', [AsociacionController::class, 'aso'])-> name('asociacion');
-
 
 Route::get('convenios', [ConvenioController::class, 'conveniost'])-> name('convenios');
 
@@ -69,13 +49,8 @@ Route::get('maestria/{maestria}', [MaestriaController::class, 'maestria'])->name
 Route::get('lineasesc', [LineaEscuelaController::class, 'lineasesct'])-> name('lineasesc');
 Route::get('lineasfac', [LineaFacultadController::class, 'lineasfact'])-> name('lineasfac');
 
-
-
-
 Route::get('gruposinvestigacion', [GrupoInvestigacionController::class, 'gruposinvestigacion'])-> name('gruposinvestigacion');
 Route::get('grupoinvestigacion/{grupo}', [GrupoInvestigacionController::class, 'grupoinvestigacion'])-> name('grupoinvestigacion');
-
-
 
 Route::get('titulacion', [TitulacionController::class, 'titulaciont'])-> name('titulacion');
 Route::get('secretaria', [SecretariaController::class, 'secretaria'])-> name('secretaria');
@@ -83,24 +58,8 @@ Route::get('secretaria', [SecretariaController::class, 'secretaria'])-> name('se
 Route::get('secretariaconts', [SecretariaContController::class, 'secretariacontf'])-> name('secretariaconts');
 Route::get('secretariaofics', [SecretariaOficController::class, 'secretariaoficf'])-> name('secretariaofics');
 
-
-/* Route::get('grupos_investigacion', [InvestigacionController::class, 'investigaciont'])-> name('grupos_investigacion');
-Route::get('grupo_investigacion/{grupo_investigacion}', [InvestigacionController::class, 'showinvestigacion'])->name('grupo_investigacion');
-Route::get('investigacion', [InvestigacionController::class, 'investigacionts'])-> name('investigacion');
- */
-/* Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])->group(function () { Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-}); */
-
-
- 
-/* Calenario final  */
-
-
-/* Route::controller(FullCalenderController::class)->group(function(){
-    Route::get('calendario', 'index')->name('calendario');
-    Route::post('calendarioAjax', 'ajax');
-}); */
-
 Route::get('calendario', [CalendarioController::class, 'calendario'])-> name('calendario');
+ 
+
+
+
