@@ -51,6 +51,7 @@ class NoticiaController extends Controller
     public function store(NoticiaRequest $request)
     {
         $data = $request->validated();
+        
         $data['entradilla'] = strip_tags($data['entradilla']); // Aplica strip_tags() al contenido de la noticia
 
         $data['contenido'] = strip_tags($data['contenido']); // Aplica strip_tags() al contenido de la noticia

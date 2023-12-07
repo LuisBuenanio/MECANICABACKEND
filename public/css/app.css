@@ -1239,14 +1239,14 @@ select {
 .mt-0 {
   margin-top: 0px;
 }
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .ml-auto {
   margin-left: auto;
 }
 .-mt-px {
   margin-top: -1px;
-}
-.mr-1 {
-  margin-right: 0.25rem;
 }
 .block {
   display: block;
@@ -1513,6 +1513,9 @@ select {
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.overflow-auto {
+  overflow: auto;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1662,8 +1665,15 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
+}
+.bg-opacity-30 {
+  --tw-bg-opacity: 0.3;
 }
 .bg-cover {
   background-size: cover;

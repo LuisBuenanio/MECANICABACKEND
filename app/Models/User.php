@@ -10,7 +10,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -23,20 +22,17 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
+    protected $table = 'users';
+	protected $primaryKey = 'id';
+
+    public $timestamps = false;
+   
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'email', 
+        'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -44,21 +40,22 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
+   
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //Relacion de uno a muchos
+    public function receta(){
+        return $this->hasMany(Receta::class);
+    }
+
+    //Relacion de uno a muchos
+    public function adminlte_profile_url(){
+        return '/user/profile';
+    }
 }

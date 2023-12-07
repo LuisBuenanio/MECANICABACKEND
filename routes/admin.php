@@ -19,12 +19,14 @@ use App\Http\Controllers\Admin\TipoProyectoController;
 use App\Http\Controllers\Admin\ProyectoController;
 use App\Http\Controllers\Admin\CalendarioController;
 
+use App\Http\Controllers\Admin\SliderController;
+
 
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
-Route::resource('users', UserController::class)->only(['index','edit', 'update', 'destroy'])->names('admin.users');
 
+Route::resource('users', UserController::class)->names('admin.users');
 
 
 Route::resource('roles', RoleController::class)->names('admin.roles');
@@ -61,3 +63,6 @@ Route::resource('proyecto', ProyectoController::class)->except('show')->names('a
 
 
 Route::resource('calendario', CalendarioController::class)->except('show')->names('admin.calendario');
+
+
+Route::resource('slider', SliderController::class)->except('show')->names('admin.slider');

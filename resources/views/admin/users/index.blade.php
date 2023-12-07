@@ -1,12 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Usuarios')
 
 @section('content_header')
+    @can('admin.users.create')
+        <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.users.create')}}">Crear Nuevo Usuario</a>
+    @endcan
     <h1>Lista de Usuarios</h1>
 @stop
 
 @section('content')
+    @if (session('info'))
+    <div class="alert alert-success">
+        <strong>{{session('info')}}</strong>
+    </div>
+    @endif
     @livewire('admin.users-index')
 @stop
 

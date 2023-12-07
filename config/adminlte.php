@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'Mecánica Dashboard',
-    'title_prefix' => '',
+    'title' => '',
+    'title_prefix' => 'Mecánica Espoch |',
     'title_postfix' => '',
 
     /*
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -85,8 +85,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -254,24 +254,50 @@ return [
 
         ],
         [
-            'text'        => 'Usuarios',
-            'route'         => 'admin.users.index',
-            'icon'        => 'fas fa-users fa fw',
-            'can'   => 'admin.users.index',
-
-        ],
-        [
             'text' => 'Lista de Roles',
             'route'  => 'admin.roles.index',
             'icon' => 'fas fa-users-cog fa-fw',
             'can'   => 'admin.roles.index',
         ],
         [
-            'text'    => 'Noticias',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.noticias.index',
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-users fa fw',
+            'can'   => 'admin.users.index',
+
+        ],  
+        [
+                    
+            'text' => 'SLIDER PORTADA',
+            'route'  => 'admin.slider.index',
+            'icon' => 'fab fa-fw fa-buffer',
             'submenu' => [
                 [
+                    
+                    'text' => 'Listado Imágenes Slider',
+                    'route'  => 'admin.slider.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    
+                    'text' => 'Subir imagen Slider',
+                    'route'  => 'admin.slider.create',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                
+            ],
+            
+        ],
+        [
+                    
+            'text' => 'NOTICIAS',
+            'route'  => 'admin.noticias.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
                     'text' => 'Listar Noticias',
                     'route'  => 'admin.noticias.index',
                     'icon' => 'fab fa-fw fa-buffer',
@@ -284,227 +310,244 @@ return [
                 ],
                 
             ],
-        ],
-        [
-            'text'    => ' Escuela',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.escuela.index',
-            'submenu' => [
-                [
-                    'text' => 'Datos Escuela',
-                    'route'  => 'admin.escuela.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],                
-            ],
-        ],
-        [
-            'text'    => ' Asociación',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.asociacion.index',
-            'submenu' => [
-                [
-                    'text' => 'Datos Asociación',
-                    'route'  => 'admin.asociacion.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],             
-                
-            ],
-        ], 
-        [
-            'text'    => ' Tipo Integrante Asociación',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.tipointegrantes.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Tipo Integrante',
-                    'route'  => 'admin.tipointegrantes.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Tipo Integrante',
-                    'route'  => 'admin.tipointegrantes.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],        
-        [
-            'text'    => ' Integrante Asociacion',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.integrantes.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Integrantes',
-                    'route'  => 'admin.integrantes.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Integrante',
-                    'route'  => 'admin.integrantes.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Tipo de Autoridad',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.tipoautoridad.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Tipo de Autoridad',
-                    'route'  => 'admin.tipoautoridad.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Tipo de Autoridad',
-                    'route'  => 'admin.tipoautoridad.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Autoridades',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.autoridades.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Autoridades',
-                    'route'  => 'admin.autoridades.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Autoridad',
-                    'route'  => 'admin.autoridades.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Galerías',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.galerias.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Galerías',
-                    'route'  => 'admin.galerias.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Galeria',
-                    'route'  => 'admin.galerias.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Imagénes de Galerías',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.multimedias.index',
             
-            'submenu' => [
-                [
-                    'text' => 'Listar Imagénes',
-                    'route'  => 'admin.multimedias.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Subir Imagen',
-                    'route'  => 'admin.multimedias.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
         ],
+              
         [
-            'text'    => ' Tipo de Convenios',
+            'text'    => 'DATOS GENERALES',
             'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.tipoconvenio.index',            
             'submenu' => [
                 [
-                    'text' => 'Listar Tipos de Convenios',
-                    'route'  => 'admin.tipoconvenio.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
+                    'text'    => ' Escuela',
+                    'icon'    => 'fab fa-fw fa-buffer',
+                    'can'   => 'admin.escuela.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Datos Escuela',
+                            'route'  => 'admin.escuela.index',
+                            'icon' => 'fab fa-fw fa-buffer',
+                            
+                        ],                
+                    ],
                 ],
                 [
-                    'text' => 'Crear Tipo de Convenio',
-                    'route'  => 'admin.tipoconvenio.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Convenios',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.convenio.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Convenios',
-                    'route'  => 'admin.convenio.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Convenio',
-                    'route'  => 'admin.convenio.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Tipos de Proyectos',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.tipoproyecto.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Tipos de Proyectos',
-                    'route'  => 'admin.tipoproyecto.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Tipo de Proyecto',
-                    'route'  => 'admin.tipoproyecto.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
-            ],
-        ],
-        [
-            'text'    => ' Proyectos',
-            'icon'    => 'fab fa-fw fa-buffer',
-            'can'   => 'admin.proyecto.index',
-            'submenu' => [
-                [
-                    'text' => 'Listar Proyectos',
-                    'route'  => 'admin.proyecto.index',
-                    'icon' => 'fab fa-fw fa-buffer',
-                    
-                ],
-                [
-                    'text' => 'Crear Proyecto',
-                    'route'  => 'admin.proyecto.create',
-                    'icon' => 'fab fa-fw fa-buffer',
-                ],
-                
+                    'text'    => ' Asociación',
+                    'icon'    => 'fab fa-fw fa-buffer',
+                    'can'   => 'admin.asociacion.index',
+                    'submenu' => [
+                        [
+                            'text' => 'Datos Asociación',
+                            'route'  => 'admin.asociacion.index',
+                            'icon' => 'fab fa-fw fa-buffer',                           
+                            
+                        ],  
+                        [
+                            'text'    => ' Integrante Asociacion',
+                            'icon'    => 'fab fa-fw fa-buffer',
+                            'can'   => 'admin.integrantes.index',
+                            'submenu' => [
+                                [
+                                    'text' => 'Listar Integrantes',
+                                    'route'  => 'admin.integrantes.index',
+                                    'icon' => 'fab fa-fw fa-buffer',
+                                    
+                                ],
+                                [
+                                    'text' => 'Crear Integrante',
+                                    'route'  => 'admin.integrantes.create',
+                                    'icon' => 'fab fa-fw fa-buffer',
+                                ],
+                                
+                            ],
+                        ],
+
+                        
+                    ],
+                ],     
             ],
         ],
 
 
+        [
+            'text'    => 'AUTORIDADES ESCUELA',
+            'icon'    => 'fab fa-fw fa-buffer',
+            'submenu' => [                    
+                    [
+                        'text'    => ' Autoridades',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.autoridades.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listado de Autoridades',
+                                'route'  => 'admin.autoridades.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear  Autoridad',
+                                'route'  => 'admin.autoridades.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],
+                      
+                    [
+                        'text'    => ' Tipo de Autoridad',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.tipoautoridad.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listar Tipo de Autoridad',
+                                'route'  => 'admin.tipoautoridad.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear Tipo de Autoridad',
+                                'route'  => 'admin.tipoautoridad.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],                           
+                ],
+                    
+        ],  
+        
+        [
+            'text'    => 'GALERIAS',
+            'icon'    => 'fab fa-fw fa-buffer',
+            'submenu' => [                    
+                    [
+                        'text'    => ' GALERIAS',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.galerias.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listado de Galerias',
+                                'route'  => 'admin.galerias.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear  Galeria',
+                                'route'  => 'admin.galerias.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],
+                      
+                    [
+                        'text'    => ' Imágenes de Galeria',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.multimedias.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listar Imágenes',
+                                'route'  => 'admin.multimedias.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Subir Imagen',
+                                'route'  => 'admin.multimedias.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],                           
+                ],
+                    
+        ],
+
+
+        [
+            'text'    => 'VINCULACION',
+            'icon'    => 'fab fa-fw fa-buffer',
+            'submenu' => [                    
+                    [
+                        'text'    => ' CONVENIOS',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.convenio.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listado de Convenios',
+                                'route'  => 'admin.convenio.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear  Convenio',
+                                'route'  => 'admin.convenio.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            [
+                                'text'    => 'Tipos de Convenios',
+                                'icon'    => 'fab fa-fw fa-buffer',
+                                'can'   => 'admin.tipoconvenio.index',
+                                'submenu' => [
+                                    [
+                                        'text' => 'Listar Tipo de Convenios',
+                                        'route'  => 'admin.tipoconvenio.index',
+                                        'icon' => 'fab fa-fw fa-buffer',
+                                        
+                                    ],
+                                    [
+                                        'text' => 'Crear Tipo de Convenio',
+                                        'route'  => 'admin.tipoconvenio.create',
+                                        'icon' => 'fab fa-fw fa-buffer',
+                                    ],
+                                    
+                                ],
+                            ],
+                            
+                        ],
+                    ],
+                    [
+                        'text'    => ' PROYECTOS',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.convenio.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listado de Proyectos',
+                                'route'  => 'admin.convenio.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear  Proyecto',
+                                'route'  => 'admin.convenio.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            [
+                                'text'    => 'Tipos de Proyectos',
+                                'icon'    => 'fab fa-fw fa-buffer',
+                                'can'   => 'admin.tipoconvenio.index',
+                                'submenu' => [
+                                    [
+                                        'text' => 'Listar Tipo de Proyectos',
+                                        'route'  => 'admin.tipoconvenio.index',
+                                        'icon' => 'fab fa-fw fa-buffer',
+                                        
+                                    ],
+                                    [
+                                        'text' => 'Crear Tipo de Proyecto',
+                                        'route'  => 'admin.tipoconvenio.create',
+                                        'icon' => 'fab fa-fw fa-buffer',
+                                    ],
+                                    
+                                ],
+                            ],
+                            
+                        ],
+                    ],
+                      
+                                               
+                ],
+                    
+        ], 
     ],
 
     /*
