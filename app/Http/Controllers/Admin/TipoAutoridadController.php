@@ -40,14 +40,18 @@ class TipoAutoridadController extends Controller
     }
 
         
-    public function edit(TipoAutoridad $tipoautoridad)
+    public function edit($id)
     {
+        $tipoautoridad = TipoAutoridad::findOrFail($id);
         return view('admin.tipoautoridad.edit' , compact('tipoautoridad'));
     }
 
     
-    public function update(Request $request,TipoAutoridad $tipoautoridad)
+    public function update(Request $request, $id)
     {
+
+        $tipoautoridad = TipoAutoridad::findOrFail($id);
+
         $request->validate([
             'descripcion' => "required|unique:tipo_autoridad,descripcion,$tipoautoridad->id"
         ]);
@@ -57,8 +61,9 @@ class TipoAutoridadController extends Controller
     
     }
 
-    public function destroy(TipoAutoridad $tipoautoridad)
+    public function destroy($id)
     {
+        $tipoautoridad = TipoAutoridad::findOrFail($id);
         $tipoautoridad->delete();
 
         return redirect()->route('admin.tipoautoridad.index')-> with('eliminar', 'ok');

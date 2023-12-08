@@ -63,8 +63,7 @@ class MultimediaController extends Controller
         };     
 
         $multimedia->save();
-        
-        Cache::flush();        
+             
 
         return redirect()->route('admin.multimedias.index')-> with('info', 'Imagen subida correctamente');;
 
@@ -105,8 +104,7 @@ class MultimediaController extends Controller
         };     
 
         $multimedia->save();
-        
-        Cache::flush();        
+              
 
         return redirect()->route('admin.multimedias.index')-> with('info', 'Imagen actualizada correctamente');;
 
@@ -120,7 +118,6 @@ class MultimediaController extends Controller
         
         $multimedia->delete();
 
-        Cache::flush();
         return redirect()->route('admin.multimedias.index')->with('eliminar', 'ok');
 
     }

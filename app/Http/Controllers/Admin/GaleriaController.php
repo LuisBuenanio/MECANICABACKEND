@@ -91,9 +91,7 @@ class GaleriaController extends Controller
              /*copy($portada->getRealPath(),$ruta.$nombreportada);*/
   
               $galeria->portada = $nombreportada;
-          };
-
-          
+          };          
           
           $galeria->save();
         return redirect()->route('admin.galerias.index')-> with('info', 'Galeria Actualizada correctamente');
@@ -103,6 +101,16 @@ class GaleriaController extends Controller
     public function destroy($id)
     {
         $galeria = Galeria::findOrFail($id);
+
+        $rutaImagen = public_path("img/galeria_port/{$galeria->portada}");
+
+        // Verifica si el archivo existe antes de intentar eliminarlo
+        if (file_exists($rutaImagen)) {
+            // Elimina el archivo físicamente
+            unlink($rutaImagen);
+        }
+        // Elimina el registro de la base de datos
+
         $galeria->delete();
 
         return redirect()->route('admin.galerias.index')-> with('eliminar', 'ok');

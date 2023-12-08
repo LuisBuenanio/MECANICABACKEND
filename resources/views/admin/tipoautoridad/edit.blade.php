@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($tipoautoridad,['route' => ['admin.tipoautoridad.update',$tipoautoridad], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($tipoautoridad,['route' => ['admin.tipoautoridad.update',$tipoautoridad->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 <div class="form-group">
                     {!! Form::label('descripcion', 'Descripción:') !!}

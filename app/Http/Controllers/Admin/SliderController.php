@@ -40,7 +40,7 @@ class SliderController extends Controller
         ]);
 
         $slider = Slider::create($request->all());
-        /* $integrante = new Integrante(); */
+        
         $slider->name = $request->name;  
         
         
@@ -50,16 +50,13 @@ class SliderController extends Controller
             $s_imagen = $request->file("s_imagen");
             $names_imagen = Str::slug($request->name).".".$s_imagen->guessExtension();
             $ruta = public_path("img/slider/");
-
-            /* $foto->move($ruta,$namefoto); */
+            
            copy($s_imagen->getRealPath(),$ruta.$names_imagen);
 
             $slider->s_imagen = $names_imagen;
         };
         
         $slider->save();
-        Cache::flush();
-
 
         return redirect()->route('admin.slider.index')->with('info', 'Imagen de Slider creada exitosamente.');
     }
@@ -92,27 +89,17 @@ class SliderController extends Controller
             $ruta = public_path("img/slider/");
 
             $s_imagen->move($ruta,$names_imagen);
-           /*copy($s_imagen->getRealPath(),$ruta.$names_imagen);*/
+           
 
             $slider->s_imagen = $names_imagen;
         };
        
         $slider->save();
-        Cache::flush();
 
         return redirect()->route('admin.slider.index')->with('info', 'Imagen de Slider actualizado exitosamente.');
     }
 
-    /* public function destroy($id)
-    {
-        $slider = Slider::findOrFail($id);
-
-        $slider->delete();
-
-        Cache::flush();
-        return redirect()->route('admin.slider.index')-> with('eliminar', 'ok');
-
-    } */
+  
     public function destroy($id)
     {
         $slider = Slider::findOrFail($id);
@@ -125,11 +112,8 @@ class SliderController extends Controller
             // Elimina el archivo físicamente
             unlink($rutaImagen);
         }
-
         // Elimina el registro de la base de datos
-        $slider->delete();
-
-        Cache::flush();
+        $slider->delete();       
 
         return redirect()->route('admin.slider.index')->with('eliminar', 'ok');
     }

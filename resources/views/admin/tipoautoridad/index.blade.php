@@ -31,10 +31,10 @@
                                     <td>{{$tipo_autoridad->id}}</td>
                                     <td>{{$tipo_autoridad->descripcion}}</td>
                                     <td with="10px">
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipoautoridad.edit', $tipo_autoridad)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipoautoridad.edit', $tipo_autoridad->id)}}">Editar</a>
                                     </td with="10px">
                                     <td>
-                                        <form action="{{route('admin.tipoautoridad.destroy', $tipo_autoridad)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.tipoautoridad.destroy', $tipo_autoridad->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
     

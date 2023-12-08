@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($tipoconvenio,['route' => ['admin.tipoconvenio.update',$tipoconvenio], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($tipoconvenio,['route' => ['admin.tipoconvenio.update',$tipoconvenio->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 <div class="form-group">
                     {!! Form::label('descripcion', 'Descripción:') !!}

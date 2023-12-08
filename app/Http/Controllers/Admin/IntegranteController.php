@@ -59,28 +59,30 @@ class IntegranteController extends Controller
         };
         
         $integrante->save();
-        Cache::flush();
         return redirect()->route('admin.integrantes.index')-> with('info', 'Integrante Creado correctamente');;
     }
 
     
-    public function show(Integrante $integrante)
+    public function show($id)
     {
         return view('admin.integrantes.show' , compact('integrante'));
     }
 
     
-    public function edit(Integrante $integrante)
+    public function edit($id)
     {
+        $integrante = Integrante::findOrFail($id);
+
         $tipo_integrante = TipoIntegrante::pluck('descripcion', 'id');
         $asociacion = Asociacion::pluck('nombre', 'id');
         return view('admin.integrantes.edit' , compact('integrante', 'tipo_integrante', 'asociacion'));
     }
 
     
-    public function update(Request $request, Integrante $integrante)
+    public function update(Request $request, $id)
     {
-              
+        $integrante = Integrante::findOrFail($id);
+
         $request->validate([
             'nombre' => 'required'
         ]);
@@ -103,17 +105,26 @@ class IntegranteController extends Controller
         
         $integrante->save();
         
-        Cache::flush();
         return redirect()->route('admin.integrantes.index')-> with('info', 'Datos Actualizados correctamente');
    
     }
 
     
-    public function destroy(Integrante $integrante)
+    public function destroy($id)
     {
+        $integrante = Integrante::findOrFail($id);
+        
+        $rutaImagen = public_path("img/asociacion/integrantes/{$integrante->foto}");
+
+        // Verifica si el archivo existe antes de intentar eliminarlo
+        if (file_exists($rutaImagen)) {
+            // Elimina el archivo físicamente
+            unlink($rutaImagen);
+        }
+        // Elimina el registro de la base de datos
+
         $integrante->delete();
 
-        Cache::flush();
         return redirect()->route('admin.integrantes.index')-> with('eliminar', 'ok');
 
     }

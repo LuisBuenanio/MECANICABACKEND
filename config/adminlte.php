@@ -360,6 +360,25 @@ return [
                                 
                             ],
                         ],
+                        [
+                            'text'    => ' Tipo Integrante Asociacion',
+                            'icon'    => 'fab fa-fw fa-buffer',
+                            'can'   => 'admin.tipointegrantes.index',
+                            'submenu' => [
+                                [
+                                    'text' => 'Listar Tipo Integrante',
+                                    'route'  => 'admin.tipointegrantes.index',
+                                    'icon' => 'fab fa-fw fa-buffer',
+                                    
+                                ],
+                                [
+                                    'text' => 'Crear Tipo Integrante',
+                                    'route'  => 'admin.tipointegrantes.create',
+                                    'icon' => 'fab fa-fw fa-buffer',
+                                ],
+                                
+                            ],
+                        ],
 
                         
                     ],

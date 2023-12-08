@@ -19,10 +19,10 @@
                                 <td>{{$integrante->id}}</td>
                                 <td>{{$integrante->nombre}}</td>
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.integrantes.edit', $integrante)}}">Editar</a>
+                                    <a class="btn btn-primary btn-sm " href="{{route('admin.integrantes.edit', $integrante->id)}}">Editar</a>
                                 </td with="10px">
                                 <td>
-                                    <form action="{{route('admin.integrantes.destroy', $integrante)}}" method="POST" class="form-eliminar">
+                                    <form action="{{route('admin.integrantes.destroy', $integrante->id)}}" method="POST" class="form-eliminar">
                                         @csrf
                                         @method('DELETE')
 

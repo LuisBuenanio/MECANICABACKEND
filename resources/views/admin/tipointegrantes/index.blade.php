@@ -31,10 +31,10 @@
                                     <td>{{$tipo_integrante->id}}</td>
                                     <td>{{$tipo_integrante->descripcion}}</td>
                                     <td with="10px">
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipointegrantes.edit', $tipo_integrante)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipointegrantes.edit', $tipo_integrante->id)}}">Editar</a>
                                     </td with="10px">
                                     <td>
-                                        <form action="{{route('admin.tipointegrantes.destroy', $tipo_integrante)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.tipointegrantes.destroy', $tipo_integrante->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
     

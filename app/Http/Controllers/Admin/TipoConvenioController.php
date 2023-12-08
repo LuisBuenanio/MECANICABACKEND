@@ -38,18 +38,21 @@ class TipoConvenioController extends Controller
         return redirect()->route('admin.tipoconvenio.index')-> with('info', 'Tipo de Convenio Actualizado correctamente');
     }
 
-    public function show(TipoConvenio $tipoconvenio)
+    public function show($id)
     {
+        $tipoconvenio = TipoConvenio::findOrFail($id);
         return view('admin.tipoconvenio.show' , compact('tipoconvenio'));
     }
     
-    public function edit(TipoConvenio $tipoconvenio)
+    public function edit($id)
     {
+        $tipoconvenio = TipoConvenio::findOrFail($id);
         return view('admin.tipoconvenio.edit' , compact('tipoconvenio'));
     }
 
-    public function update(Request $request, TipoConvenio $tipoconvenio)
+    public function update(Request $request, $id)
     {
+        $tipoconvenio = TipoConvenio::findOrFail($id);
         $request->validate([
             'descripcion' => "required|unique:tipo_convenio,descripcion,$tipoconvenio->id"
         ]);
@@ -59,8 +62,9 @@ class TipoConvenioController extends Controller
     }
 
 
-    public function destroy(TipoConvenio $tipoconvenio)
+    public function destroy($id)
     {
+        $tipoconvenio = TipoConvenio::findOrFail($id);
         $tipoconvenio->delete();
 
         return redirect()->route('admin.tipoconvenio.index')-> with('eliminar', 'ok');

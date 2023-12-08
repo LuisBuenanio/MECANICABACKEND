@@ -37,18 +37,21 @@ class TipoIntegranteController extends Controller
         return redirect()->route('admin.tipointegrantes.index')-> with('info', 'Tipo de Integrante Creado correctamente');;;
     }
 
-    public function show(TipoIntegrante $tipointegrante)
+    public function show($id)
     {
+        $tipointegrante = TipoIntegrante::findOrFail($id);
         return view('admin.tipointegrantes.show' , compact('tipointegrante'));
     }
 
-    public function edit(TipoIntegrante $tipointegrante)
+    public function edit($id)
     {
+        $tipointegrante = TipoIntegrante::findOrFail($id);
         return view('admin.tipointegrantes.edit' , compact('tipointegrante'));
     }
 
-    public function update(Request $request, TipoIntegrante $tipointegrante)
+    public function update(Request $request, $id)
     {
+        $tipointegrante = TipoIntegrante::findOrFail($id);
         $request->validate([
             'descripcion' => "required|unique:tipo_integrante,descripcion,$tipointegrante->id"
         ]);
@@ -58,8 +61,9 @@ class TipoIntegranteController extends Controller
     }
 
    
-    public function destroy(TipoIntegrante $tipointegrante)
+    public function destroy($id)
     {
+        $tipointegrante = TipoIntegrante::findOrFail($id);
         $tipointegrante->delete();
 
         return redirect()->route('admin.tipointegrantes.index')-> with('eliminar', 'ok');

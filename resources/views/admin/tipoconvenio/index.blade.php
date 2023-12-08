@@ -31,10 +31,10 @@
                                     <td>{{$tipo_convenio->id}}</td>
                                     <td>{{$tipo_convenio->descripcion}}</td>
                                     <td with="10px">
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipoconvenio.edit', $tipo_convenio)}}">Editar</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('admin.tipoconvenio.edit', $tipo_convenio->id)}}">Editar</a>
                                     </td with="10px">
                                     <td>
-                                        <form action="{{route('admin.tipoconvenio.destroy', $tipo_convenio)}}" method="POST" class="form-eliminar">
+                                        <form action="{{route('admin.tipoconvenio.destroy', $tipo_convenio->id)}}" method="POST" class="form-eliminar">
                                             @csrf
                                             @method('DELETE')
     
