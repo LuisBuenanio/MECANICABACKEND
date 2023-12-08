@@ -268,7 +268,7 @@ return [
         ],  
         [
                     
-            'text' => 'SLIDER PORTADA',
+            'text' => 'Portada de Inicio',
             'route'  => 'admin.slider.index',
             'icon' => 'fab fa-fw fa-buffer',
             'submenu' => [
@@ -292,7 +292,7 @@ return [
         ],
         [
                     
-            'text' => 'NOTICIAS',
+            'text' => 'Noticias',
             'route'  => 'admin.noticias.index',
             'icon' => 'fab fa-fw fa-buffer',
             'submenu' => [
@@ -314,7 +314,7 @@ return [
         ],
               
         [
-            'text'    => 'DATOS GENERALES',
+            'text'    => 'Datos Generales',
             'icon'    => 'fab fa-fw fa-buffer',
             'submenu' => [
                 [
@@ -388,7 +388,7 @@ return [
 
 
         [
-            'text'    => 'AUTORIDADES ESCUELA',
+            'text'    => 'Autoridades',
             'icon'    => 'fab fa-fw fa-buffer',
             'submenu' => [                    
                     [
@@ -435,11 +435,11 @@ return [
         ],  
         
         [
-            'text'    => 'GALERIAS',
+            'text'    => 'Galerias',
             'icon'    => 'fab fa-fw fa-buffer',
             'submenu' => [                    
                     [
-                        'text'    => ' GALERIAS',
+                        'text'    => ' Galerias',
                         'icon'    => 'fab fa-fw fa-buffer',
                         'can'   => 'admin.galerias.index',
                         'submenu' => [
@@ -483,11 +483,11 @@ return [
 
 
         [
-            'text'    => 'VINCULACION',
+            'text'    => 'Vinculación',
             'icon'    => 'fab fa-fw fa-buffer',
             'submenu' => [                    
                     [
-                        'text'    => ' CONVENIOS',
+                        'text'    => 'Convenios',
                         'icon'    => 'fab fa-fw fa-buffer',
                         'can'   => 'admin.convenio.index',
                         'submenu' => [
@@ -525,7 +525,7 @@ return [
                         ],
                     ],
                     [
-                        'text'    => ' PROYECTOS',
+                        'text'    => ' Proyectos',
                         'icon'    => 'fab fa-fw fa-buffer',
                         'can'   =>'admin.proyectos.index',
                         'submenu' => [
