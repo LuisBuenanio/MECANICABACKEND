@@ -21,6 +21,7 @@ class ProyectoController extends Controller
                 'ejecutandose',
                 'tipo_proyecto.descripcion'
             )
+            ->where('estado',2)
             ->get();
     return view('proyectos.proyectos', compact('proyectos'));
     }

@@ -58,8 +58,7 @@ Route::resource('tipoconvenio', TipoConvenioController::class)->except('show')->
 Route::resource('convenio', ConvenioController::class)->except('show')->names('admin.convenio');
 
 Route::resource('tipoproyecto', TipoProyectoController::class)->except('show')->names('admin.tipoproyecto');
-
-Route::resource('proyecto', ProyectoController::class)->except('show')->names('admin.proyecto');
+Route::resource('proyectos', ProyectoController::class)->except('show')->names('admin.proyectos');
 
 
 Route::resource('calendario', CalendarioController::class)->except('show')->names('admin.calendario');

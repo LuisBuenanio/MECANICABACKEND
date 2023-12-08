@@ -23,7 +23,8 @@ return new class extends Migration
 
             $table->enum('estado',[1,2])->default(2);
 
-            $table->boolean('ejecutandose')->default(false);
+            $table->enum('ejecutandose',[1,2])->default(2);
+
            
             $table->unsignedBigInteger('tipo_proyecto_id')->nullable();
 

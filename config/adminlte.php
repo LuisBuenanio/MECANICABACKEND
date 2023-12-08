@@ -508,33 +508,33 @@ return [
                     [
                         'text'    => ' PROYECTOS',
                         'icon'    => 'fab fa-fw fa-buffer',
-                        'can'   => 'admin.convenio.index',
+                        'can'   =>'admin.proyectos.index',
                         'submenu' => [
                             [
                                 'text' => 'Listado de Proyectos',
-                                'route'  => 'admin.convenio.index',
+                                'route'  =>'admin.proyectos.index',
                                 'icon' => 'fab fa-fw fa-buffer',
                                 
                             ],
                             [
                                 'text' => 'Crear  Proyecto',
-                                'route'  => 'admin.convenio.create',
+                                'route'  => 'admin.proyectos.create',
                                 'icon' => 'fab fa-fw fa-buffer',
                             ],
                             [
                                 'text'    => 'Tipos de Proyectos',
                                 'icon'    => 'fab fa-fw fa-buffer',
-                                'can'   => 'admin.tipoconvenio.index',
+                                'can'   => 'admin.tipoproyecto.index',
                                 'submenu' => [
                                     [
                                         'text' => 'Listar Tipo de Proyectos',
-                                        'route'  => 'admin.tipoconvenio.index',
+                                        'route'  => 'admin.tipoproyecto.index',
                                         'icon' => 'fab fa-fw fa-buffer',
                                         
                                     ],
                                     [
                                         'text' => 'Crear Tipo de Proyecto',
-                                        'route'  => 'admin.tipoconvenio.create',
+                                        'route'  => 'admin.tipoproyecto.create',
                                         'icon' => 'fab fa-fw fa-buffer',
                                     ],
                                     

@@ -3,8 +3,8 @@
 @section('title', 'Mecánica Espoch')
 
 @section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.convenio.create')}}">Nuevo Convenio</a>
-    <h1>Listado de Convenios</h1>
+    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.proyectos.create')}}">Nuevo Proyecto</a>
+    <h1>Listado de Proyectos</h1>
 @stop
 
 @section('content')
@@ -13,11 +13,8 @@
             <strong>{{session('info')}}</strong>
         </div>
     @endif
-
-    @livewire('admin.convenios-index')   
         
-    
-    
+        @livewire('admin.proyectos-index')
     
 @stop
 
@@ -30,7 +27,7 @@
     <script>
         Swal.fire(
                 '¡Eliminado!',
-                'El convenio se eliminó correctamente.',
+                'El proyecto se eliminó correctamente.',
                 'success'
         )
     </script>
@@ -43,7 +40,7 @@
 
         Swal.fire({
         title: '¿Estás Seguro?',
-        text: "Este convenio se eliminará definitivamente",
+        text: "Este proyecto se eliminará definitivamente",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

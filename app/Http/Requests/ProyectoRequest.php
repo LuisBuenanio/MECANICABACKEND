@@ -23,12 +23,14 @@ class ProyectoRequest extends FormRequest
      */
     public function rules()
     {
-        $convenio = $this->route()->parameter('convenio');
+        $proyecto = $this->route()->parameter('proyecto');
 
         $rules =[
             'nombre' => 'required',
             'coordinador' => 'required',
             'estado' => 'required|in:1,2',
+            'ejecutandose' => 'required|in:1,2',
+            'tipo_proyecto_id' => 'required',
         ];
 
         if ($this-> estado == 2){

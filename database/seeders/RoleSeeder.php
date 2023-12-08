@@ -27,8 +27,9 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.home','description' => 'Ver el Dashboard'])->syncRoles([$role1, $role2, $role3]);
 
 
-        Permission::create(['name' => 'admin.users.index','description' => 'Ver listado de Usarios'])->syncRoles([$role1]);
-        Permission::create(['name' => 'admin.users.edit','description' => 'Asignar un rol'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.users.index','description' => 'Ver listado de Usuarios'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.users.create','description' => 'Crear Usuarios'])->syncRoles([$role1]);
+        Permission::create(['name' => 'admin.users.edit','description' => 'Editar Usuarios'])->syncRoles([$role1]);
         Permission::create(['name' => 'admin.users.destroy','description' => 'Eliminar Usuarios'])->syncRoles([$role1]);
         
         Permission::create(['name' => 'admin.roles.index','description' => 'Ver listado de Roles'])->syncRoles([$role1, $role2]);
@@ -94,15 +95,21 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.tipoproyecto.edit','description' => 'Editar Tipo de Proyecto'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.tipoproyecto.destroy','description' => 'Eliminar Tipo de Proyecto'])->syncRoles([$role1, $role2]);
     
-        Permission::create(['name' => 'admin.proyecto.index','description' => 'Ver listado de Proyectos'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.proyecto.create','description' => 'Crear Proyectos'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.proyecto.edit','description' => 'Editar Proyectos'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'admin.proyecto.destroy','description' => 'Eliminar Proyectos'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.proyectos.index','description' => 'Ver listado de Proyectos'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.proyectos.create','description' => 'Crear Proyectos'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.proyectos.edit','description' => 'Editar Proyectos'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.proyectos.destroy','description' => 'Eliminar Proyectos'])->syncRoles([$role1, $role2]);
     
         Permission::create(['name' => 'admin.calendario.index','description' => 'Ver Eventos de Calendario'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.calendario.create','description' => 'Crear Eventos de Calendario'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.calendario.edit','description' => 'Editar Eventos Calendario'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.calendario.destroy','description' => 'Eliminar Eventos Calendario'])->syncRoles([$role1, $role2]);
+    
+
+        Permission::create(['name' => 'admin.slider.index','description' => 'Ver Imagenes de Portada'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.slider.create','description' => 'Crear Imagen de Portada'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.slider.edit','description' => 'Editar Imágenes de Portada '])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.slider.destroy','description' => 'Eliminar Imágenes de Portada '])->syncRoles([$role1, $role2]);
     
        
     }

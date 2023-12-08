@@ -18,6 +18,7 @@ class Proyecto extends Model
         'objetivo',
         'coordinador',
         'estado',
+        'ejecutandose',
         'tipo_proyecto_id'
         
     ];
@@ -33,4 +34,6 @@ class Proyecto extends Model
   public function tipo_proyecto(){
     return $this->belongsTo(TipoProyecto::class);
   }
+
+  
 }

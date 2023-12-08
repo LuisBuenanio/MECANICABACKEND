@@ -49,19 +49,39 @@
 
 
 <div class="form-group">
-    <p class="font-weight-bold">Estado del Proyecto</p>
+    <p class="font-weight-bold">Publicación del Proyecto</p>
     
     <label class="mr-2">
         {!! Form::radio('estado', 1, true ) !!}
-        Inactivo
+        No Publicado
     </label>
     <label class="mr-2">
         {!! Form::radio('estado', 2 ) !!}
-        Activo
+        Publicado
     </label>      
     
     <hr>
-    @error('activo')
+    @error('estado')
+        <small class="text-danger">{{$message}}</small>
+    @enderror
+    
+</div>
+
+
+<div class="form-group">
+    <p class="font-weight-bold">Estado de Ejecución del Proyecto</p>
+    
+    <label class="mr-2">
+        {!! Form::radio('ejecutandose', 1, true ) !!}
+        En Ejecución 
+    </label>
+    <label class="mr-2">
+        {!! Form::radio('ejecutandose', 2 ) !!}
+        Ejecutado
+    </label>      
+    
+    <hr>
+    @error('ejecutandose')
         <small class="text-danger">{{$message}}</small>
     @enderror
     

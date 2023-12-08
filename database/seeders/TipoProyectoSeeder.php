@@ -16,9 +16,7 @@ class TipoProyectoSeeder extends Seeder
      */
     public function run()
     {
-        TipoProyecto::create([
-            'descripcion' => ''            
-        ]);
+       
         TipoProyecto::create([
             'descripcion' => 'VINCULACIÓN INSTITUCIONAL CON LA SOCIEDAD'            
         ]);

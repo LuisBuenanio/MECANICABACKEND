@@ -3,24 +3,17 @@
 @section('title', 'Mecánica Espoch')
 
 @section('content_header')
-    <h1>Editar Proyecto</h1>
+    <h1>Crear Nuevo Proyecto</h1>
 @stop
 
 @section('content')
-    @if (session('info'))
-        <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
-        </div>
-    @endif
-
     <div class="card">
         <div class="card-body">
-            
-            {!! Form::model($proyecto,['route' => ['admin.proyecto.update',$proyecto], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::open(['route' => 'admin.proyectos.store', 'autocomplete' => 'off', 'files' => true])!!}
 
-                @include('admin.proyecto.partials.form')
+                @include('admin.proyectos.partials.form')
 
-                {!! Form:: submit('Actualizar Proyecto',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Crear Proyecto',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
@@ -28,7 +21,6 @@
 
     </div>
 @stop
-
 @section('css')
     <style>
         .image-wrapper{
@@ -60,13 +52,13 @@
         });
         
         ClassicEditor
-            .create( document.querySelector( '#objetivo' ) )
+            .create( document.querySelector( '#d' ) )
             .catch( error => {
                 console.error( error );
             } );
 
         ClassicEditor
-            .create( document.querySelector( '#contenido' ) )
+            .create( document.querySelector( '#objetivo' ) )
             .catch( error => {
                 console.error( error );
             } );
