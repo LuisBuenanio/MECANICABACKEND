@@ -70,28 +70,30 @@ class AutoridadController extends Controller
         };
         
         $autoridad->save();
-        Cache::flush();
         return redirect()->route('admin.autoridades.index')-> with('info', 'Autoridad Creado correctamente');;
     
     }
 
    
-    public function show(Autoridad $autoridad)
+    public function show($id)
     {
         return view('admin.autoridades.show' , compact('autoridad'));
     }
 
     
-    public function edit(Autoridad $autoridade)
+    public function edit($id)
     {
+        $autoridade = Autoridad::findOrFail($id);
         $tipo_autoridad = TipoAutoridad::pluck('descripcion', 'id');
         return view('admin.autoridades.edit' , compact('autoridade', 'tipo_autoridad'));
   
     }
 
     
-    public function update(Request $request, Autoridad $autoridade)
+    public function update(Request $request, $id)
     {
+        $autoridade = Autoridad::findOrFail($id);
+
         $request->validate([
             'nombre' => 'required'
         ]);
@@ -130,17 +132,18 @@ class AutoridadController extends Controller
         
         $autoridade->save();
         
-        Cache::flush();
         return redirect()->route('admin.autoridades.index')-> with('info', 'Datos Actualizados correctamente');
    
     }
 
     
-    public function destroy(Autoridad $autoridade)
+    public function destroy($id)
     {
+        $autoridade = Autoridad::findOrFail($id);
+
+        
         $autoridade->delete();
 
-        Cache::flush();
         return redirect()->route('admin.autoridades.index')-> with('eliminar', 'ok');
 
     }

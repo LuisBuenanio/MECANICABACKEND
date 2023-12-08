@@ -3,7 +3,7 @@
 @section('title', 'Mecánica Espoch')
 
 @section('content_header')
-    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.autoridades.create')}}">Nuevo Autoridad</a>
+    <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.autoridades.create')}}">Nueva Autoridad</a>
     <h1>Listado de Autoridades</h1>
 @stop
 

@@ -36,7 +36,7 @@ class GaleriaRequest extends FormRequest
             $rules['slug'] = 'required|unique:galerias,slug,' .$galeria->id;
         }
 
-        if ($this-> estado == 2){
+        if ($this-> input ('estado') == 2){
             $rules = array_merge($rules, [
                     'fecha_creacion' => 'required',
                     'descripcion' => 'required',

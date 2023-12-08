@@ -61,18 +61,24 @@ class GaleriaController extends Controller
     }
 
     
-    public function edit(Galeria $galeria)
+    public function edit($id)
     {
+        $galeria = Galeria::findOrFail($id);
         return view('admin.galerias.edit' , compact('galeria'));
     }
 
     
-    public function update(GaleriaRequest $request, Galeria $galeria)
+    public function update(Request $request, $id)
     {
-        $galeria->update($request->all());
+        $galeria = Galeria::findOrFail($id);
 
-        $galeria->nombre = $request->nombre;  
+        $request->validate([
+            'nombre' => 'required',
+            'portada' => 'image'
+        ]);
+        $galeria->update($request->all());
         
+        $galeria->nombre = $request->nombre;
         
         /*   Sube la foto de la autoridad  */
           if ($request->hasFile("portada")){
@@ -86,18 +92,19 @@ class GaleriaController extends Controller
   
               $galeria->portada = $nombreportada;
           };
+
+          
           
           $galeria->save();
-        Cache::flush();
         return redirect()->route('admin.galerias.index')-> with('info', 'Galeria Actualizada correctamente');
   
     }
 
-    public function destroy(Galeria $galeria)
+    public function destroy($id)
     {
+        $galeria = Galeria::findOrFail($id);
         $galeria->delete();
 
-        Cache::flush();
         return redirect()->route('admin.galerias.index')-> with('eliminar', 'ok');
 
     }

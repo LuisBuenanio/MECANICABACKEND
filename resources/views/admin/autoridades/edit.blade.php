@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($autoridade,['route' => ['admin.autoridades.update',$autoridade], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($autoridade,['route' => ['admin.autoridades.update',$autoridade->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 @include('admin.autoridades.partials.form')
 
