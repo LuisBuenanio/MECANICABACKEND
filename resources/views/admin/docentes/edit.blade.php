@@ -1,19 +1,26 @@
 @extends('adminlte::page')
 
-@section('title', 'Autoridades')
+@section('title', 'Mecánica Espoch')
 
 @section('content_header')
-    <h1>Crear Nueva Autoridad</h1>
+    <h1>Editar Docente</h1>
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{session('info')}}</strong>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.autoridades.store', 'autocomplete' => 'off', 'files' => true])!!}
+            
+            {!! Form::model($docente,['route' => ['admin.docentes.update',$docente->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-                @include('admin.autoridades.partials.form')
+                @include('admin.docentes.partials.form')
 
-                {!! Form:: submit('Crear Autoridad',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Actualizar Docente',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
@@ -21,6 +28,7 @@
 
     </div>
 @stop
+
 @section('css')
     <style>
         .image-wrapper{
@@ -52,7 +60,7 @@
         });
         
         ClassicEditor
-            .create( document.querySelector( '#entradilla' ) )
+            .create( document.querySelector( '#objetivo' ) )
             .catch( error => {
                 console.error( error );
             } );

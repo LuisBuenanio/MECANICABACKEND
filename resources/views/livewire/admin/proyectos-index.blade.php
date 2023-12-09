@@ -5,8 +5,8 @@
     </div>
 
     @if ($proyectos->count())
-            <div class="card-body">
-                <table class="table table-striped">
+        <div class="card-body">
+            <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -55,7 +55,10 @@
     
                 </table>
     
-            </div>
+        </div>
+        <div class="card-footer">
+            {{$proyectos->links()}}
+        </div>
         @else
             <div class="card-body">
                 <strong>No existen registros ......</strong>

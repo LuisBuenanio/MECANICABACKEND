@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\CalendarioController;
 
 use App\Http\Controllers\Admin\SliderController;
 
+use App\Http\Controllers\Admin\DocenteController;
+
 
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
@@ -65,3 +67,6 @@ Route::resource('calendario', CalendarioController::class)->except('show')->name
 
 
 Route::resource('slider', SliderController::class)->except('show')->names('admin.slider');
+
+
+Route::resource('docentes', DocenteController::class)->except('show')->names('admin.docentes');

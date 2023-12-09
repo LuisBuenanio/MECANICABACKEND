@@ -1,19 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Autoridades')
+@section('title', 'Docentes')
 
 @section('content_header')
-    <h1>Crear Nueva Autoridad</h1>
+    <h1>Crear Nuevo Docente</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.autoridades.store', 'autocomplete' => 'off', 'files' => true])!!}
+            {!! Form::open(['route' => 'admin.docentes.store', 'autocomplete' => 'off', 'files' => true])!!}
 
-                @include('admin.autoridades.partials.form')
+                @include('admin.docentes.partials.form')
 
-                {!! Form:: submit('Crear Autoridad',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Crear Docente',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
@@ -52,13 +52,13 @@
         });
         
         ClassicEditor
-            .create( document.querySelector( '#entradilla' ) )
+            .create( document.querySelector( '#d' ) )
             .catch( error => {
                 console.error( error );
             } );
 
         ClassicEditor
-            .create( document.querySelector( '#contenido' ) )
+            .create( document.querySelector( '#objetivo' ) )
             .catch( error => {
                 console.error( error );
             } );

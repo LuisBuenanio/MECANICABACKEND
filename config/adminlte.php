@@ -567,6 +567,30 @@ return [
                 ],
                     
         ], 
+
+        
+        [
+                    
+            'text' => 'Docentes',
+            'route'  => 'admin.docentes.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Listar Docentes',
+                    'route'  => 'admin.docentes.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    'text' => 'Crear Docentes',
+                    'route'  => 'admin.docentes.create',
+                    'icon' => 'fab fa-fw fa-buffer',
+                ],
+                
+            ],
+            
+        ],
     ],
 
     /*

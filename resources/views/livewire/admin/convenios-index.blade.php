@@ -4,8 +4,8 @@
 
     </div>
     @if ($convenios->count())
-            <div class="card-body">
-                <table class="table table-striped">
+        <div class="card-body">
+            <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -42,11 +42,13 @@
                             @endforeach
                         </tbody>
     
-                    </thead>
+                </thead>
     
-                </table>
-    
-            </div>
+            </table>    
+        </div>
+        <div class="card-footer">
+            {{$convenios->links()}}
+        </div>
         @else
             <div class="card-body">
                 <strong>No existen registros ......</strong>
