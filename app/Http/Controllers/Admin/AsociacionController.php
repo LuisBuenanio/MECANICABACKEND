@@ -73,9 +73,8 @@ class AsociacionController extends Controller
             $asociacion->logo = $nombrelogo;
         };
         
-        $asociacion->save();
+        $asociacion->save();        
         
-        Cache::flush();
         return redirect()->route('admin.asociacion.index')-> with('info', 'Datos de Asociacion Actualizada correctamente');;
     
     }

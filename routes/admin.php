@@ -20,8 +20,9 @@ use App\Http\Controllers\Admin\ProyectoController;
 use App\Http\Controllers\Admin\CalendarioController;
 
 use App\Http\Controllers\Admin\SliderController;
-
 use App\Http\Controllers\Admin\DocenteController;
+use App\Http\Controllers\Admin\TitulacionController;
+use App\Http\Controllers\Admin\TipoTitulacionController;
 
 
 
@@ -70,3 +71,7 @@ Route::resource('slider', SliderController::class)->except('show')->names('admin
 
 
 Route::resource('docentes', DocenteController::class)->except('show')->names('admin.docentes');
+
+
+Route::resource('titulacion', TitulacionController::class)->except('show')->names('admin.titulacion');
+Route::resource('tipotitulacion', TipoTitulacionController::class)->except('show')->names('admin.tipotitulacion');

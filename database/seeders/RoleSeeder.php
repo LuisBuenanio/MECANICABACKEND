@@ -116,6 +116,11 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.docentes.edit','description' => 'Editar Docentes'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.docentes.destroy','description' => 'Eliminar Docentes '])->syncRoles([$role1, $role2]);
     
+        Permission::create(['name' => 'admin.titulacion.index','description' => 'Ver Datos Titulación'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.titulacion.edit','description' => 'Editar Datos Titulación'])->syncRoles([$role1, $role2]);
        
+        Permission::create(['name' => 'admin.tipotitulacion.index','description' => 'Ver Datos de los Tipos de Titulación'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.tipotitulacion.edit','description' => 'Editar Datos de los Tipos de Titulación'])->syncRoles([$role1, $role2]);
+      
     }
 }

@@ -37,8 +37,5 @@ class TipoTitulacion extends Model
      */
     public $timestamps = false;
 
-    /* Relacion de uno a muchos */
-    public function titulacion(){
-        return $this->hasMany(Titulacion::class);
-    }
+   
 }

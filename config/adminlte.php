@@ -591,6 +591,28 @@ return [
             ],
             
         ],
+        [
+                    
+            'text' => 'Titulación',
+            'route'  => 'admin.titulacion.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Datos de Titulación',
+                    'route'  => 'admin.titulacion.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    'text' => 'Datos de los Tipos de Titulación',
+                    'route'  => 'admin.tipotitulacion.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                ],
+                
+            ],
+            
+        ],
     ],
 
     /*
