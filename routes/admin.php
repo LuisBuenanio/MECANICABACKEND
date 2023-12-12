@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DocenteController;
 use App\Http\Controllers\Admin\TitulacionController;
 use App\Http\Controllers\Admin\TipoTitulacionController;
+use App\Http\Controllers\Admin\SecretariaController;
+use App\Http\Controllers\Admin\MaestriaController;
 
 
 
@@ -75,3 +77,8 @@ Route::resource('docentes', DocenteController::class)->except('show')->names('ad
 
 Route::resource('titulacion', TitulacionController::class)->except('show')->names('admin.titulacion');
 Route::resource('tipotitulacion', TipoTitulacionController::class)->except('show')->names('admin.tipotitulacion');
+
+
+Route::resource('secretaria', SecretariaController::class)->except('show')->names('admin.secretaria');
+
+Route::resource('maestrias', MaestriaController::class)->except('show')->names('admin.maestrias');

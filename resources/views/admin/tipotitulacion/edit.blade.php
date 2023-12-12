@@ -20,7 +20,7 @@
             @include('admin.tipotitulacion.partials.form')
                 
 
-                {!! Form:: submit('Actualizar Asociación',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Actualizar Tipo de Proyecto',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 

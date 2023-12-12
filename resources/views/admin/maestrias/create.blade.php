@@ -1,36 +1,26 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Maestrias')
 
 @section('content_header')
-    <h1>Editar Datos de Titulación</h1>
+    <h1>Crear Nueva Maestría</h1>
 @stop
 
 @section('content')
-    @if (session('info'))
-        <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
-        </div>
-    @endif
     <div class="card">
         <div class="card-body">
-            
-            {!! Form::model($titulacion,['route' => ['admin.titulacion.update',$titulacion], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::open(['route' => 'admin.maestrias.store', 'autocomplete' => 'off', 'files' => true])!!}
 
-            @include('admin.titulacion.partials.form')
-                
+                @include('admin.maestrias.partials.form')
 
-                {!! Form:: submit('Actualizar Datos de Titulación',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Crear Maestría',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
         </div>
 
     </div>
-
-    
 @stop
-
 @section('css')
     <style>
         .image-wrapper{
@@ -62,28 +52,34 @@
         });
         
         ClassicEditor
-            .create( document.querySelector( '#mision' ) )
+            .create( document.querySelector( '#perfil_ingreso' ) )
             .catch( error => {
                 console.error( error );
             } );
+        
+        ClassicEditor
+            .create( document.querySelector( '#perfil_profesional' ) )
+            .catch( error => {
+                console.error( error );
+        } );
 
         ClassicEditor
-            .create( document.querySelector( '#vision' ) )
+            .create( document.querySelector( '#objetivo' ) )
             .catch( error => {
                 console.error( error );
             } );
         //Cambiar Imagen
-        document.getElementById( "portada").addEventListener('change', cambiarImagen);
+        document.getElementById( "foto").addEventListener('change', cambiarImagen);
 
         function cambiarImagen(event){
-            var portada = event.target.files[0];
+            var foto = event.target.files[0];
 
             var reader = new FileReader();
             reader.onload = (event) => {
                 document.getElementById("picture").setAttribute('src', event.target.result);
             };
 
-            reader.readAsDataURL(portada);
+            reader.readAsDataURL(foto);
         }
 
     </script>

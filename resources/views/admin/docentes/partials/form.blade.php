@@ -70,7 +70,7 @@
 
 <div class="form-group">
     {!! Form::label('descripcion', 'Resumen Laboral:') !!}
-    {!! Form::text('descripcion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un resumen Laboral del Docente']) !!} 
+    {!! Form::textarea('descripcion', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un resumen Laboral del Docente']) !!} 
 
     @error('descripcion')
         <small class="text-danger">{{$message}}</small>

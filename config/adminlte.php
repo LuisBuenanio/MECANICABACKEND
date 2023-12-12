@@ -613,6 +613,45 @@ return [
             ],
             
         ],
+        [
+                    
+            'text' => 'Secretaría',
+            'route'  => 'admin.secretaria.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Datos de Secretaría',
+                    'route'  => 'admin.secretaria.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],               
+                
+            ],
+            
+        ],
+        [
+                    
+            'text' => 'Maestrias',
+            'route'  => 'admin.maestrias.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Listar Maestrias',
+                    'route'  => 'admin.maestrias.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    'text' => 'Crear Maestrias',
+                    'route'  => 'admin.maestrias.create',
+                    'icon' => 'fab fa-fw fa-buffer',
+                ],
+                
+            ],
+            
+        ],
     ],
 
     /*

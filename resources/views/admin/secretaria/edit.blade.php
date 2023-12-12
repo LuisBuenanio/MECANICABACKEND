@@ -15,12 +15,12 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($titulacion,['route' => ['admin.titulacion.update',$titulacion], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($secretaria,['route' => ['admin.secretaria.update',$secretaria->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-            @include('admin.titulacion.partials.form')
+            @include('admin.secretaria.partials.form')
                 
 
-                {!! Form:: submit('Actualizar Datos de Titulación',['class' => 'btn btn-primary']) !!}
+                {!! Form:: submit('Actualizar Datos de Secretaría',['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 
@@ -73,17 +73,17 @@
                 console.error( error );
             } );
         //Cambiar Imagen
-        document.getElementById( "portada").addEventListener('change', cambiarImagen);
+        document.getElementById( "foto_secretaria").addEventListener('change', cambiarImagen);
 
         function cambiarImagen(event){
-            var portada = event.target.files[0];
+            var foto_secretaria = event.target.files[0];
 
             var reader = new FileReader();
             reader.onload = (event) => {
                 document.getElementById("picture").setAttribute('src', event.target.result);
             };
 
-            reader.readAsDataURL(portada);
+            reader.readAsDataURL(foto_secretaria);
         }
 
     </script>
