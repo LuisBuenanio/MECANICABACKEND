@@ -652,6 +652,28 @@ return [
             ],
             
         ],
+        [
+                    
+            'text' => 'Eventos del Calendario',
+            'route'  => 'admin.eventos.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Listar Eventos',
+                    'route'  => 'admin.eventos.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    'text' => 'Crear Eventos',
+                    'route'  => 'admin.eventos.create',
+                    'icon' => 'fab fa-fw fa-buffer',
+                ],
+                
+            ],
+            
+        ],
     ],
 
     /*

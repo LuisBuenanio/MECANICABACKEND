@@ -21,12 +21,13 @@
                             <td>{{ $slider->id }}</td>
                             <td>{{ $slider->name }}</td>
                             <td>
-                                @if ($slider->estado == 1)
-                                    No Publicado
-                                @elseif ($slider->estado == 2)
-                                    Publicado
+                                @if($slider->estado == 2)
+                                    <span class="badge badge-success">Publicado</span>
+                                @else
+                                    <span class="badge badge-danger">Borrador</span>
                                 @endif
                             </td>
+                            
                             <td>
                                 <img src="{{ asset('img/slider/' . $slider->s_imagen) }}" alt="{{ $slider->name }}"
                                     style="max-width: 300px;">

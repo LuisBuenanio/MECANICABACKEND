@@ -36,13 +36,7 @@ class ProyectoController extends Controller
 
       public function store(ProyectoRequest $request)
     {
-        $data = $request->validated();
-
-        $data['objetivo'] = strip_tags($data['objetivo']); // Aplica strip_tags() al contenido de la noticia
-
-       
-
-        $proyecto = Proyecto::create($data);
+        $proyecto = Proyecto::create($request->all());
 
         return redirect()->route('admin.proyectos.index')-> with('info', 'Proyecto Creado correctamente');;
 
@@ -60,16 +54,11 @@ class ProyectoController extends Controller
 
     public function update(ProyectoRequest $request, $id)
     {
-        $proyecto = Proyecto::findOrFail($id);
-
-        $data = $request->validated();
-
-        $data['objetivo'] = strip_tags($data['objetivo']); // Aplica strip_tags() al contenido de la noticia
-
-
-        $proyecto->update($data);
+        $proyecto = Proyecto::findOrFail($id);    
+        $proyecto->update($request->all());         
         
         $proyecto->save();
+
         return redirect()->route('admin.proyectos.index')-> with('info', 'Datos Actualizados correctamente');
  
     }

@@ -27,7 +27,6 @@ class ProyectoRequest extends FormRequest
 
         $rules =[
             'nombre' => 'required',
-            'coordinador' => 'required',
             'estado' => 'required|in:1,2',
             'ejecutandose' => 'required|in:1,2',
             'tipo_proyecto_id' => 'required',
@@ -36,6 +35,7 @@ class ProyectoRequest extends FormRequest
         if ($this-> estado == 2){
             $rules = array_merge($rules, [
                 'codigo' => 'required',
+                'coordinador' => 'required',
                 'objetivo' => 'required',
             ]);
             

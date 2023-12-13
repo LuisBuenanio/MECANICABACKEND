@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->text('descripcion');
-            $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_fin');
+            $table->text('descripcion')->nullable();
+            $table->dateTime('fecha_inicio')->nullable();
+            $table->dateTime('fecha_fin')->nullable();            
+            $table->enum('estado',[1,2])->default(1);
             $table->timestamps();
         });
     }

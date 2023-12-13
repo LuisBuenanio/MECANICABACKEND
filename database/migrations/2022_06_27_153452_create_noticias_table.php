@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('noticias', function (Blueprint $table) {
             
-            // iDE DE NOTICIA AUTOINCREMENTABLE 
-            $table->id();
-
-            //COLUMNAS DE LA NOTICIA        -ññ
+            
+            $table->id();  
             
             $table->string('titulo');
             $table->string('slug')->nullable(); 

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
                 <h1 class="text-2xl font-bold mb-4">Próximos Eventos</h1>
 
-                @forelse ($todos_eventos as $evento)
+                @forelse ($eventosPublicados as $evento)
                     <div class="mb-4">
                         <h2 class="text-xl font-semibold">{{ $evento->titulo }}</h2>
                         <p class="text-gray-600">Fecha:

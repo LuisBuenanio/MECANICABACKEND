@@ -4,82 +4,81 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\EventoRequest;
+use Illuminate\Support\Facades\Cache;
+
+use Illuminate\Support\Str;
+use App\Models\Evento;
+
 
 class EventoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this-> middleware('can:admin.eventos.index')->only('index');
+        $this-> middleware('can:admin.eventos.create')->only('create', 'store');        
+        $this-> middleware('can:admin.eventos.edit')->only('edit', 'update');
+        $this-> middleware('can:admin.eventos.destroy')->only('destroy');
+    }
+    
     public function index()
     {
-        //
+        $eventos = Evento::all();
+        return view('admin.eventos.index', compact('eventos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return view('admin.eventos.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    
+    public function store(EventoRequest $request)
     {
-        //
+       
+        $evento = Evento::create($request->all());     
+                   
+        $evento->save();
+        return redirect()->route('admin.eventos.index')-> with('info', 'Evento Creado correctamente');;
+    
+    
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $evento = Evento::findOrFail($id);
+        return view('admin.eventos.edit' , compact('evento'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(EventoRequest $request, $id)
     {
-        //
+        $evento = Evento::findOrFail($id);
+
+        $evento->update($request->all()); 
+        
+        
+        $evento->save();
+        
+        return redirect()->route('admin.eventos.index')-> with('info', 'Datos Actualizados correctamente');
+       
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $evento = Evento::findOrFail($id);
+
+        $evento->delete();
+
+        return redirect()->route('admin.eventos.index')-> with('eliminar', 'ok');
+
     }
 }

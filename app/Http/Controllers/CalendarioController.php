@@ -11,11 +11,12 @@ class CalendarioController extends Controller
     {
         /* $eventos = Evento::all(); // Obtén todos los eventos desde la base de datos
  */
-        $all_events = Evento::all();
-        $todos_eventos = Evento::all();
+        $eventosPublicados = Evento::where('estado',2)->get();
+
+        
         $events = [];
 
-        foreach ($all_events   as $evento) {
+        foreach ($eventosPublicados   as $evento) {
             $events [] = [
                 'title' => $evento->titulo,
                 'description' => $evento->descripcion, 
@@ -25,6 +26,6 @@ class CalendarioController extends Controller
         }
 
 
-        return view('calendario.calendario', compact('events', 'todos_eventos'));
+        return view('calendario.calendario', compact('events', 'eventosPublicados'));
     }
 }

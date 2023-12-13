@@ -25,6 +25,8 @@ use App\Http\Controllers\Admin\TitulacionController;
 use App\Http\Controllers\Admin\TipoTitulacionController;
 use App\Http\Controllers\Admin\SecretariaController;
 use App\Http\Controllers\Admin\MaestriaController;
+use App\Http\Controllers\Admin\EventoController;
+use App\Http\Controllers\Admin\GrupoInvestigacionController;
 
 
 
@@ -82,3 +84,5 @@ Route::resource('tipotitulacion', TipoTitulacionController::class)->except('show
 Route::resource('secretaria', SecretariaController::class)->except('show')->names('admin.secretaria');
 
 Route::resource('maestrias', MaestriaController::class)->except('show')->names('admin.maestrias');
+Route::resource('eventos', EventoController::class)->except('show')->names('admin.eventos');
+Route::resource('gruposinvestigacion', GrupoInvestigacionController::class)->except('show')->names('admin.gruposinvestigacion');
