@@ -14,7 +14,8 @@
             {!! $noticia->entradilla !!}
         </div>
         <div class="ed-item no-padding">
-            <br>
+            <br>          
+
             <p><strong>Fecha publicación: </strong>{{ date('d-m-Y', strtotime($noticia->fecha_publicacion)) }}</p>
         </div>
 

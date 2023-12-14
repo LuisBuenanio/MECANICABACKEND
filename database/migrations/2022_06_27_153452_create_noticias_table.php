@@ -28,7 +28,7 @@ return new class extends Migration
             $table->enum('estado',[1,2])->default(1);
 
 
-            $table->timestamp('fecha_publicacion', $precision = 0);
+            $table->date('fecha_publicacion')->nullable();
             
             $table->timestamps(); 
         });

@@ -29,21 +29,21 @@ class NoticiaRequest extends FormRequest
             'titulo' => 'required',
             'slug' => 'required|unique:noticias,slug',
             'estado' => 'required|in:1,2',
-            'file' => 'image'
         ];
 
-        if($noticia){
+        if ($noticia) {
             $rules['slug'] = 'required|unique:noticias,slug,' .$noticia->id;
         }
 
         if ($this-> estado == 2){
             $rules = array_merge($rules, [
-                    'fecha_publicacion' => 'required',
+                    'fecha_publicacion' => 'required|date',
                     'entradilla' => 'required',
                     'contenido' => 'required',
             ]);
             
         }
+
         return $rules;
     }
 }

@@ -56,10 +56,11 @@
 <div class="row mb-3">
     <div class="col">
         <div class="image-wrapper">
-            @isset($noticia->image)
-                <img id="picture" src="{{Storage::url($noticia->image->url)}}">
+            @isset($noticia->portada)
+                <img id="picture" src="{{asset('img/noticias/portadas/'.$noticia->portada)}}" alt="">
             @else
-                <img id="picture" src="https://cdn.pixabay.com/photo/2016/07/28/16/50/car-engine-1548434_960_720.jpg " alt="">
+                <img id="picture" src="https://cdn.pixabay.com/photo/2016/07/28/16/50/car-engine-1548434_960_720.jpg "
+                alt="">
             @endisset
  
         </div>
@@ -67,15 +68,15 @@
 
     <div class="col">
         <div class="form-group">
-            {!! Form::label('file', 'Imagen que se mostrará en la noticia') !!}
-            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
+            {!! Form::label('portada', 'Portada de la Noticia') !!}
+            {!! Form::file('portada', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
         </div>
 
-        @error('file')
+        @error('portada')
             <small class="text-danger">{{$message}}</small>
         @enderror
 
-        <p>Suba una imagen de la noticia en este espacio</p>
+        <p>Suba la foto de Portada en este espacio</p>
     </div>
     
 </div>
@@ -96,4 +97,18 @@
     @error('contenido')
         <small class="text-danger">{{$message}}</small>
     @enderror
+</div>
+
+
+
+
+
+<div class="form-group">
+    <label for="imagenes">Imágenes adicionales:</label>
+    @foreach ($noticia->images as $imagen)
+        <label for="imagen{{ $imagen->id }}">Imagen {{ $imagen->id }}:</label>
+        <input type="file" name="imagenes[]" id="imagen{{ $imagen->id }}">
+        <img src="{{ asset('img/noticias/imagenes/' . $imagen->image_path) }}" alt="Imagen actual">
+    @endforeach
+                
 </div>
