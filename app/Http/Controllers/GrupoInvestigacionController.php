@@ -19,11 +19,11 @@ class GrupoInvestigacionController extends Controller
 
     public function grupoinvestigacion(GrupoInvestigacion $grupo)
     {
-
-        /* $grupo = GrupoInvestigacion::with('lineasInvestigacion.programasInvestigacion', 'investigadores')->find($grupo);
- */
-         
-        return view('grupos.grupo-investigacion', compact('grupo'));
+        // Obtén solo las líneas y programas asociados a este grupo
+        $lineasInvestigacion = $grupo->lineasInvestigacion;
+        $programasInvestigacion = $grupo->programasInvestigacion;
+                
+        return view('grupos.grupo-investigacion', compact('grupo','lineasInvestigacion','programasInvestigacion'));
         
     }
 }

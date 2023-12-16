@@ -86,3 +86,11 @@ Route::resource('secretaria', SecretariaController::class)->except('show')->name
 Route::resource('maestrias', MaestriaController::class)->except('show')->names('admin.maestrias');
 Route::resource('eventos', EventoController::class)->except('show')->names('admin.eventos');
 Route::resource('gruposinvestigacion', GrupoInvestigacionController::class)->except('show')->names('admin.gruposinvestigacion');
+
+
+Route::post('/obtener-programas', [GrupoInvestigacionController::class, 'obtenerProgramas'])->name('obtener.programas');
+
+// routes/web.php
+
+/* Route::post('/getProgramas', 'GrupoInvestigacionController@getProgramas')->name('getProgramas'); */
+Route::post('/getProgramas', [GrupoInvestigacionController::class, 'getProgramas'])->name('admin.getProgramas');

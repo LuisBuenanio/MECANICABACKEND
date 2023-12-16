@@ -9,7 +9,7 @@ class LineaInvestigacion extends Model
 {
     use HasFactory;
     protected $table = 'lineas_investigacion';
-	protected $primaryKey = 'id';
+	  protected $primaryKey = 'id';
 
 	/**
      * The attributes that are mass assignable.
@@ -36,13 +36,18 @@ class LineaInvestigacion extends Model
      */
     public $timestamps = false;
 
-      /*   Relacion de uno a muchos inversa */
-    public function gruposInvestigacion(){
-        return $this->belongsToMany(GrupoInvestigacion::class);
+
+    public function programasInvestigacion()
+    {
+        return $this->hasMany(ProgramaInvestigacion::class);
     }
 
-      /*   Relacion de uno a muchos inversa */
-      public function programasInvestigacion(){
-        return $this->belongsToMany(ProgramaInvestigacion::class);
+
+    
+    public function gruposInvestigacion()
+    {
+        return $this->belongsToMany(GrupoInvestigacion::class, 'grupo_investigacion_linea_investigacion');
     }
+    
+     
 }

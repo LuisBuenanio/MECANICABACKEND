@@ -16,7 +16,12 @@ return new class extends Migration
         Schema::create('programas_investigacion', function (Blueprint $table) {
             $table->id();
             
-            $table->string('descripcion');           
+            $table->string('descripcion');    
+            
+            $table->unsignedBigInteger('linea_investigacion_id');
+
+            $table->foreign('linea_investigacion_id')->references('id')->on('lineas_investigacion')->onDelete('cascade');
+       
                     
             $table->timestamps();
         });

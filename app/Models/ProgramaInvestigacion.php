@@ -16,6 +16,7 @@ class ProgramaInvestigacion extends Model
     protected $fillable = [
         'descripcion',
         'estado',
+        'linea_investigacion_id'
     ];
 
     protected $hidden = [
@@ -24,9 +25,17 @@ class ProgramaInvestigacion extends Model
 
     public $timestamps = false;
 
-    public function lineasn()
+    public function lineaInvestigacion()
     {
-        return $this->belongsToMany(LineaInvestigacion::class);
+        return $this->belongsTo(LineaInvestigacion::class);
+    } 
+
+
+    
+    public function gruposInvestigacion()
+    {
+        return $this->belongsToMany(GrupoInvestigacion::class, 'linea_investigacion_programa_investigacion');
     }
+
     
 }

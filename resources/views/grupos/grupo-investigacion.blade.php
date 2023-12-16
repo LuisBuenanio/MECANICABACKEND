@@ -66,30 +66,24 @@
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     <p class="mb-2"><strong class="text-xl font-bold text-gray-800">LINEAS DE INVESTIGACIÓN:</strong>
                     </p>
-
-                    @foreach ($grupo->lineas as $linea)
-                        <p>
-                            <strong>{{ $linea->descripcion }}</strong>
-                            <br>
-                            <strong>Programas de Investigación:</strong>
-                        <ul>
-                            @forelse ($linea->programasInvestigacion as $programa)
-                                <li>{{ $programa->descripcion }}</li>
-                            @empty
-                                <li>No hay programas de investigación asociados.</li>
-                            @endforelse
-                        </ul>
-                        </p>
+                    @foreach ($grupo->lineasInvestigacion as $linea)                        
+                            <li>{{ $linea->descripcion }}</li> 
                     @endforeach
                 </div>
 
-
+                <div class="text-base text-gray-500 mt-4 text-justify">
+                    <p class="mb-2"><strong class="text-xl font-bold text-gray-800">PROGRAMAS DE INVESTIGACIÓN:</strong>
+                    </p>
+                    @foreach ($grupo->programasInvestigacion as $programa)                      
+                            <li>{{ $programa->descripcion }}</li>    
+                    @endforeach
+                </div>
                 <div class="text-base text-gray-500 mt-4 text-justify">
                     <p class="mb-2"><strong class="text-xl font-bold text-gray-800">GALERIA DE IMÁGENES:</strong>
                     </p>
                     
                     <figure class="flex justify-center">
-                        @foreach ($grupo->galeriaImagenes as $imagen)
+                        @foreach ($grupo->galeria_imagenes as $imagen)
                         <div class="ed-item base-100 web-30 relative">
                             <img class="w-full h-80 object-cover object-center" 
                                  src="{{ asset('img/grupos-investigacion/galeria/' . $imagen->imagen_path) }}" 

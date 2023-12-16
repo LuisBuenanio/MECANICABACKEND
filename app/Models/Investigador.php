@@ -43,7 +43,7 @@ class Investigador extends Model
 
     /*   Relacion de muchos a muchos inversa */
     public function gruposInvestigacion(){
-      return $this->belongsToMany(GrupoInvestigacion::class);
+      return $this->belongsToMany(GrupoInvestigacion::class,'grupo_investigacion_investigador', 'investigador_id', 'grupo_investigacion_id');
     }
 
 }

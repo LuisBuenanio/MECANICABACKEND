@@ -18,6 +18,7 @@ class GrupoInvestigacion extends Model
         'mision',
         'vision',
         'estado',
+        'objetivo',
     ];
     
     protected $hidden = [
@@ -27,15 +28,21 @@ class GrupoInvestigacion extends Model
     
     public function investigadores()
     {
-        return $this->belongsToMany(Investigador::class);
+        return $this->belongsToMany(Investigador::class, 'grupo_investigacion_investigador', 'grupo_investigacion_id', 'investigador_id');
     }
 
-    public function lineas()
+  
+    public function lineasInvestigacion()
     {
-        return $this->belongsToMany(LineaInvestigacion::class);
+        return $this->belongsToMany(LineaInvestigacion::class, 'grupo_investigacion_linea_investigacion');
     }
 
-    public function galeriaImagenes()
+    public function programasInvestigacion()
+    {
+        return $this->belongsToMany(ProgramaInvestigacion::class, 'grupo_investigacion_programa_investigacion');
+    }
+
+    public function galeria_imagenes()
     {
         return $this->hasMany(GaleriaImagen::class);
     }

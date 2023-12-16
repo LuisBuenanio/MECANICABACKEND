@@ -674,6 +674,28 @@ return [
             ],
             
         ],
+        [
+                    
+            'text' => 'Grupos de Investigación',
+            'route'  => 'admin.gruposinvestigacion.index',
+            'icon' => 'fab fa-fw fa-buffer',
+            'submenu' => [
+                [
+                    
+                    'text' => 'Listar Grupos de Investigación',
+                    'route'  => 'admin.gruposinvestigacion.index',
+                    'icon' => 'fab fa-fw fa-buffer',
+                    
+                ],
+                [
+                    'text' => 'Crear Grupo de Investigación',
+                    'route'  => 'admin.gruposinvestigacion.create',
+                    'icon' => 'fab fa-fw fa-buffer',
+                ],
+                
+            ],
+            
+        ],
     ],
 
     /*
