@@ -12,7 +12,7 @@
                         <div class="p-4">
                             <h1 class="text-xl font-bold text-center text-black mb-2">
                                 <a href="{{ route('grupoinvestigacion', $grupo) }}">
-                                    {!! $grupo->nombre !!}
+                                    {!! $grupo->nombre_gr !!}
                                 </a>
                             </h1>
                             <div class="text-base text-center text-black">

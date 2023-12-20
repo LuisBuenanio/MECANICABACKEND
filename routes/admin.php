@@ -27,6 +27,9 @@ use App\Http\Controllers\Admin\SecretariaController;
 use App\Http\Controllers\Admin\MaestriaController;
 use App\Http\Controllers\Admin\EventoController;
 use App\Http\Controllers\Admin\GrupoInvestigacionController;
+use App\Http\Controllers\Admin\TipoInvestigadorController;
+use App\Http\Controllers\Admin\InvestigadorController;
+
 
 
 
@@ -85,6 +88,9 @@ Route::resource('secretaria', SecretariaController::class)->except('show')->name
 
 Route::resource('maestrias', MaestriaController::class)->except('show')->names('admin.maestrias');
 Route::resource('eventos', EventoController::class)->except('show')->names('admin.eventos');
+
+
+
 Route::resource('gruposinvestigacion', GrupoInvestigacionController::class)->except('show')->names('admin.gruposinvestigacion');
 
 
@@ -94,3 +100,19 @@ Route::post('/obtener-programas', [GrupoInvestigacionController::class, 'obtener
 
 /* Route::post('/getProgramas', 'GrupoInvestigacionController@getProgramas')->name('getProgramas'); */
 Route::post('/getProgramas', [GrupoInvestigacionController::class, 'getProgramas'])->name('admin.getProgramas');
+
+
+
+Route::resource('tipoinvestigador', TipoInvestigadorController::class)->except('show')->names('admin.tipoinvestigador');
+Route::resource('investigador', InvestigadorController::class)->except('show')->names('admin.investigador');
+
+Route::post('/investigador/agregar', [InvestigadorController::class, 'agregar'])->name('admin.investigador.agregar');
+Route::post('/investigador/store1', [InvestigadorController::class, 'store1'])->name('admin.investigador.store1');
+
+Route::post('/investigador/store', [InvestigadorController::class, 'store'])->name('admin.investigador.store');
+
+
+Route::get('/investigador/lista', [InvestigadorController::class, 'lista'])->name('admin.investigador.lista');
+
+
+Route::post('/gruposinvestigacion/agregar-investigador', [GrupoInvestigacionController::class, 'agregarInvestigador']);

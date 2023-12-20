@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Crear Convenio')
 
 @section('content_header')
     <h1>Crear Nuevo Convenio</h1>

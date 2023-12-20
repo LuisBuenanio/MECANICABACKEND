@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Grupoes de Investigación')
+@section('title', 'Grupos de Investigación')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.gruposinvestigacion.create')}}">Nuevo Grupo de Investigación</a>

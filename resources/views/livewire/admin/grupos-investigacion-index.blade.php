@@ -23,7 +23,7 @@
                                 <td>{{$grupo_investigacion->id}}</td>
                                 <td>{{$grupo_investigacion->codigo}}</td>
                                 <td>{{$grupo_investigacion->siglas}}</td>
-                                <td>{{$grupo_investigacion->nombre}}</td>                             
+                                <td>{{$grupo_investigacion->nombre_gr}}</td>                             
                                 <td>
                                     @if($grupo_investigacion->estado == 2)
                                         <span class="badge badge-success">Publicado</span>

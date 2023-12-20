@@ -27,7 +27,7 @@ class GrupoInvestigacionRequest extends FormRequest
 
         $rules =[
             'codigo' => 'required|unique:grupos_investigacion,codigo',    
-            'nombre' => 'required',   
+            'nombre_gr' => 'required',   
             'objetivo' => 'required',     
             'estado' => 'required|in:1,2',
         ];

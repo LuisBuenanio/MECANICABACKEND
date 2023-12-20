@@ -25,7 +25,7 @@ class GruposInvestigacionIndex extends Component
         $grupos_investigaciones = GrupoInvestigacion::where(function($query){
             $query->where('codigo', 'LIKE', '%'. $this->search . '%' )        
                     ->orwhere('siglas', 'LIKE', '%'. $this->search . '%' )                        
-                        ->orwhere('nombre', 'LIKE', '%'. $this->search . '%' )
+                        ->orwhere('nombre_gr', 'LIKE', '%'. $this->search . '%' )
                         ;
         })
         ->orderBy('id','asc')                

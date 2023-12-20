@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class GrupoInvestigacion extends Model
 {
     use HasFactory;
+    
     protected $table = 'grupos_investigacion';
 	protected $primaryKey = 'id';
     
-    protected $fillable = [
+   /*  protected $fillable = [
         'codigo',
         'nombre',
         'siglas',        
@@ -23,8 +24,9 @@ class GrupoInvestigacion extends Model
     
     protected $hidden = [
         'id'
-     ];
+     ]; */
 
+     protected $guarded = ['id','created_at','update_at'];
     
     public function investigadores()
     {
@@ -50,6 +52,6 @@ class GrupoInvestigacion extends Model
 
     public function getRouteKeyName()
     {
-        return 'nombre';
+        return 'codigo';
     }
 }

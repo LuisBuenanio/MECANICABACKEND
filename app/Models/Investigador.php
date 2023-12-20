@@ -17,9 +17,8 @@ class Investigador extends Model
      * @var array
      */
     protected $fillable = [
-		'nombre',
+		    'nombre',
         'email',
-        'estado',
         'tipo_investigador_id'
 	];
 
@@ -35,6 +34,13 @@ class Investigador extends Model
     
     
     public $timestamps = false;
+
+    public function getNombreCompletoAttribute()
+    {
+        return "{$this->nombre} ({$this->email})  {$this->tipo_investigador->descripcion}";
+    }
+
+
     
     /*   Relacion de uno a muchos inversa */
     public function tipo_investigador(){

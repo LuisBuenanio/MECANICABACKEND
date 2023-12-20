@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Eventos')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.eventos.create')}}">Nuevo evento</a>

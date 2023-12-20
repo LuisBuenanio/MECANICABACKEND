@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Proyectos')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.proyectos.create')}}">Nuevo Proyecto</a>

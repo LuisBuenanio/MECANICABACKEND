@@ -11,7 +11,7 @@ class GrupoInvestigacionController extends Controller
 {
     public function gruposinvestigacion()
     {
-        $grupos = GrupoInvestigacion::where('estado', 2)->orderBy('nombre', 'ASC')
+        $grupos = GrupoInvestigacion::where('estado', 2)->orderBy('nombre_gr', 'ASC')
         ->paginate(9);
         return view('grupos.grupos-investigacion', compact('grupos'));
 

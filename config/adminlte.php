@@ -696,6 +696,53 @@ return [
             ],
             
         ],
+        
+        [
+            'text'    => 'Investigadores',
+            'icon'    => 'fab fa-fw fa-buffer',
+            'submenu' => [                    
+                    [
+                        'text'    => ' Investigadores',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.investigador.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listado de Investigadores',
+                                'route'  => 'admin.investigador.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Crear  Investigador',
+                                'route'  => 'admin.investigador.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],
+                      
+                    [
+                        'text'    => ' Tipos de Investigadores',
+                        'icon'    => 'fab fa-fw fa-buffer',
+                        'can'   => 'admin.tipoinvestigador.index',
+                        'submenu' => [
+                            [
+                                'text' => 'Listar Tipo de Investigador',
+                                'route'  => 'admin.tipoinvestigador.index',
+                                'icon' => 'fab fa-fw fa-buffer',
+                                
+                            ],
+                            [
+                                'text' => 'Subir Tipo de Investigador',
+                                'route'  => 'admin.tipoinvestigador.create',
+                                'icon' => 'fab fa-fw fa-buffer',
+                            ],
+                            
+                        ],
+                    ],                           
+                ],
+                    
+        ],
     ],
 
     /*

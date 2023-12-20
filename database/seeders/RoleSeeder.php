@@ -136,10 +136,22 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin.eventos.destroy','description' => 'Eliminar Eventos '])->syncRoles([$role1, $role2]);
     
 
+        Permission::create(['name' => 'admin.tipoinvestigador.index','description' => 'Ver Tipo de Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.tipoinvestigador.create','description' => 'Crear Tipo de Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.tipoinvestigador.edit','description' => 'Editar Tipo de Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.tipoinvestigador.destroy','description' => 'Eliminar Tipo de Investigador '])->syncRoles([$role1, $role2]);
+    
+        Permission::create(['name' => 'admin.investigador.index','description' => 'Ver Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.investigador.create','description' => 'Crear Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.investigador.edit','description' => 'Editar Investigador'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.investigador.destroy','description' => 'Eliminar Investigador '])->syncRoles([$role1, $role2]);
+    
+
         Permission::create(['name' => 'admin.gruposinvestigacion.index','description' => 'Ver Grupos Investigación'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.gruposinvestigacion.create','description' => 'Crear Grupos Investigación'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.gruposinvestigacion.edit','description' => 'Editar Grupos Investigación'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'admin.gruposinvestigacion.destroy','description' => 'Eliminar Grupos Investigación '])->syncRoles([$role1, $role2]);
     
+
     }
 }

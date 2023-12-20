@@ -41,11 +41,12 @@ class GrupoInvestigacionController extends Controller
         $lineasInvestigacion = LineaInvestigacion::all();
         $programasInvestigacion = ProgramaInvestigacion::all();
         
-        $tiposInvestigadores = Investigador::all();
+        /* $tipos_investigadores = Investigador::all(); */
+        $tipos_investigadores = TipoInvestigador::pluck('descripcion', 'id');
         
         $investigadores = Investigador::all();
 
-        return view('admin.gruposinvestigacion.create', compact('tiposInvestigadores','investigadores','lineasInvestigacion', 'programasInvestigacion'));
+        return view('admin.gruposinvestigacion.create', compact('tipos_investigadores','investigadores','lineasInvestigacion', 'programasInvestigacion'));
 
     }
     // Controlador de Laravel
@@ -71,12 +72,12 @@ class GrupoInvestigacionController extends Controller
             
             // Agregar otros campos según sea necesario
         
-        $grupoInvestigacion->nombre = $request->nombre;  
+        $grupoInvestigacion->nombre_gr = $request->nombre_gr;  
 
             if ($request->hasFile("portada")){
                 
                 $portada = $request->file("portada");
-                $nombreportada = Str::slug($request->nombre).".".$portada->guessExtension();
+                $nombreportada = Str::slug($request->nombre_gr).".".$portada->guessExtension();
                 $ruta = public_path("img/grupos-investigacion/");
                
                 /* $portada->move($ruta, $nombreportada); */
@@ -144,46 +145,136 @@ class GrupoInvestigacionController extends Controller
         return view('grupos.partials.programas', compact('programasInvestigacion'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $grupoInvestigacion = GrupoInvestigacion::findOrFail($id);
+
+        $lineasInvestigacion = LineaInvestigacion::all();
+        $programasInvestigacion = ProgramaInvestigacion::all();       
+        $tipos_investigadores = TipoInvestigador::pluck('descripcion', 'id');        
+        $investigadores = Investigador::all();
+
+        $programasInvestigacion = ProgramaInvestigacion::all();  
+        
+        
+        $investigadoresGrupo = $grupoInvestigacion->investigadores()->get();   
+
+        $investigadoresDisponibles = Investigador::all();
+        $investigadoresSelect = ['' => 'Seleccione un Investigador'];
+        foreach ($investigadoresDisponibles as $investigador) {
+            $investigadoresSelect[$investigador->id] = $investigador->nombre_completo;
+        }
+
+
+
+        return view('admin.gruposinvestigacion.edit', compact('grupoInvestigacion', 'tipos_investigadores','investigadores','lineasInvestigacion', 'programasInvestigacion', 'investigadoresGrupo', 'investigadoresSelect'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+
+        $grupoInvestigacion = GrupoInvestigacion::findOrFail($id);
+
+        $data = $request->validate([
+            'nombre_gr' => 'required',   
+            'codigo' => "required|unique:grupos_investigacion,codigo,$grupoInvestigacion->id"
+        ]);
+
+
+        $grupoInvestigacion->update($data);       
+        
+
+        if ($request->hasFile("portada")) {
+            $portada = $request->file("portada");
+            $nombrePortada = Str::slug($request->nombre_gr) . "." . $portada->guessExtension();
+            $rutaPortada = public_path("img/grupos-investigacion/");
+
+            // Eliminar la portada anterior si existe
+            if ($grupoInvestigacion->portada && file_exists($rutaPortada . $grupoInvestigacion->portada) && is_file($rutaPortada . $grupoInvestigacion->portada)) {
+                unlink($rutaPortada . $grupoInvestigacion->portada);
+            }
+
+            copy($portada->getRealPath(), $rutaPortada . $nombrePortada);
+
+            $grupoInvestigacion->portada = $nombrePortada;
+        }
+
+        // Manejar la subida de nuevas imágenes adicionales
+        if ($request->hasFile("nuevas_images")) {
+            foreach ($request->file("nuevas_images") as $imagen) {
+                $nombreImagen = Str::random(10) . $imagen->getClientOriginalName();
+                $rutaImagen = public_path("img/grupos-investigacion/galeria/");
+
+                copy($imagen->getRealPath(), $rutaImagen . $nombreImagen);
+
+                // Crear y asociar la nueva imagen a la noticia
+                $grupoInvestigacion->galeria_imagenes()->create(['imagen_path' => $nombreImagen]);
+            }
+        }
+
+        // Eliminar imágenes marcadas
+        if ($request->has('eliminar_imagenes') && is_array($request->eliminar_imagenes)) {        
+            foreach ($request->eliminar_imagenes as $imagenId) {
+                // Encuentra la imagen por su ID y elimínala
+                $imagen = $grupoInvestigacion->galeria_imagenes()->find($imagenId);
+                if ($imagen) {
+                    // Elimina la imagen del almacenamiento
+                    unlink(public_path("img/grupos-investigacion/galeria/{$imagen->imagen_path}"));
+                    // Elimina la entrada de la base de datos
+                    $imagen->delete();
+                }
+            }
+
+        }
+
+        // Manejar la subida de nuevas imágenes adicionales
+        if ($request->hasFile("imagenes")) {
+            foreach ($request->file("imagenes") as $imagen) {
+                $nombreImagen = Str::random(10) . $imagen->getClientOriginalName();
+                $rutaImagen = public_path("img/grupos-investigacion/galeria/");
+
+                copy($imagen->getRealPath(), $rutaImagen . $nombreImagen);
+
+                // Crear y asociar la nueva imagen a la noticia
+                $grupoInvestigacion->galeria_imagenes()->create(['imagen_path' => $nombreImagen]);
+            }
+        }
+
+
+
+
+        // Actualizar relaciones existentes
+        if ($request->filled('investigadores')) {
+            // Actualizar investigadores
+            $grupoInvestigacion->investigadores()->sync($request->input('investigadores'));
+        }
+
+        if ($request->filled('lineas_investigacion')) {
+            // Actualizar líneas de investigación
+            $grupoInvestigacion->lineasInvestigacion()->sync($request->input('lineas_investigacion'));
+        }
+
+        if ($request->filled('programas_investigacion')) {
+            // Actualizar programas de investigación
+            $grupoInvestigacion->programasInvestigacion()->sync($request->input('programas_investigacion'));
+        }
+
+        // Puedes agregar más relaciones aquí
+
+        return redirect()->route('admin.gruposinvestigacion.index')->with('info', 'Grupo de investigación actualizado con éxito.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    
     public function destroy($id)
     {
         $grupoInvestigacion = GrupoInvestigacion::findOrFail($id);

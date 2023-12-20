@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Autoridades')
 
 @section('content_header')
     <h1>Editar Autoridad</h1>

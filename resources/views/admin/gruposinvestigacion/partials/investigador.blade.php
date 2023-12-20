@@ -1,41 +1,112 @@
 <div class="card">
     <div class="card-body">
         <h2 class="text-center">Investigadores</h2>
-       {{--  <!-- Campos para los integrantes -->
-        <div class="form-group">
-            {{ Form::label('investigadores[][nombre]', 'Nombre del Investigador') }}
-            {{ Form::text('investigadores[][nombre]', null, ['class' => 'form-control']) }}
+        <div class="container">
+            <div class="form-group">
+                <div class="card">
+                    <div class="card-header">
+                        {!! Form::label('', 'Investigadores:') !!}
+                    </div>
+                    <div class="card-body">
+                        <!-- Botón para abrir el modal -->
+                        {!! Form::button('Crear Investigador', [
+                            'class' => 'btn btn-secondary',
+                            'data-toggle' => 'modal',
+                            'data-target' => '#modalAgregarInvestigador',
+                        ]) !!}
 
+                        <table class="table table-bordered mt-3" id="investigador_table">
+                            <thead>
+                                <tr>
+                                    <th>Agregar Investigadores</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="investigador0">
+                                    <td>
+                                        {!! Form::select(
+                                            'investigadores[]',
+                                            ['' => 'Seleccione un investigador'] + $investigadores->pluck('nombre_completo', 'id')->all(),
+                                            null,
+                                            ['class' => 'form-control select2', 'data-placeholder' => 'Seleccione un investigador'],
+                                        ) !!}
+                                    </td>
+                                    
+                                    <td>{!! Form::button('Eliminar', ['type' => 'button', 'class' => 'btn btn-danger btn-remove-investigador']) !!}</td>
+                                </tr>
+                                <!-- Aquí se añadirán los investigadores dinámicamente -->
+                            </tbody>
+                        </table>
+                        {!! Form::button('Agregar investigador', [
+                            'type' => 'button',
+                            'class' => 'btn btn-primary',
+                            'id' => 'btn-add-investigador',
+                        ]) !!}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{ Form::label('investigadores[][email]', 'Email del Investigador') }}
-            {{ Form::text('investigadores[][email]', null, ['class' => 'form-control']) }}
+        <div id="mensaje-exito" class="alert alert-success" style="display: none;"></div>
 
+        <div id="mensaje-error" class="alert alert-danger" style="display: none;"></div>
+
+
+        <!-- Modal para agregar un nuevo investigador -->
+        <div class="modal fade" id="modalAgregarInvestigador" tabindex="-1" role="dialog"
+            aria-labelledby="modalAgregarInvestigadorLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAgregarInvestigadorLabel">Crear Nuevo Investigador</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario para agregar un nuevo investigador -->
+
+                        <div class="form-group">
+                            {!! Form::label('nombre', 'Nombre :') !!}
+                            {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el Nombre del Investigador']) !!}
+
+                            @error('nombre')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
+                        </div>
+
+
+                        <div class="form-group">
+                            {!! Form::label('email', 'Email:') !!}
+                            {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el email del Investigador']) !!}
+
+                            @error('email')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('tipo_investigador_id', 'Tipo investigador:') !!}
+                            {!! Form::select('tipo_investigador_id', $tipos_investigadores, null, ['class' => 'form-control']) !!} 
+                            
+                            @error('tipo_investigador_id')
+                                <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnGuardarInvestigador">Guardar Investigador</button>
+                            <button type="button" class="btn btn-success ml-auto" data-dismiss="modal">Cerrar</button>
+                        </div>
+                        
+                </div>
+            </div>
         </div>
-
-
-        <!-- Campo para el tipo de investigador -->
-        <div class="form-group">
-            {{ Form::label('tipo_investigador_id', 'Tipo de Investigador') }}
-            {{ Form::select('tipo_investigador_id', $tiposInvestigadores->pluck('descripcion', 'id'), null, ['class' => 'form-control', 'placeholder' => 'Seleccione un tipo de investigador']) }}
-        </div>
-    </div> --}}
-
-    <!-- Sección para seleccionar investigadores existentes -->
-<div class="form-group">
-    <label for="investigadores">Seleccionar Investigadores Existentes:</label>
-    <select name="investigadores[]" multiple>
-        @foreach($investigadores as $investigador)
-            <option value="{{ $investigador->id }}">{{ $investigador->nombre }} - {{ $investigador->email }}</option>
-        @endforeach
-    </select>
+    
+    
+    </div>
 </div>
-
-<!-- Sección para agregar nuevos investigadores -->
-<div class="form-group">
-    <label for="nuevo_investigador">Agregar Nuevo Investigador:</label>
-    <input type="text" name="nuevo_investigador" placeholder="Nombre del Nuevo Investigador">
-    <!-- Agrega otros campos según sea necesario -->
-</div>
-
-</div>
+ 

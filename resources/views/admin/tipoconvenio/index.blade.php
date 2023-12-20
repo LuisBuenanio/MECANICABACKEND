@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Tipos Convenio')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.tipoconvenio.create')}}">Nuevo Tipo de Convenio</a>

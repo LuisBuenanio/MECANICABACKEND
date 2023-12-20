@@ -8,7 +8,7 @@
         </div>
 
 
-        <h1 class="text-4xl font-bold text-gray-800 text-center">{!! $grupo->nombre !!}</h1> <br>
+        <h1 class="text-4xl font-bold text-gray-800 text-center">{!! $grupo->nombre_gr !!}</h1> <br>
         <div class="ed-item no-padding">
             <p><strong>Código: </strong>{!! $grupo->codigo !!}</p>
         </div>
