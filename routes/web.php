@@ -64,7 +64,7 @@ Route::group([], function () {
  
 });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])
+/* Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])
     ->group(function () {
         
         
@@ -73,25 +73,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])
             return redirect()->route('chat');
         })->name('chat');
 
-    });
+    }); */
 
-    Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])
-    ->group(function () {
-        
-        
-
-        Route::get('/chat', function () {
-            return redirect()->route('chat');
-        })->name('chat');
-
-    });
-    Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])
-    ->group(function () {
-        
-        
-
-        Route::get('/chat', function () {
-            return redirect()->route('chat');
-        })->name('chat');
-
-    });
+  
