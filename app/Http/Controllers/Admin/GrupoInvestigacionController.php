@@ -208,6 +208,9 @@ class GrupoInvestigacionController extends Controller
             $grupoInvestigacion->portada = $nombrePortada;
         }
 
+        $grupoInvestigacion->save();
+        
+
         // Manejar la subida de nuevas imágenes adicionales
         if ($request->hasFile("nuevas_images")) {
             foreach ($request->file("nuevas_images") as $imagen) {

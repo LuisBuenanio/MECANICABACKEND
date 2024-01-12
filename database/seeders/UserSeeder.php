@@ -22,7 +22,11 @@ class UserSeeder extends Seeder
             'password' => bcrypt('luis1996')
         ])->assignRole('Admin');
 
-        User::factory(9)->create();
+        User::create([
+            'name' => 'LIDIA DEL ROCÍO CASTRO CEPEDA',
+            'email' => 'lidia.castro@espoch.edu.ec',
+            'password' => bcrypt('lidia12345')
+        ])->assignRole('Admin');       
 
     }
 }

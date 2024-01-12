@@ -129,6 +129,8 @@ class NoticiaController extends Controller
             }
         }
 
+        $noticia->save();
+
         // Eliminar imágenes marcadas
         if ($request->has('eliminar_imagenes') && is_array($request->eliminar_imagenes)) {        
             foreach ($request->eliminar_imagenes as $imagenId) {

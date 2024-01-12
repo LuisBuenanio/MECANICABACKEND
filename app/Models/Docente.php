@@ -29,5 +29,9 @@ class Docente extends Model
      
     public $timestamps = false;
 
+    public function getRouteKeyName()
+    {
+        return 'nombre';
+    }
 
 }
