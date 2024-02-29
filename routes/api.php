@@ -9,6 +9,7 @@ use App\Http\Controllers\AsociacionController;
 use App\Http\Controllers\IntegranteController;
 use App\Http\Controllers\Tipo_IntegranteController;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,8 @@ Route::get('/tipo_integrantes/{id}', [Tipo_IntegranteController::class, 'show'])
 
 Route::get('/noticias', [NoticiaController::class, 'index']);
 Route::get('/noticias/{id}', [NoticiaController::class, 'show']);
+
+
+
+Route::get('/sliders', [SliderController::class, 'index']);
+Route::get('/sliders/{id}', [SliderController::class, 'show']);

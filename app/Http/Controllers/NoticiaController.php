@@ -64,37 +64,51 @@ class NoticiaController extends Controller
     }
     public function index()
     {
-        /* $this->authorize('published', $noticias); */
-        $noticias = Noticia::where('estado', 2)->orderBy('fecha_publicacion', 'DESC')->with('image')->get();
+        
+        $noticias = Noticia::with('images')
+        ->where('estado', 2)
+        ->orderBy('fecha_publicacion', 'DESC')
+        ->get();
 
-        return response()->json([
-            'datos' => $noticias->map(function ($noticia) {
-                return [
-                    'id' => $noticia->id,
-                    'titulo' => $noticia->titulo,
-                    'entradilla' => $noticia->entradilla,
-                    'contenido' => $noticia->contenido,
-                    'fecha_publicacion' => $noticia->fecha_publicacion,
-                    'imagen_url' => $noticia->image ? $noticia->image->url : null,
-                ];
-            })
-        ]);
+        $data = $noticias->map(function ($noticia) {
+            return [
+                'id' => $noticia->id,
+                'titulo' => $noticia->titulo,
+                'entradilla' => $noticia->entradilla,
+                'portada' => $noticia->portada ? asset('img/noticias/portadas/' . $noticia->portada) : null,
+                'imagenes' => $noticia->images->map(function ($imagen) {
+                    return asset('img/noticias/imagenes/' . $imagen->image_path);
+                }),
+                'fecha_publicacion' => $noticia->fecha_publicacion,
+            ];
+        });
+
+        return response()->json(['datos' => $data]);
     }
 
 
     
     public function show($id)
     {
-        $noticia = Noticia::findOrFail($id);
-        $imagen = $noticia->image()->get();
+        $noticia = Noticia::with('images')
+            ->where('estado', 2)
+            ->find($id);
 
-        return response()->json([
+        if (!$noticia) {
+            return response()->json(['mensaje' => 'No se encontró la noticia'], 404);
+        }
+
+        $data = [
             'id' => $noticia->id,
             'titulo' => $noticia->titulo,
             'entradilla' => $noticia->entradilla,
-            'contenido' => $noticia->contenido,
-            'fecha_publicacion' => $noticia->fecha_publicacion, 
-            'imagen_url' => $noticia->image ? $noticia->image->url : null
-        ]);
+            'portada' => $noticia->portada ? asset('img/noticias/portadas/' . $noticia->portada) : null,
+            'imagenes' => $noticia->images->map(function ($imagen) {
+                return asset('img/noticias/imagenes/' . $imagen->image_path);
+            }),
+            'fecha_publicacion' => $noticia->fecha_publicacion,
+        ];
+
+        return response()->json(['datos' => $data]);
     }
 }

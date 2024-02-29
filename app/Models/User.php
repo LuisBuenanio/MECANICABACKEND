@@ -58,4 +58,11 @@ class User extends Authenticatable
     public function adminlte_profile_url(){
         return '/user/profile';
     }
+
+    public function groupChats()
+    {
+        return $this->belongsToMany(GroupChat::class, 'group_chat_members')
+            ->withPivot('is_admin', 'mute_notifications', 'status')
+            ->withTimestamps();
+    }
 }

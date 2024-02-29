@@ -65,8 +65,6 @@ class GrupoInvestigacionController extends Controller
     
     public function store(GrupoInvestigacionRequest $request)
     {
-       
-
         // Crear un nuevo grupo de investigación
         $grupoInvestigacion = GrupoInvestigacion::create($request->all());
             
