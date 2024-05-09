@@ -11,13 +11,6 @@ use App\Http\Controllers\Tipo_IntegranteController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\SliderController;
 
-use App\Http\Controllers\API\AuthenticationController;
-use App\Http\Controllers\API\PasswordResetController;
-use App\Http\Controllers\API\ObtainAvatarController;
-use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\API\RoomController;
-use App\Http\Controllers\API\MessageController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -62,10 +55,10 @@ Route::get('/sliders', [SliderController::class, 'index']);
 Route::get('/sliders/{id}', [SliderController::class, 'show']);
 
 
-Route::apiResource('users', UserController::class); 
+
 
 /* /* Ruta de inicio de sesión */ 
-Route::post('/login', [AuthenticationController::class, 'login'])->middleware('throttle:5,1'); 
+Route::post('/signin', [AuthenticationController::class, 'signin'])->middleware('throttle:5,1'); 
 
 /* Rutas para restablecer la contraseña */ 
 Route::post('/password/email', [PasswordResetController::class,'sendPasswordResetLink'])->middleware('throttle:5,1')->name('password.email'); 
@@ -84,15 +77,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/signout', [AuthenticationController::class, 'signout']); 
     
     /* Rutas para acceso a archivos privados de avatares */ 
-    //Route::get('users/get_avatar/{profile_photo_path}', ObtainAvatarController::class); 
+    Route::get('users/get_avatar/{image}', ObtainAvatar::class); 
         
     /* Rutas de usuario */     
-    
-    //Route::get('/users', [UserController::class]);
+    Route::apiResource('users', UserController::class); 
                  
     /* Rutas salas de chat */ 
     Route::apiResource( 'rooms', RoomController::class ); 
-
     Route::post('rooms/{room}/add', [RoomController::class, 'addPartipant']); 
     Route::post('rooms/{room}/modify', [RoomController::class,'togglePermision']); 
     Route::post('rooms/{room}/remove', [RoomController::class,'removeParticipant']); 
@@ -106,4 +97,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('messages/{message}/thumbnail', [MessageController::class,'getMessageFileThumbnail']); 
     Route::post('messages/{message}/faqs/add', [MessageController::class,'addMessageToSubjectFaqs']); 
 });
-  
+  */

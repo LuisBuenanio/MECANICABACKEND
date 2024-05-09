@@ -2,7 +2,7 @@ APP_NAME=EIM-Mecánica-ESPOCH
 APP_ENV=local
 APP_KEY=base64:RC+LB1IlZW8iimk4FztwCSM8r3bRgoKLLB/H0SYSrDc=
 APP_DEBUG=true
-APP_URL=thttp://100.25.182.199/
+APP_URL=https://ingenieria-mecanica-espoch.com/
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null

@@ -65,4 +65,9 @@ class User extends Authenticatable
             ->withPivot('is_admin', 'mute_notifications', 'status')
             ->withTimestamps();
     }
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class, 'room_users')->withPivot('isAdmin', 'isCreator');
+    }
 }
