@@ -15,7 +15,6 @@ class UserController extends Controller
         $users = User::all();
         return response()->json(['users' => UserResource::collection($users)], 200);
     }
-    
 
     public function show(User $user)
     {

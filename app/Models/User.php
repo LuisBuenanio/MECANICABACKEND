@@ -70,4 +70,21 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Room::class, 'room_users')->withPivot('isAdmin', 'isCreator');
     }
+    
+     public function chatrooms()
+    {
+        return $this->belongsToMany(Chatroom::class, 'chatroom_user')
+            ->withTimestamps();
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function unreadMessages()
+    {
+        return $this->hasMany(Message::class)
+            ->whereNull('read_at');
+    }
 }

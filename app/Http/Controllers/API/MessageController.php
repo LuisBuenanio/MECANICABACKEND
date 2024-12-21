@@ -3,53 +3,58 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Events\MessageRead;
+use App\Events\UserTyping;
+use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Models\Message1;
-use App\Http\Resources\MessageResource;
 
 class MessageController extends Controller
 {
-    public function index()
+    public function sendMessage(Request $request, $chatroomId)
     {
-        $messages = Message1::all();
-        return response()->json(['messages' => MessageResource::collection($messages)], 200);
-    }
-
-    public function show(Message1 $message)
-    {
-        return response()->json(['message' => new MessageResource($message)], 200);
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'content' => 'required|string',
-            'user_id' => 'required|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
+        $request->validate([
+            'content' => 'nullable|string',
+            'file' => 'nullable|file',
         ]);
 
-        $message = Message1::create($validatedData);
+        $filePath = $request->file('file') ? $request->file('file')->store('messages') : null;
 
-        return response()->json(['message' => new MessageResource($message)], 201);
-    }
-
-    public function update(Request $request, Message1 $message)
-    {
-        $validatedData = $request->validate([
-            'content' => 'required|string',
-            'user_id' => 'required|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
+        $message = Message::create([
+            'chatroom_id' => $chatroomId,
+            'user_id' => auth()->id(),
+            'content' => $request->content,
+            'file_path' => $filePath,
         ]);
 
-        $message->update($validatedData);
-
-        return response()->json(['message' => new MessageResource($message)], 200);
+        return response()->json(['message' => $message], 201);
     }
 
-    public function destroy(Message1 $message)
+    public function typing(Request $request, $chatroomId)
     {
-        $message->delete();
+        broadcast(new UserTyping($chatroomId, auth()->id()))->toOthers();
+        return response()->json(['status' => 'User typing event broadcasted'], 200);
+    }
 
-        return response()->json(null, 204);
+    public function markAsRead(Request $request, $chatroomId)
+    {
+        $request->validate(['message_ids' => 'required|array']);
+
+        Message::whereIn('id', $request->message_ids)
+            ->where('chatroom_id', $chatroomId)
+            ->update(['read_at' => now()]);
+
+        broadcast(new MessageRead($chatroomId, $request->message_ids))->toOthers();
+
+        return response()->json(['status' => 'Messages marked as read'], 200);
+    }
+
+    public function unreadMessages($chatroomId)
+    {
+        $unreadMessages = Message::where('chatroom_id', $chatroomId)
+            ->whereNull('read_at')
+            ->where('user_id', '!=', auth()->id())
+            ->count();
+
+        return response()->json(['unread_messages' => $unreadMessages]);
     }
 }

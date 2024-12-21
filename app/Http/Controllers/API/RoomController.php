@@ -22,15 +22,22 @@ class RoomController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+         $validatedData = $request->validate([
             'name' => 'required|string',
-            // Agregar más validaciones según las necesidades
+            'room_type_id' => 'required|exists:room_types,id',
+            'room_users' => 'required|array',
+            'room_users.*' => 'exists:users,id',
         ]);
 
-        $room = Room::create($validatedData);
-
-        return response()->json(['room' => new RoomResource($room)], 201);
+        try {
+            $room = Room::create($validatedData);
+            return response()->json(['room' => new RoomResource($room)], 201);
+       
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al crear la sala de chat: ' . $e->getMessage()], 500);
+        }
     }
+
 
     public function update(Request $request, Room $room)
     {

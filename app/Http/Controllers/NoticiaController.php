@@ -75,6 +75,7 @@ class NoticiaController extends Controller
                 'id' => $noticia->id,
                 'titulo' => $noticia->titulo,
                 'entradilla' => $noticia->entradilla,
+                'contenido' => $noticia->contenido,
                 'portada' => $noticia->portada ? asset('img/noticias/portadas/' . $noticia->portada) : null,
                 'imagenes' => $noticia->images->map(function ($imagen) {
                     return asset('img/noticias/imagenes/' . $imagen->image_path);
@@ -102,6 +103,7 @@ class NoticiaController extends Controller
             'id' => $noticia->id,
             'titulo' => $noticia->titulo,
             'entradilla' => $noticia->entradilla,
+            'contenido' => $noticia->contenido,
             'portada' => $noticia->portada ? asset('img/noticias/portadas/' . $noticia->portada) : null,
             'imagenes' => $noticia->images->map(function ($imagen) {
                 return asset('img/noticias/imagenes/' . $imagen->image_path);

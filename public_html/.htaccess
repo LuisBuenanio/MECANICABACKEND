@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW IPALLOWID:dg559c2UR8
+allow from 192.168.0.9
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE dg559c2UR8:IPALLOWID
+
+
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW IPALLOWID:2Xgc3xREMm
+allow from 170.238.1.2
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE 2Xgc3xREMm:IPALLOWID
+
