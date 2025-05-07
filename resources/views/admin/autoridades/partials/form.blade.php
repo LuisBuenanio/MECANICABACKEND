@@ -34,25 +34,8 @@
         <small class="text-danger">{{$message}}</small>
     @enderror
 
-</div>{{-- 
-<div class="form-group">
-    <p class="font-weight-bold">Estado de la Autoridad</p>
-    
-    <label class="mr-2">
-        {!! Form::radio('estado', 1, true ) !!}
-        Activo
-    </label>
-    <label class="mr-2">
-        {!! Form::radio('estado', 2 ) !!}
-        Inactivo
-    </label>      
-    
-    <hr>
-    @error('activo')
-        <small class="text-danger">{{$message}}</small>
-    @enderror
-    
-</div> --}}
+</div>
+
 <br>
 <div class="row mb-3">
     <div class="col">

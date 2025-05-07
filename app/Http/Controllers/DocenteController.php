@@ -21,4 +21,20 @@ class DocenteController extends Controller
        /*  $this->authorize('published', $docente); */
         return view('docentes.docente', compact('docente'));
     }
+
+   
+    public function index()
+    {
+        return response()->json(['datos'=>Docente::all()]);
+    }
+
+    public function show($id)
+    {
+        $docente=Docente::find($id);
+        if(!$docente){
+            return response()->json(['mensaje'=>'No se encontró el docente'],404);
+        }
+        return response()->json(['datos'=>$docente],202);
+    }
+   
 }

@@ -1,9 +1,9 @@
 <x-app-layout>
     <div class="container py-8">
-        <br><br><br>
+        <br>
         <div class="my-16 text-center">
             <h1 class="text-4xl font-extrabold text-gray-900">Proyectos</h1>
-            <br>
+            
         </div>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-300">
@@ -21,12 +21,12 @@
                     @foreach ($proyectos as $proyecto)
                         <tr>
                             <td class="px-6 py-4 border-b">{{ $proyecto->codigo }}</td>
-                            <td class="px-6 py-4 border-b">{{ $proyecto->nombre }}</td>
-                            <td class="px-6 py-4 border-b">{{ $proyecto->descripcion }}</td>
-                            <td class="px-6 py-4 border-b">{{ $proyecto->objetivo }}</td>
+                            <td class="px-6 py-4 border-b">{!! $proyecto->nombre !!}</td>
+                            <td class="px-6 py-4 border-b">{!! $proyecto->descripcion !!}</td>
+                            <td class="px-6 py-4 border-b">{!! $proyecto->objetivo !!}</td>
                             <td class="px-6 py-4 border-b">{{ $proyecto->coordinador }}</td>
                             <td class="px-6 py-4 border-b">
-                                @if ($proyecto->ejecutandose)
+                                @if ($proyecto->ejecutandose == 1)
                                     <span class="text-green-500">En Ejecución</span>
                                 @else
                                     <span class="text-gray-500">Ejecutado</span>

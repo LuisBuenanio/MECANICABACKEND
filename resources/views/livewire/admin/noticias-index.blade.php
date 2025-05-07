@@ -10,6 +10,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Título</th>
+                        <th>Fecha de Publicación</th>
+                        <th>Estado</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -18,11 +20,20 @@
                             <tr>
                                 <td>{{$noticia->id}}</td>
                                 <td>{{$noticia->titulo}}</td>
+                                <td>{{ \Carbon\Carbon::parse($noticia->fecha_publicacion)->format('d-m-Y') }}</td>
+
+                                <td>
+                                    @if($noticia->estado == 2)
+                                        <span class="badge badge-success">Publicado</span>
+                                    @else
+                                        <span class="badge badge-danger">Borrador</span>
+                                    @endif
+                                </td>
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.noticias.edit', $noticia)}}">Editar</a>
+                                    <a class="btn btn-primary btn-sm " href="{{route('admin.noticias.edit', $noticia->id)}}">Editar</a>
                                 </td with="10px">
                                 <td>
-                                    <form action="{{route('admin.noticias.destroy', $noticia)}}" method="POST" class="form-eliminar">
+                                    <form action="{{route('admin.noticias.destroy', $noticia->id)}}" method="POST" class="form-eliminar">
                                         @csrf
                                         @method('DELETE')
 

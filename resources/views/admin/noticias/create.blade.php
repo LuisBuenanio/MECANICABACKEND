@@ -41,6 +41,7 @@
 @section('js')
     <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    
 
     <script>
         $(document).ready( function() {
@@ -63,18 +64,19 @@
                 console.error( error );
             } );
         //Cambiar Imagen
-        document.getElementById( "file").addEventListener('change', cambiarImagen);
+        document.getElementById( "portada").addEventListener('change', cambiarImagen);
 
         function cambiarImagen(event){
-            var file = event.target.files[0];
+            var portada = event.target.files[0];
 
             var reader = new FileReader();
             reader.onload = (event) => {
                 document.getElementById("picture").setAttribute('src', event.target.result);
             };
 
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(portada);
         }
+        
 
     </script>
 @stop

@@ -36,34 +36,45 @@ class ConvenioController extends Controller
     public function store(ConvenioRequest $request)
     {
         
-        Convenio::create($request->all());
-        
-        Cache::flush();
+        $data = $request->validated();
+
+        $data['objetivo'] = strip_tags($data['objetivo']); // Aplica strip_tags() al contenido de la noticia
+
+       
+
+        $convenio = Convenio::create($data);
         return redirect()->route('admin.convenio.index')-> with('info', 'Convenio Creado correctamente');;
   
     }
 
-    public function edit(Convenio $convenio)
+    public function edit($id)
     {
+        $convenio = Convenio::findOrFail($id);
         $tipo_convenio = TipoConvenio::pluck('descripcion', 'id');
         return view('admin.convenio.edit' , compact('convenio', 'tipo_convenio'));
     }
 
-    public function update(ConvenioRequest $request, Convenio $convenio)
+    public function update(ConvenioRequest $request, $id)
     {
-        $convenio->update($request->all());
+        $convenio = Convenio::findOrFail($id);
+
+        $data = $request->validated();
+
+        $data['objetivo'] = strip_tags($data['objetivo']); // Aplica strip_tags() al contenido de la noticia
+
+        $convenio->update($data);
         
-        Cache::flush();
+        $convenio->save();
         return redirect()->route('admin.convenio.index')-> with('info', 'Datos Actualizados correctamente');
  
     }
 
     
-    public function destroy(Convenio $convenio)
+    public function destroy($id)
     {
+        $convenio = Convenio::findOrFail($id);
         $convenio->delete();
 
-        Cache::flush();
         return redirect()->route('admin.convenio.index')-> with('eliminar', 'ok');
   
     }

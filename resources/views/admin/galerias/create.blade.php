@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Galerias')
 
 @section('content_header')
     <h1>Crear Nueva Galeria</h1>

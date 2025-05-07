@@ -30,6 +30,6 @@ class AsociacionSeeder extends Seeder
           
         ]);
 
-       /*  Asociacion::factory(1)->create(); */
+       
     }
 }

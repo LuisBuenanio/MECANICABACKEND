@@ -61,18 +61,24 @@ class GaleriaController extends Controller
     }
 
     
-    public function edit(Galeria $galeria)
+    public function edit($id)
     {
+        $galeria = Galeria::findOrFail($id);
         return view('admin.galerias.edit' , compact('galeria'));
     }
 
     
-    public function update(GaleriaRequest $request, Galeria $galeria)
+    public function update(Request $request, $id)
     {
-        $galeria->update($request->all());
+        $galeria = Galeria::findOrFail($id);
 
-        $galeria->nombre = $request->nombre;  
+        $request->validate([
+            'nombre' => 'required',
+            'portada' => 'image'
+        ]);
+        $galeria->update($request->all());
         
+        $galeria->nombre = $request->nombre;
         
         /*   Sube la foto de la autoridad  */
           if ($request->hasFile("portada")){
@@ -85,19 +91,28 @@ class GaleriaController extends Controller
              /*copy($portada->getRealPath(),$ruta.$nombreportada);*/
   
               $galeria->portada = $nombreportada;
-          };
+          };          
           
           $galeria->save();
-        Cache::flush();
         return redirect()->route('admin.galerias.index')-> with('info', 'Galeria Actualizada correctamente');
   
     }
 
-    public function destroy(Galeria $galeria)
+    public function destroy($id)
     {
+        $galeria = Galeria::findOrFail($id);
+
+        $rutaImagen = public_path("img/galeria_port/{$galeria->portada}");
+
+        // Verifica si el archivo existe antes de intentar eliminarlo
+        if (file_exists($rutaImagen)) {
+            // Elimina el archivo físicamente
+            unlink($rutaImagen);
+        }
+        // Elimina el registro de la base de datos
+
         $galeria->delete();
 
-        Cache::flush();
         return redirect()->route('admin.galerias.index')-> with('eliminar', 'ok');
 
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');             
             $table->string('siglas')->nullable();             
-            $table->string('nombre')->nullable();
+            $table->string('nombre_gr')->nullable();
             $table->longText('mision')->nullable();
             $table->longText('vision')->nullable();
             $table->longText('objetivo')->nullable(); 

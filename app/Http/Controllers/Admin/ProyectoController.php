@@ -14,16 +14,16 @@ class ProyectoController extends Controller
     
     public function __construct()
     {
-        $this-> middleware('can:admin.proyecto.index')->only('index');
-        $this-> middleware('can:admin.proyecto.create')->only('create', 'store');        
-        $this-> middleware('can:admin.proyecto.edit')->only('edit', 'update');
-        $this-> middleware('can:admin.proyecto.destroy')->only('destroy');
+        $this-> middleware('can:admin.proyectos.index')->only('index');
+        $this-> middleware('can:admin.proyectos.create')->only('create', 'store');        
+        $this-> middleware('can:admin.proyectos.edit')->only('edit', 'update');
+        $this-> middleware('can:admin.proyectos.destroy')->only('destroy');
     }
     
     public function index()
     {
         $proyectos = Proyecto::all();
-        return view('admin.proyecto.index', compact('proyectos'));
+        return view('admin.proyectos.index', compact('proyectos'));
     }
 
     
@@ -31,43 +31,45 @@ class ProyectoController extends Controller
     {
         $tipo_proyecto = TipoProyecto::pluck('descripcion', 'id');
         
-        return view('admin.proyecto.create', compact('tipo_proyecto'));
+        return view('admin.proyectos.create', compact('tipo_proyecto'));
     }
 
       public function store(ProyectoRequest $request)
     {
-        Proyecto::create($request->all());
-        
-        Cache::flush();
-        return redirect()->route('admin.proyecto.index')-> with('info', 'Proyecto Creado correctamente');;
+        $proyecto = Proyecto::create($request->all());
+
+        return redirect()->route('admin.proyectos.index')-> with('info', 'Proyecto Creado correctamente');;
 
     }
 
     
 
    
-    public function edit(Proyecto $proyecto)
+    public function edit($id)
     {
+        $proyecto = Proyecto::findOrFail($id);
         $tipo_proyecto = TipoProyecto::pluck('descripcion', 'id');
-        return view('admin.proyecto.edit' , compact('proyecto', 'tipo_proyecto'));
+        return view('admin.proyectos.edit' , compact('proyecto', 'tipo_proyecto'));
     }
 
-    public function update(ProyectoRequest $request, Proyecto $proyecto)
+    public function update(ProyectoRequest $request, $id)
     {
-        $proyecto->update($request->all());
+        $proyecto = Proyecto::findOrFail($id);    
+        $proyecto->update($request->all());         
         
-        Cache::flush();
-        return redirect()->route('admin.proyecto.index ')-> with('info', 'Datos Actualizados correctamente');
+        $proyecto->save();
+
+        return redirect()->route('admin.proyectos.index')-> with('info', 'Datos Actualizados correctamente');
  
     }
 
     
-    public function destroy(Proyecto $proyecto)
+    public function destroy($id)
     {
+        $proyecto = Proyecto::findOrFail($id);
         $proyecto->delete();
 
-        Cache::flush();
-        return redirect()->route('admin.proyecto.index')-> with('eliminar', 'ok');
+        return redirect()->route('admin.proyectos.index')-> with('eliminar', 'ok');
   
     }
 }

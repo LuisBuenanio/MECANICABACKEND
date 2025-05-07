@@ -11,7 +11,7 @@ class GrupoInvestigacionController extends Controller
 {
     public function gruposinvestigacion()
     {
-        $grupos = GrupoInvestigacion::where('estado', 2)->orderBy('nombre', 'ASC')
+        $grupos = GrupoInvestigacion::where('estado', 2)->orderBy('nombre_gr', 'ASC')
         ->paginate(9);
         return view('grupos.grupos-investigacion', compact('grupos'));
 
@@ -19,11 +19,11 @@ class GrupoInvestigacionController extends Controller
 
     public function grupoinvestigacion(GrupoInvestigacion $grupo)
     {
-
-        /* $grupo = GrupoInvestigacion::with('lineasInvestigacion.programasInvestigacion', 'investigadores')->find($grupo);
- */
-         
-        return view('grupos.grupo-investigacion', compact('grupo'));
+        // Obtén solo las líneas y programas asociados a este grupo
+        $lineasInvestigacion = $grupo->lineasInvestigacion;
+        $programasInvestigacion = $grupo->programasInvestigacion;
+                
+        return view('grupos.grupo-investigacion', compact('grupo','lineasInvestigacion','programasInvestigacion'));
         
     }
 }

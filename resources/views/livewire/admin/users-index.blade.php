@@ -12,6 +12,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
+                            <th>Roles</th>
                             <th colspan="2"></th>
                         </tr>
 
@@ -21,16 +22,22 @@
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->name}}</td>                                
                                     <td>{{$user->email}}</td>
+                                    <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+                    
                                     <td with="10px">
-                                        <a class="btn btn-primary btn-sm " href="{{route('admin.users.edit', $user)}}">Asignar Rol</a>
-                                    </td with="10px">
+                                        @can('admin.users.edit')
+                                            <a class="btn btn-primary btn-sm " href="{{route('admin.users.edit', $user)}}">Editar</a>
+                                        @endcan
+                                    </td with="10px">  
                                     <td>
-                                        <form action="{{route('admin.users.destroy', $user)}}" method="POST" class="form-eliminar">
-                                            @csrf
-                                            @method('DELETE')
+                                        @can('admin.users.destroy')
+                                            <form action="{{route('admin.users.destroy', $user)}}" method="POST" class="form-eliminar">
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
-                                        </form>
+                                                <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                                            </form>
+                                        @endcan
 
                                     </td>
                                 </tr>

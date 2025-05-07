@@ -29,12 +29,13 @@ class ConvenioRequest extends FormRequest
             'nombre' => 'required',
             'coordinador' => 'required',
             'estado' => 'required|in:1,2',
+            'objetivo' => 'required',
+            'tipo_convenio_id' => 'required',
         ];
 
         if ($this-> estado == 2){
             $rules = array_merge($rules, [
                 'resolucion' => 'required',
-                'objetivo' => 'required',
                 'fecha_legalizacion' => 'required',                   
                 'vigencia' => 'required',
             ]);

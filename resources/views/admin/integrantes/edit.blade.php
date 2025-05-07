@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($integrante,['route' => ['admin.integrantes.update',$integrante], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($integrante,['route' => ['admin.integrantes.update',$integrante->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 @include('admin.integrantes.partials.form')
 

@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($tipointegrante,['route' => ['admin.tipointegrantes.update',$tipointegrante], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($tipointegrante,['route' => ['admin.tipointegrantes.update',$tipointegrante->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 <div class="form-group">
                     {!! Form::label('descripcion', 'Descripción:') !!}

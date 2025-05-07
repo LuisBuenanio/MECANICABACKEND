@@ -62,15 +62,15 @@
     
     <label class="mr-2">
         {!! Form::radio('estado', 1, true ) !!}
-        Inactivo
+        No Publicado
     </label>
     <label class="mr-2">
         {!! Form::radio('estado', 2 ) !!}
-        Activo
+        Publicado
     </label>      
     
     <hr>
-    @error('activo')
+    @error('estado')
         <small class="text-danger">{{$message}}</small>
     @enderror
     

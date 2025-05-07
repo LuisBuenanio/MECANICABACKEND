@@ -40,13 +40,15 @@ class TipoProyectoController extends Controller
     }
 
     
-    public function edit(TipoProyecto $tipoproyecto)
+    public function edit($id)
     {
+        $tiproyecto = TipoProyecto::findOrFail($id);
         return view('admin.tipoproyecto.edit' , compact('tipoproyecto'));
     }
 
-    public function update(Request $request, TipoProyecto $tipoproyecto)
+    public function update(Request $request, $id)
     {
+        $tiproyecto = TipoProyecto::findOrFail($id);
         $request->validate([
             'descripcion' => "required|unique:tipo_convenio,descripcion,$tipoproyecto->id"
         ]);
@@ -56,8 +58,9 @@ class TipoProyectoController extends Controller
     }
 
 
-    public function destroy(TipoProyecto $tipoproyecto)
+    public function destroy(TipoProyecto $id)
     {
+        $tiproyecto = TipoProyecto::findOrFail($id);
         $tipoproyecto->delete();
 
         return redirect()->route('admin.tipoproyecto.index')-> with('eliminar', 'ok');

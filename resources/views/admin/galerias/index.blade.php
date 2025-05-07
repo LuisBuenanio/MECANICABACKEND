@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Galerías')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.galerias.create')}}">Nueva Galeria</a>

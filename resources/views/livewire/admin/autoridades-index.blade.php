@@ -10,6 +10,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Tipo Autoridad</th>
                         <th colspan="2"></th>
                     </tr>
 
@@ -17,12 +18,13 @@
                         @foreach ($autoridades as $autoridad)
                             <tr>
                                 <td>{{$autoridad->id}}</td>
-                                <td>{{$autoridad->nombre}}</td>
+                                <td>{{$autoridad->nombre}}</td>                                
+                                <td>{{$autoridad->tipo_autoridad->descripcion}}</td>
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.autoridades.edit', $autoridad)}}">Editar</a>
+                                    <a class="btn btn-primary btn-sm " href="{{route('admin.autoridades.edit', $autoridad->id)}}">Editar</a>
                                 </td with="10px">
                                 <td>
-                                    <form action="{{route('admin.autoridades.destroy', $autoridad)}}" method="POST" class="form-eliminar">
+                                    <form action="{{route('admin.autoridades.destroy', $autoridad->id)}}" method="POST" class="form-eliminar">
                                         @csrf
                                         @method('DELETE')
 

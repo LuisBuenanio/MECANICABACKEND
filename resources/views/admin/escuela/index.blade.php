@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Datos Escuela')
 
 @section('content_header')
     <h1>Datos de Escuela</h1>

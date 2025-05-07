@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Asociación')
 
 @section('content_header')
     

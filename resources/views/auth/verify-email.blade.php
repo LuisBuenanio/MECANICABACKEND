@@ -1,4 +1,23 @@
 <x-guest-layout>
+    
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <!-- Logo y título -->
+    <div class="flex w-full justify-center">
+        <div class="w-1/2 mr-2 flex justify-center">
+            <img src="{{ asset('img/logos/logo-espoch.png') }}" alt="Imagen izquierda" style="width: auto; height: auto;">
+        </div>
+        <div class="w-1/2 ml-2 flex justify-center">
+            
+<!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título -->
+
+<!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título --><!-- Logo y título -->
+<!-- Logo y título --><!-- Logo y título -->
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -42,4 +61,7 @@
             </div>
         </div>
     </x-jet-authentication-card>
+</div>
+</div>
+</div>
 </x-guest-layout>

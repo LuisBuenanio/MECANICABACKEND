@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($galeria,['route' => ['admin.galerias.update',$galeria], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($galeria,['route' => ['admin.galerias.update',$galeria->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 @include('admin.galerias.partials.form')
 
@@ -52,7 +52,7 @@
 
     <script>
         $(document).ready( function() {
-            $("#titulo").stringToSlug({
+            $("#nombre").stringToSlug({
                 setEvents: 'keyup keydown blur',
                 getPut: '#slug',
                 space: '-'
@@ -71,7 +71,7 @@
                 console.error( error );
             } );
         //Cambiar Imagen
-        document.getElementById( "portada").addEventListener('change', cambiarImagen);
+        document.getElementById("portada").addEventListener('change', cambiarImagen);
 
         function cambiarImagen(event){
             var portada = event.target.files[0];

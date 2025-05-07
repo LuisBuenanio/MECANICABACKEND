@@ -16,7 +16,7 @@
     <div class="card">
         <div class="card-body">
             
-            {!! Form::model($convenio,['route' => ['admin.convenio.update',$convenio], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
+            {!! Form::model($convenio,['route' => ['admin.convenio.update',$convenio->id], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
                 @include('admin.convenio.partials.form')
 

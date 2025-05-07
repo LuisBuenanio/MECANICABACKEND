@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Noticias')
 
 @section('content_header')
     <a class="btn btn-secondary btn-sm float-right" href="{{route('admin.noticias.create')}}">Nueva Noticia</a>

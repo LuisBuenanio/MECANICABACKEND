@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Mecánica Espoch')
+@section('title', 'Usuarios')
 
 @section('content_header')
-    <h1>Asignar un rol</h1>
+    <h1>Editar Usuario</h1>
 @stop
 
 @section('content')
@@ -21,17 +21,59 @@
             <h2 class="h5">Listado de roles</h2>
             {!! Form::model($user,['route' => ['admin.users.update',$user], 'autocomplete' => 'off', 'files' => true, 'method' => 'put'])!!}
 
-                @foreach($roles as $role)
-                    <div>
-                        <label>
-                            {!! Form:: checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
-                            {{$role->name}}
+                
+                <div class="form-group">
+                    {!! Form::label('name', 'Nombre:') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del Usuario']) !!} 
 
-                        </label>
-                    </div>
-                @endforeach
+                    @error('name')
+                        <small class="text-danger">{{$message}}</small>
+                    @enderror
 
-                {!! Form:: submit('Asignar rol',['class' => 'btn btn-primary mt-2']) !!}
+                </div>
+
+
+                <div class="form-group">
+                    {!! Form::label('email', 'Correo Electrónico:') !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el email del Usuario']) !!} 
+
+                    @error('email')
+                        <small class="text-danger">{{$message}}</small>
+                    @enderror
+
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('password', 'Contraseña:') !!}
+                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Ingrese una contraseña']) !!} 
+
+                    @error('password')
+                        <small class="text-danger">{{$message}}</small>
+                    @enderror
+
+                </div>
+                <div class="form-group">
+                    {!! Form::label('confirm-password', 'Confirmar Contraseña:') !!}
+                    {!! Form::password('confirm-password', ['class' => 'form-control', 'placeholder' => 'Vuelva a ingresar su contraseña']) !!} 
+
+                    @error('password')
+                        <small class="text-danger">{{$message}}</small>
+                    @enderror
+
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('roles_id', 'Seleccione el Rol del Usuario :') !!}
+                    {!! Form::select('roles[]', $roles,$userRole, array ('class' => 'form-control')) !!} 
+
+                    @error('roles_id')
+                        <small class="text-danger">{{$message}}</small>
+                    @enderror
+
+                </div>
+
+
+                {!! Form:: submit('Actualizar Médico',['class' => 'btn btn-primary mt-2']) !!}
 
 
             {!! Form::close() !!}

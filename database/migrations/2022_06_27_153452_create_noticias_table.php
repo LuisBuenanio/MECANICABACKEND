@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('noticias', function (Blueprint $table) {
             
-            // iDE DE NOTICIA AUTOINCREMENTABLE 
-            $table->id();
-
-            //COLUMNAS DE LA NOTICIA        -ññ
+            
+            $table->id();  
             
             $table->string('titulo');
             $table->string('slug')->nullable(); 
@@ -26,13 +24,16 @@ return new class extends Migration
             $table->text('entradilla')->nullable();
             $table->longText('contenido')->nullable();     
 
+            $table->string('portada')->nullable();
             $table->enum('estado',[1,2])->default(1);
 
-            $table->timestamp('fecha_publicacion', $precision = 0);
+
+            $table->date('fecha_publicacion')->nullable();
             
             $table->timestamps(); 
         });
     }
+
 
     /**
      * Reverse the migrations.

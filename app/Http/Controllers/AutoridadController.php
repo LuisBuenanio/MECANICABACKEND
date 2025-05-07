@@ -21,3 +21,4 @@ class AutoridadController extends Controller
         return response()->json(['datos'=>$autoridad],202);
     }
 }
+

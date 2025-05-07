@@ -19,10 +19,10 @@
                                 <td>{{$galeria->id}}</td>
                                 <td>{{$galeria->nombre}}</td>
                                 <td with="10px">
-                                    <a class="btn btn-primary btn-sm " href="{{route('admin.galerias.edit', $galeria)}}">Editar</a>
+                                    <a class="btn btn-primary btn-sm " href="{{route('admin.galerias.edit', $galeria->id)}}">Editar</a>
                                 </td with="10px">
                                 <td>
-                                    <form action="{{route('admin.galerias.destroy', $galeria)}}" method="POST" class="form-eliminar">
+                                    <form action="{{route('admin.galerias.destroy', $galeria->id)}}" method="POST" class="form-eliminar">
                                         @csrf
                                         @method('DELETE')
 
